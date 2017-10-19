@@ -14,22 +14,32 @@
         			include '../View/Header.php'; //header necesita los strings
         		?>
         			<h1><?php echo $strings['Registro']; ?></h1>
-        			<form name = 'Form' action='../Controller/Register_Controller.php' method='post' onsubmit='return comprobar_USUARIOS()'>
 
-        				 	login : <input type = 'text' name = 'login' size = '15' value = '' onblur="esVacio(this)  && comprobarText(this,15)" ><br>
-        	password : <input type = 'text' name = 'password' size = '32' value = '' onblur="esVacio(this)  && comprobarText(this,32)" ><br>
-        	NombreU : <input type = 'text' name = 'NombreU' size = '15' value = '' onblur="esVacio(this)  && comprobarText(this,15)" ><br>
-        	ApellidosU : <input type = 'text' name = 'ApellidosU' size = '30' value = '' onblur="esVacio(this)  && comprobarText(this,30)" ><br>
-        	TituloAcademicoU : <input type = 'text' name = 'TituloAcademicoU' size = '100' value = '' onblur="esVacio(this)  && comprobarText(this,100)" ><br>
-        	TipoContratoU : <input type = 'text' name = 'TipoContratoU' size = '40' value = '' onblur="esVacio(this)  && comprobarText(this,40)" ><br>
-        	CentroU : <input type = 'text' name = 'CentroU' size = '100' value = '' onblur="esVacio(this)  && comprobarText(this,100)" ><br>
-        	DepartamentoU : <input type = 'text' name = 'DepartamentoU' size = '100' value = '' onblur="esVacio(this)  && comprobarText(this,100)" ><br>
-        	UniversidadU : <input type = 'text' name = 'UniversidadU' size = '40' value = '' onblur="esVacio(this)  && comprobarText(this,40)" ><br>
-        	TipoU: <select name='TipoU' ><option value = 'A'>A</option><option value = 'P'>P</option></select><br>
+              <form name = 'Form' id="register" action='../Controller/Register_Controller.php' method='post'>
 
-        				 <input type='submit' name='action' value='REGISTER'>
+                <div class="form-group row">
+                  <label for="staticEmail" class="col-sm-2 col-form-label">Login</label>
+                  <div class="col-sm-5">
+                      <input type="text" class="form-control" name="login" placeholder="Login">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="inputPassword" class="col-sm-2 col-form-label">Password</label>
+                  <div class="col-sm-5">
+                    <input type="password" class="form-control" name="password" placeholder="Password">
+                  </div>
+                </div>
 
-        			</form>
+                <div class="form-group row">
+                   <label for="email" class="col-sm-2 col-form-label">Email</label>
+                   <div class="col-sm-5">
+                     <input type="email" class="form-control" name="email"  placeholder="Email">
+                   </div>
+                 </div>
+
+
+                  <button type="submit" name='action' value='Register' class="btn btn-primary">Register</button>
+                </form>
 
 
         			<a href='../Controller/USUARIOS_Controller.php'>Volver </a>

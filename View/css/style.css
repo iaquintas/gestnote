@@ -1,9 +1,11 @@
 body {
   color: #000000;
   background-color: #D9D9D9;
-
+  font-family: 'Merienda', cursive;
 
 }
+
+
 
 .contenedor {
   display: block;
@@ -212,8 +214,10 @@ a{
 }
 
 button.btn.btn-primary{
-  background-color: #0080ff;
+  background-color:#0080ff;
+  text-align: center;
 }
+
 
 
 
@@ -301,9 +305,7 @@ header{
   font-size: 40px;
   text-align: center;
 }
-form#registro{
-  text-align: center;
-}
+
 
 h1{
   text-align: center;
@@ -312,6 +314,21 @@ h1{
 form#login{
   margin-left: 10cm;
 }
+form#register{
+  margin-left: 10cm;
+}
+
+ footer {
+	display: block;
+	min-height: 16%;
+
+}
+
+div#bienvenido{
+  font-size: 40px;
+  text-align: center;
+}
+
 
 
 

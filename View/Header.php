@@ -44,6 +44,7 @@
       <div id="cabecera">
         <img id="logotipo" src="../View/img/logotipo.png">
       </div>
+</header>
 
 			<?php
 
@@ -87,6 +88,8 @@
 			 </select>
 		 </form>
 	 </div>
+	 	<div id="bienvenido">
+	 		
 		 <?php
 		echo "<br>";
 		echo $strings['¡Bienvenido a Gestnote!'];
@@ -99,7 +102,8 @@
 
 	}
 ?>
-</header>
+		</div>
+
 
 <div id = 'main'>
 <?php
@@ -108,4 +112,5 @@
 		include '../View/menuLateral.php';
 	}
 ?>
+
 <article>
