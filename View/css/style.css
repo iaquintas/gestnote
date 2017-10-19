@@ -1,0 +1,394 @@
+body {
+  color: #000000;
+  background-color: #D9D9D9;
+  font-family: "Tangerine";
+
+}
+
+.contenedor {
+  display: block;
+}
+
+.navbar a {
+  color: #ffffff;
+  display: inline-block;
+  text-align: center;
+}
+
+.navbar-brand {
+  font-family: 'Merienda', cursive;
+  font-size: 10pt;
+  font-weight: lighter;
+  text-align: center;
+}
+
+.navbar {
+  background-color: #0080ff;
+  justify-content: center;
+  text-align: center;
+}
+
+#navbarNavDropdown {
+  font-family: 'Merienda', cursive;
+  font-size: 20px;
+  height: 2cm;
+}
+
+
+
+#menus {
+  font-size: 40px;
+  float: right;
+  font-size: 30px;
+}
+
+#out {
+  float: right;
+  color: #000000;
+}
+
+#alineados {
+  font-family: 'Merienda', cursive;
+  font-size: 20px;
+  margin-top: 0.5cm;
+  margin bottom: 4cm;
+  margin-left: 1.5cm;
+
+}
+
+#editar {
+  margin-left: 1cm;
+  margin-bottom: 2cm;
+}
+
+#volver {
+  margin-bottom: 2cm;
+}
+
+img {
+  max-width: 400px;
+  max-height: 400px;
+}
+
+.image {
+  margin-left: 0.5cm;
+  margin-right: 1cm;
+  display: inline;
+  position: relative;
+  width: 100%;
+  /* for IE 6 */
+}
+
+.imagenes {
+  height: 100%;
+  display: block;
+  text-align: center;
+  margin-bottom: 1cm;
+}
+
+h2 {
+  position: absolute;
+  text-align: left;
+  top: -57px;
+  left: 50px;
+  right: 30px;
+  font-size: 30px;
+
+}
+
+.btn {
+  margin-left: 0.1cm;
+  background-color: inherit;
+  font-size: 20px;
+}
+
+#idioma {
+  font-family: 'Merienda', cursive;
+  background-color: #ffffff;
+}
+
+#dropdownMenuLink {
+  background-color: #0080ff;
+  color: #ffffff;
+  font-size: 20px;
+  border-color: inherit;
+}
+
+#logotipo {
+  margin-top: 0.5cm;
+  margin-bottom: 0.5cm;
+  width: 300px;
+  height: 100px;
+}
+
+#cabecera {
+  text-align: center;
+  background-color: #ffffff;
+  width: 100%;
+
+  display: block;
+  margin: auto;
+}
+
+a.dropdown-item {
+  color: #000000;
+  width: auto;
+}
+
+#posit {
+  margin-top: 1cm;
+  width: 270px;
+  font-size: 10px;
+}
+
+div#botones {
+  position: absolute;
+  top: 146px;
+
+
+}
+#menus {
+  display: inline;
+  font-size: 10px;
+}
+
+a#dropdownMenuLink.btn.btn-secondary.dropdown-toggle {
+  display: block;
+  margin-left: auto;
+}
+
+nav.navbar.navbar-expand-lg {
+  flex-wrap: nowrap;
+}
+
+div.dropdown-menu.show {
+  font-size: 10px;
+  position: absolute;
+}
+
+.dropdown-menu {
+  min-width: inherit;
+}
+
+#pienota{
+  font-family: 'Playfair Display SC', serif;
+  font-size: 12pt;
+  left:0;
+  color: #6b6e6b;
+  margin-top: 1cm;
+  float: right;
+
+}
+
+
+
+/* CSS EDITAR NOTAS*/
+
+#edit{
+  font-size: 20pt;
+}
+
+form{
+  font-family: 'Montserrat', serif;
+  margin-left: 1cm;
+  margin-right: 1cm;
+  margin-top: 1cm;
+}
+
+div#compartir{
+  display: inherit;
+  margin-top: 1cm;
+}
+
+a{
+  color: #000000;
+}
+
+#botoneditar{
+  margin-bottom: 1cm;
+  background-color: #0080ff;
+  color: #ffffff;
+
+}
+
+
+
+
+@media (min-width: 768px) {
+  .navbar-brand {
+    font-family: 'Merienda', cursive;
+    font-size: 30pt;
+    font-weight: lighter;
+    text-align: center;
+  }
+  .navbar {
+    background-color: #0080ff;
+    height: auto;
+    justify-content: center;
+  }
+  #posit {
+    width: auto;
+    text-align: center;
+  }
+  #idioma {
+    float: right;
+    margin-top: -2.5cm;
+    text-align: center;
+  }
+  #dropdownMenuLink {
+    font-size:12pt;
+  }
+  #idioma {
+    /*margin-top: 3cm;*/
+  }
+  #menus {
+    display: block;
+    font-size: 20px;
+  }
+
+
+  h2{
+    top:-51px;
+    font-size: 40px;
+  }
+  #pienota{
+    margin-top: 1.3cm;
+  }
+
+  div.dropdown-menu.show {
+    font-size: 15px;
+    position: absolute;
+  }
+
+  div#botones {
+    position: absolute;
+    top: 148px;
+
+}
+
+#idioma2 {
+  float: left;
+  margin-top: -3.5cm;
+  text-align: center;
+}
+
+.btn {
+  margin-left: 0.1cm;
+  background-color: inherit;
+  font-size: 25px;
+}
+/*
+textarea#Contenido.form-control{
+  width: 50%;
+}
+
+input#Fecha.form-control{
+  width: 50%;
+}
+input#Autor.form-control{
+  width: 50%;
+}
+*/
+#edit{
+
+  font-size: 20pt;
+}
+div#compartir{
+margin-left: 1cm;
+display: inline-table;
+}
+div#idioma.dropdown{
+  margin-right: 1cm;
+}
+
+
+
+
+}
+
+
+
+
+/* Medium devices (desktops, 992px and up) */
+
+/* container width 970 */
+
+@media (min-width: 992px) {
+  .navbar {
+    background-color: #0080ff;
+    height: auto;
+  }
+
+  .navbar-brand {
+    font-family: 'Merienda', cursive;
+    font-size: 40pt;
+    font-weight: lighter;
+    margin-left: 2cm;
+  }
+  h2{
+    top:-51px;
+    font-size: 40px;
+  }
+  #pienota{
+    margin-top: 1.3cm;
+  }
+  div.dropdown-menu.show {
+    font-size: 15px;
+    position: absolute;
+  }
+/*
+  textarea#Contenido.form-control{
+    width: 50%;
+  }
+
+  input#Fecha.form-control{
+    width: 50%;
+  }
+
+  input#Autor.form-control{
+    width: 50%;
+  }
+*/
+  div#compartir{
+
+  }
+}
+
+/* Large devices (large desktops, 1170px and up) */
+
+/* container width 1170 */
+
+@media (min-width: 1200px) {
+  .navbar {
+    background-color: #0080ff;
+    height: auto;
+  }
+
+  .navbar-brand {
+    font-family: 'Merienda', cursive;
+    font-size: 50pt;
+    font-weight: lighter;
+    margin-left: 2cm;
+  }
+  h2{
+    top:-51px;
+    font-size: 40px;
+  }
+  #pienota{
+    margin-top: 1.2cm;
+  }
+  div.dropdown-menu.show {
+    font-size: 15px;
+    position: absolute;
+  }
+  div#compartir{
+
+
+  }
+
+
+
+  /*#login label {
+      width: 300px;
+  }*/
+}
