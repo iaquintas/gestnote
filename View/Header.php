@@ -18,7 +18,7 @@
 	<script type="text/javascript" src="../View/js/tcal.js"></script>
 	<script type="text/javascript" src="../View/js/Validaciones.js"></script>
 	<script type="text/javascript" src="../View/js/comprobar.js"></script>
-	<link rel="stylesheet" type="text/css" href="../View/css/JulioCSS-2.css" media="screen" />
+
 
 	<link rel="stylesheet" href="../bootsrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -73,11 +73,30 @@
 
 <?php
 	}
+
+
 	else{
-		echo $strings['Usuario no autenticado'];
-		echo 	'<form action=\'../Controller/Register_Controller.php\' method=\'post\'>
-					<input type=\'submit\' name=\'action\' value=\'REGISTER\'>
+		 ?>
+		 <div id="idioma2">
+		 <form action="../Controller/CambioIdioma.php" method="get">
+			 <?php echo $strings['idioma']; ?>
+			 <select name="idioma" onChange='this.form.submit()'>
+						 <option value="SPANISH"> </option>
+				 <option value="ENGLISH"><?php echo $strings['INGLES']; ?></option>
+						 <option value="SPANISH"><?php echo $strings['ESPAÑOL']; ?></option>
+			 </select>
+		 </form>
+	 </div>
+		 <?php
+		echo "<br>";
+		echo $strings['¡Bienvenido a Gestnote!'];
+		echo "<br>";
+		echo $strings['¿Todavía no estás registrado?'];
+		echo 	'<form id="registro" action=\'../Controller/Register_Controller.php\' method=\'post\'>
+					<input type=\'submit\' name=\'action\' value='.$strings['REGISTRO'].'>
 				</form>';
+
+
 	}
 ?>
 </header>

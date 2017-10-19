@@ -1,7 +1,7 @@
 body {
   color: #000000;
   background-color: #D9D9D9;
-  font-family: "Tangerine";
+
 
 }
 
@@ -211,6 +211,10 @@ a{
 
 }
 
+button.btn.btn-primary{
+  background-color: #0080ff;
+}
+
 
 
 
@@ -277,18 +281,8 @@ a{
   background-color: inherit;
   font-size: 25px;
 }
-/*
-textarea#Contenido.form-control{
-  width: 50%;
-}
 
-input#Fecha.form-control{
-  width: 50%;
-}
-input#Autor.form-control{
-  width: 50%;
-}
-*/
+
 #edit{
 
   font-size: 20pt;
@@ -301,6 +295,23 @@ div#idioma.dropdown{
   margin-right: 1cm;
 }
 
+/*vista de index*/
+
+header{
+  font-size: 40px;
+  text-align: center;
+}
+form#registro{
+  text-align: center;
+}
+
+h1{
+  text-align: center;
+}
+
+form#login{
+  margin-left: 10cm;
+}
 
 
 

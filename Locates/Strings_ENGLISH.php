@@ -1,5 +1,5 @@
 <?php
-        $strings = 
+        $strings =
  array('Borrado correctamente'=>'Successfully Deleted',
 'Modificado correctamente'=>'Successfully Modified',
 'Inserción realizada con éxito'=>'Successfully Insertion',
@@ -45,7 +45,11 @@
 'CONTENIDO'=>'CONTENIDO',
 'COMPARTIDO'=>'COMPARTIDO',
 'Gestión de NOTAS'=>'Management of NOTAS',
-'Gestión de USUARIOS'=>'Management of USUARIOS'
+'Gestión de USUARIOS'=>'Management of USUARIOS',
+'¡Bienvenido a Gestnote!' => '¡Welcome to GestNote!',
+'REGISTRO'=>'REGISTER',
+'¿Todavía no estás registrado?'=>'Not registered yet?',
+'LOGIN'=>'LOGIN'
  )
-        ;
-        ?>
+;
+  ?>
