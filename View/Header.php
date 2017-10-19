@@ -66,35 +66,11 @@
   </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-          <a class="dropdown-item" href="../Controller/CambioIdioma.php?idioma=ESPAÑOL"><img src="spain.png">Español</a>
-          <a class="dropdown-item" href="../Controller/CambioIdioma.php?idioma=INGLES"><img src="galicia.png">Ingles</a>
-					<a class="dropdown-item" href=""><img src="galicia.png">Salir</a>
-
-
+					<a class="dropdown-item" href="../Functions/Desconectar.php"><img src="galicia.png">Salir</a>
         </div>
       </div>
-			<?php
-
-		}
-			?>
-
-	<div width: 50%; align="left">
 
 
-<?php
-
-	if (IsAuthenticated()){
-?>
-
-<?php
-		echo $strings['Usuario'] . ' : ' . $_SESSION['login'] . '<br>';
-?>
-		</div>
-		<div width: 50%; align="right">
-			<a href='../Functions/Desconectar.php'>
-				<img src='../View/Icons/sign-error.png'>
-			</a>
-	</div>
 <?php
 	}
 	else{
