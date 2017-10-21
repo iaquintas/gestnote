@@ -55,7 +55,7 @@
 				<?php echo $strings['idioma']; ?>
 				<select name="idioma" onChange='this.form.submit()'>
 			        <option value="SPANISH"> </option>
-					<option value="ENGLISH"><?php echo $strings['INGLES']; ?></option>
+					<option value="ENGLISH"><?php echo $strings['INGLES'];?></option>
 			        <option value="SPANISH"><?php echo $strings['ESPAÑOL']; ?></option>
 				</select>
 			</form>
@@ -67,7 +67,7 @@
   </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="../Functions/Desconectar.php"><img src="galicia.png">Salir</a>
+					<a class="dropdown-item" href="../Functions/Desconectar.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a>
         </div>
       </div>
 
@@ -89,7 +89,7 @@
 		 </form>
 	 </div>
 	 	<div id="bienvenido">
-	 		
+
 		 <?php
 		echo "<br>";
 		echo $strings['¡Bienvenido a Gestnote!'];

@@ -1,9 +1,7 @@
 </article>
 </div>
 <footer>
-	Página generada el dia <?php echo date("d-M-Y", mktime()); ?>
+	Creada por grupo 16
 </footer>
 </body>
 </html>
-
-		
