@@ -89,12 +89,14 @@ img {
 }
 
 h2 {
+  line-height: initial;
+  font-family: 'Julius Sans One', sans-serif;
   position: absolute;
   text-align: left;
   top: -57px;
   left: 50px;
   right: 30px;
-  font-size: 30px;
+  font-size: 20px;
 
 }
 
@@ -218,6 +220,13 @@ button.btn.btn-primary{
   text-align: center;
 }
 
+footer {
+ display: block;
+ min-height: 16%;
+ background-color: #ffffff;
+}
+
+
 
 
 
@@ -256,8 +265,10 @@ button.btn.btn-primary{
 
 
   h2{
+    line-height: initial;
+    font-family: 'Julius Sans One', sans-serif;
     top:-51px;
-    font-size: 40px;
+    font-size: 30px;
   }
   #pienota{
     margin-top: 1.3cm;
@@ -321,7 +332,7 @@ form#register{
  footer {
 	display: block;
 	min-height: 16%;
-
+  background-color: #ffffff;
 }
 
 div#bienvenido{
@@ -354,8 +365,9 @@ div#bienvenido{
     margin-left: 2cm;
   }
   h2{
+    line-height: initial;
     top:-51px;
-    font-size: 40px;
+    font-size: 30px;
   }
   #pienota{
     margin-top: 1.3cm;
@@ -399,8 +411,9 @@ div#bienvenido{
     margin-left: 2cm;
   }
   h2{
-    top:-51px;
-    font-size: 40px;
+    line-height: initial;
+    top:-91px;
+    font-size: 30px;
   }
   #pienota{
     margin-top: 1.2cm;

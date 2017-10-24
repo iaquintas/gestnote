@@ -10,7 +10,6 @@ class USUARIOS_Model{
 public function __construct(   $login,   $password, $email){
 $this->login = $login;
 $this->password = $password;
-$this->email = $email;
 include_once 'Access_DB.php';
     $this->mysqli = ConnectDB();
 }
@@ -22,7 +21,7 @@ public function ADD(){
          $sql = "SELECT * FROM USUARIOS WHERE login = '$this->login'";
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 0){
-            $sql= "INSERT INTO USUARIOS(login,password,email) VALUES ('$this->login','$this->password','$this->email')";
+            $sql= "INSERT INTO USUARIOS(login,password) VALUES ('$this->login','$this->password')";
             if(!$this->mysqli->query($sql)){
 		             return 'Error en la inserción';
             }else{

@@ -49,7 +49,9 @@
 '¡Bienvenido a Gestnote!' => '¡Welcome to GestNote!',
 'REGISTRO'=>'REGISTER',
 '¿Todavía no estás registrado?'=>'Not registered yet?',
-'LOGIN'=>'LOGIN'
+'LOGIN'=>'LOGIN',
+'Bienvenido' => 'Welcome',
+'Salir' => 'Exit'
  )
 ;
   ?>

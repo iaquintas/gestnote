@@ -32,6 +32,7 @@
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Merienda|Roboto|Walter+Turncoat" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Philosopher|Varela+Round|Tangerine" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
 
 
 
@@ -63,11 +64,11 @@
 
 			<div id="idioma" class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    Bienvenido <?php echo $_SESSION['login']; ?>
+   <?php echo $strings['Bienvenido']; echo(" "); echo $_SESSION['login']; ?>
   </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-					<a class="dropdown-item" href="../Functions/Desconectar.php"><i class="fa fa-sign-out" aria-hidden="true"></i>Salir</a>
+					<a class="dropdown-item" href="../Functions/Desconectar.php"><i class="fa fa-sign-out" aria-hidden="true"></i><?php echo $strings['Salir']; ?></a>
         </div>
       </div>
 
@@ -106,11 +107,7 @@
 
 
 <div id = 'main'>
-<?php
-	//session_start();
-	if (IsAuthenticated()){
-		include '../View/menuLateral.php';
-	}
-?>
+
+
 
 <article>

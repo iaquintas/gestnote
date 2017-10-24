@@ -39,10 +39,12 @@
 
 
                   <button type="submit" name='action' value='Register' class="btn btn-primary">Register</button>
+                  <button type="submit" name='action' value='Volver' class="btn btn-primary">Volver</button>
                 </form>
 
 
         			<a href='../Controller/USUARIOS_Controller.php'>Volver </a>
+
 
         		<?php
         			include '../View/Footer.php';
