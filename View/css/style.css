@@ -89,12 +89,14 @@ img {
 }
 
 h2 {
+  line-height: initial;
+  font-family: 'Julius Sans One', sans-serif;
   position: absolute;
   text-align: left;
   top: -57px;
   left: 50px;
   right: 30px;
-  font-size: 30px;
+  font-size: 20px;
 
 }
 
@@ -145,7 +147,7 @@ a.dropdown-item {
 
 div#botones {
   position: absolute;
-  top: 146px;
+  top: 205px;
 
 
 }
@@ -218,6 +220,21 @@ button.btn.btn-primary{
   text-align: center;
 }
 
+footer {
+ display: block;
+ min-height: 16%;
+ background-color: #ffffff;
+}
+#iconoeditar{
+  color: 	#32CD32;
+}
+#iconocompartir{
+  color: #0080ff;
+}
+#iconoeliminar{
+  color: #DD0000;
+}
+
 
 
 
@@ -256,8 +273,10 @@ button.btn.btn-primary{
 
 
   h2{
+    line-height: initial;
+    font-family: 'Julius Sans One', sans-serif;
     top:-51px;
-    font-size: 40px;
+    font-size: 30px;
   }
   #pienota{
     margin-top: 1.3cm;
@@ -270,7 +289,7 @@ button.btn.btn-primary{
 
   div#botones {
     position: absolute;
-    top: 148px;
+    top: 205px;
 
 }
 
@@ -321,7 +340,7 @@ form#register{
  footer {
 	display: block;
 	min-height: 16%;
-
+  background-color: #ffffff;
 }
 
 div#bienvenido{
@@ -354,8 +373,9 @@ div#bienvenido{
     margin-left: 2cm;
   }
   h2{
+    line-height: initial;
     top:-51px;
-    font-size: 40px;
+    font-size: 30px;
   }
   #pienota{
     margin-top: 1.3cm;
@@ -399,8 +419,9 @@ div#bienvenido{
     margin-left: 2cm;
   }
   h2{
-    top:-51px;
-    font-size: 40px;
+    line-height: initial;
+    top:-91px;
+    font-size: 30px;
   }
   #pienota{
     margin-top: 1.2cm;
