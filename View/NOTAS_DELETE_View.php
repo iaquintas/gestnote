@@ -1,23 +1,42 @@
-<?php 
+<?php
 Class NOTAS_DELETE{
 private $valores;
-function __Construct($valores){ 
+function __Construct($valores){
 
               $this->valores = $valores;
-              $this->render(); 
+              $this->render();
 }
-function render(){ 
+function render(){
 include '../View/Header.php'; ?>
 
               <h1><?php echo $strings['Borrar'] . 'NOTAS' ?></h1>
 
             <form name='Form' action='../Controller/NOTAS_Controller.php' method='post' onsubmit='return comprobar()'>
+              <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">AUTOR</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="AUTOR" id="inputPassword" placeholder="Login" value='<?php echo ($this->valores['AUTOR']); ?>' onblur='esVacio(this)  && comprobarText(this,15)'required readonly><br>
+                </div>
+              </div>
+              <div class="form-group row 5">
+                <label for="staticEmail" class="col-sm-2 col-form-label">FECHA</label>
+                <div class="col-sm-5">
+                    <input class = "tcal" type = 'date' name = 'FECHA' min = '' max = '' value='<?php echo ($this->valores['FECHA']); ?>'onblur='esVacio(this)'required readonly  ><br>
+                </div>
+              </div>
+              <div class="form-group row 1">
+                <label for="staticEmail" class="col-sm-10 col-form-label">CONTENIDO</label>
+                <div class="col-sm-10">
+                    <input  type = 'text' name = 'CONTENIDO' min = '' max = '' value='<?php echo ($this->valores['CONTENIDO']); ?>'onblur='esVacio(this) && comprobarText(this,100)'required readonly  ><br>
+                </div>
+              </div>
+              <div class="form-group row 2">
+                <label for="staticEmail" class="col-sm-10 col-form-label">COMPARTIDO</label>
+                <div class="col-sm-10">
+                    <input  type = 'text' name = 'CONTENIDO' min = '' max = '' value='<?php echo ($this->valores['COMPARTIDO']); ?>'onblur='esVacio(this) && comprobarText(this,200)'required readonly  ><br>
+                </div>
+              </div>
 
-
-              AUTOR:<input type ='text' name ='AUTOR' size='15'  value='<?php echo ($this->valores['AUTOR']); ?>' onblur='esVacio(this)  && comprobarText(this,15)' required readonly >
- <br>FECHA:<input class = 'tcal' type = 'date' name = 'FECHA' min = '' max = '' value='<?php echo ($this->valores['FECHA']); ?>'  onblur='esVacio(this)' required readonly> <br>
-CONTENIDO:<input type ='text' name ='CONTENIDO' size='100'  value='<?php echo ($this->valores['CONTENIDO']); ?>' onblur='esVacio(this)  && comprobarText(this,100)' required readonly >
- <br>COMPARTIDO:<input type ='text' name ='COMPARTIDO' size='200'  value='<?php echo ($this->valores['COMPARTIDO']); ?>' onblur='esVacio(this)  && comprobarText(this,200)' required readonly >
  <br><input type='submit' name='action' value='DELETE'>
 
               </form>
@@ -29,4 +48,3 @@ CONTENIDO:<input type ='text' name ='CONTENIDO' size='100'  value='<?php echo ($
 
               }
               ?>
-              
