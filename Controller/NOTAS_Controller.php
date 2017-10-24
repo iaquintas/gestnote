@@ -48,14 +48,16 @@
         //Realiza un borrado
         case 'DELETE':
             if (!$_POST){
-                $NOTAS = new NOTAS_Model(,'','','','');
-                $valores= $NOTAS->RellenaDatos(
+                $NOTAS = new NOTAS_Model('','','','');
+                $valores= $NOTAS->RellenaDatos();
+                break;}
         //Edita los datos que quiera el usuario
         case 'EDIT':
             if (!$_POST){
-                $NOTAS = new NOTAS_Model(,'','','','');
-                $valores= $NOTAS->RellenaDatos(
+                $NOTAS = new NOTAS_Model('','','','');
+                $valores= $NOTAS->RellenaDatos();
         //Busca la entidad deseada
+      }
         case 'SEARCH':
             if (!$_POST){
                 new NOTAS_SEARCH();
@@ -68,8 +70,8 @@
             break;
         //Muestra el/la NOTAS seleccionado
         case 'SHOWCURRENT':
-            $NOTAS = new NOTAS_Model(,'','','','');
-            $valores= $NOTAS->RellenaDatos(
+            $NOTAS = new NOTAS_Model('','','','');
+            $valores= $NOTAS->RellenaDatos();
         //Opcion por defecto, que muestra todas las instancias de la entidad
         default:
             if (!$_POST){
@@ -81,4 +83,6 @@
             $lista = array( 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
             new NOTAS_SHOWALL($lista, $datos);
         }
+
+
     ?>

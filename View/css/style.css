@@ -147,7 +147,7 @@ a.dropdown-item {
 
 div#botones {
   position: absolute;
-  top: 146px;
+  top: 205px;
 
 
 }
@@ -225,7 +225,15 @@ footer {
  min-height: 16%;
  background-color: #ffffff;
 }
-
+#iconoeditar{
+  color: 	#32CD32;
+}
+#iconocompartir{
+  color: #0080ff;
+}
+#iconoeliminar{
+  color: #DD0000;
+}
 
 
 
@@ -281,7 +289,7 @@ footer {
 
   div#botones {
     position: absolute;
-    top: 148px;
+    top: 205px;
 
 }
 

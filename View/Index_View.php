@@ -25,7 +25,7 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ordenar por: </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Creada por</a>
+                <a class="dropdown-item" href="#"><?php echo $strings['Añadir nota']; ?></a>
                 <a class="dropdown-item" href="#">Fecha</a>
                 <a class="dropdown-item" href="#">Número de nota</a>
               </div>
@@ -47,9 +47,9 @@
 
       <div id="botones">
 
-      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i>Editar</button>
-      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-bullhorn" aria-hidden="true"></i> Compartir</button>
-      <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash" aria-hidden="true"></i> Eliminar</button>
+    <a href="../Controller/NOTAS_Controller.php?action=edit" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    <a href="../Controller/NOTAS_Controller.php?action=compartir"title="Compartir"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
+    <a href="../Controller/NOTAS_Controller.php?action=eliminar"title="Eliminar"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
       <div id="pienota">
        Ignacio 16/10/2017
       </div>
