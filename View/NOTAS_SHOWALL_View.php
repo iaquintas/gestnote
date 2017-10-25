@@ -62,7 +62,7 @@ include '../View/Header.php'; ?>
     </h2>
     </div>
 
-  
+
 
 <?php
 				}
