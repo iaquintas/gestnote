@@ -51,7 +51,13 @@
 '¿Todavía no estás registrado?'=>'Not registered yet?',
 'LOGIN'=>'LOGIN',
 'Bienvenido' => 'Welcome',
-'Salir' => 'Exit'
+'Salir' => 'Exit',
+'Mis notas' => 'My notes',
+'Nueva nota' => 'Add note',
+'Fecha' => 'Date',
+'Ordenar por:' => 'Order by:',
+'Creada por:' => 'Created by'
+
  )
 ;
   ?>

@@ -48,13 +48,27 @@
         //Realiza un borrado
         case 'DELETE':
             if (!$_POST){
-                $NOTAS = new NOTAS_Model(,'','','','');
-                $valores= $NOTAS->RellenaDatos(
+                $NOTAS = new NOTAS_Model($_REQUEST['AUTOR'],'','','');
+                $valores= $NOTAS->RellenaDatos($_REQUEST['AUTOR']);
+                new NOTAS_DELETE($valores);
+            }else{
+                $NOTAS = get_data_form();
+                $respuesta = $NOTAS->DELETE();
+                new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
+            }
+            break;
         //Edita los datos que quiera el usuario
         case 'EDIT':
             if (!$_POST){
-                $NOTAS = new NOTAS_Model(,'','','','');
-                $valores= $NOTAS->RellenaDatos(
+                $NOTAS = new NOTAS_Model($_REQUEST['AUTOR'],'','','');
+                $valores= $NOTAS->RellenaDatos($_REQUEST['AUTOR']);
+                new NOTAS_EDIT($valores);
+            }else{
+                $NOTAS = get_data_form();
+                $respuesta = $NOTAS->EDIT();
+                new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
+            }
+            break;
         //Busca la entidad deseada
         case 'SEARCH':
             if (!$_POST){
@@ -68,8 +82,10 @@
             break;
         //Muestra el/la NOTAS seleccionado
         case 'SHOWCURRENT':
-            $NOTAS = new NOTAS_Model(,'','','','');
-            $valores= $NOTAS->RellenaDatos(
+            $NOTAS = new NOTAS_Model($_REQUEST['AUTOR'],'','','');
+            $valores= $NOTAS->RellenaDatos($_REQUEST['AUTOR']);
+                new NOTAS_SHOWCURRENT($valores);
+                break;
         //Opcion por defecto, que muestra todas las instancias de la entidad
         default:
             if (!$_POST){

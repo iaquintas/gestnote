@@ -1,4 +1,3 @@
-
 <?php
 //Modelo de la entidad: NOTAS
 
@@ -25,7 +24,11 @@ include_once 'Access_DB.php';
 
 //Metodo ADD que inserta una nueva instancia de la entidad comprobando que no exista previamente
 public function ADD(){
-    if(AUTOR,FECHA,CONTENIDO,COMPARTIDO) VALUES ('$this->AUTOR','$this->FECHA','$this->CONTENIDO','$this->COMPARTIDO')";
+    if(($this->AUTOR <> '')){
+         $sql = "SELECT * FROM NOTAS WHERE AUTOR = '$this->AUTOR'";
+        $resultado = $this->mysqli->query($sql);
+        if($resultado->num_rows == 0){
+            $sql= "INSERT INTO NOTAS(AUTOR,FECHA,CONTENIDO,COMPARTIDO) VALUES ('$this->AUTOR','$this->FECHA','$this->CONTENIDO','$this->COMPARTIDO')";
             if(!$this->mysqli->query($sql)){
 		             return 'Error en la inserción';
             }else{
@@ -59,13 +62,43 @@ public function ADD(){
 
     //funcion de modificación de la instancia actual de la entidad
     public function EDIT(){
-        $sql = "SELECT * FROM NOTAS WHERE (AUTOR = '$this->AUTOR',
+        $sql = "SELECT * FROM NOTAS WHERE (AUTOR = '$this->AUTOR')";
+        $resultado = $this->mysqli->query($sql);
+        if($resultado->num_rows == 0){
+            return 'No existe en la base de datos';
+        }else{
+            $sql = "UPDATE NOTAS SET AUTOR = '$this->AUTOR',
             FECHA = '$this->FECHA',
             CONTENIDO = '$this->CONTENIDO',
-            COMPARTIDO = '$this->COMPARTIDO' WHERE (
+            COMPARTIDO = '$this->COMPARTIDO' WHERE (AUTOR = '$this->AUTOR')";
+            if ($resultado = $this->mysqli->query($sql)){
+                return 'Modificado correctamente';
+            }else{
+                return 'Error en la modificación';
+            }
+        }
+    }
     //Borra la instancia actual de la base de datos. Es un borrado completo
     public function DELETE(){
-        $sql = "SELECT * FROM NOTAS WHERE (
+        $sql = "SELECT * FROM NOTAS WHERE (AUTOR = '$this->AUTOR')";
+        $resultado = $this->mysqli->query($sql);
+        if($resultado->num_rows == 1){
+            $sql="DELETE FROM NOTAS WHERE (AUTOR = '$this->AUTOR')";
+            if($this->mysqli->query($sql) === TRUE) {
+    			       return 'Borrado correctamente';
+    		    }
+        }else{
+            return 'No existe en la base de datos';
+        }
+    }
 //funcion que rellena una instancia de la entidad y la devuelve
    public function RellenaDatos(){
-        $sql= "SELECT * FROM NOTAS WHERE (
+        $sql= "SELECT * FROM NOTAS WHERE (AUTOR = '$this->AUTOR')";
+            if($resultado = $this->mysqli->query($sql)){
+                $return = $resultado->fetch_array();
+                return $return;
+            }else{
+                return 'No existe en la base de datos';
+            }
+        }
+    }

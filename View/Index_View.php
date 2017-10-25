@@ -14,20 +14,20 @@
         ?>
         <body>
         <nav class="navbar navbar-expand-lg ">
-        <a class="navbar-brand" href="#">Mis Notas</a>
+        <a class="navbar-brand" href="#"><?php echo $strings['Mis notas']; ?></a>
 
         <div class="navbar navbar-expand-lg" id="navbarNavDropdown">
           <ul class="navbar-nav" id="menus">
             <li class="nav-item active">
-              <a class="nav-link" href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i> Nueva nota </a>
+              <a class="nav-link" href="../Controller/NOTAS_Controller.php?action=Add"><i class="fa fa-plus-square-o" aria-hidden="true"></i><?php echo(" ");echo $strings['Nueva nota']; ?></a>
             </li>
 
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Ordenar por: </a>
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $strings['Ordenar por:']; ?></a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#"><?php echo $strings['Añadir nota']; ?></a>
-                <a class="dropdown-item" href="#">Fecha</a>
-                <a class="dropdown-item" href="#">Número de nota</a>
+                <a class="dropdown-item" href="#"><?php echo $strings['Creada por:']; ?></a>
+                <a class="dropdown-item" href="#"><?php echo $strings['Fecha']; ?></a>
+
               </div>
         </div>
         </li>

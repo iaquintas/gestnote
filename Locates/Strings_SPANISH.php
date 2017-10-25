@@ -51,7 +51,13 @@
 '¿Todavía no estás registrado?'=>'¿Todavía no estás registrado?',
 'LOGIN'=>'LOGIN',
 'Bienvenido' => 'Bienvenido',
-'Salir' => 'Salir'
+'Salir' => 'Salir',
+'Mis notas' => 'Mis notas',
+'Nueva nota' => 'Nueva nota',
+'Fecha' => 'Fecha',
+'Ordenar por:' => 'Ordenar por:',
+'Creada por:' => 'Creada por'
+
  )
   ;
   ?>
