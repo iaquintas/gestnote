@@ -29,7 +29,7 @@
                 <a class="dropdown-item" href="#"><?php echo $strings['Fecha']; ?></a>
 
               </div>
-        </div>
+
         </li>
         </ul>
 
@@ -47,9 +47,9 @@
 
       <div id="botones">
 
-    <a href="../Controller/NOTAS_Controller.php?action=edit" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-    <a href="../Controller/NOTAS_Controller.php?action=compartir"title="Compartir"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
-    <a href="../Controller/NOTAS_Controller.php?action=eliminar"title="Eliminar"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
+    <a href="../Controller/NOTAS_Controller.php" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+    <a href="../Controller/NOTAS_Controller.php?action=SHARE"title="Compartir"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
+    <a href="../Controller/NOTAS_Controller.php?action=DELETE"title="Eliminar"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
       <div id="pienota">
        Ignacio 16/10/2017
       </div>
@@ -58,7 +58,7 @@
 
     </div>
 
-
+</div>
 
 
 
