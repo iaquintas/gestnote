@@ -56,11 +56,11 @@
 'Fecha' => 'Date',
 'Ordenar por:' => 'Order by:',
 'Creada por:' => 'Created by',
-'Hola' => 'Hello,'
+'Hola' => 'Hello,',
 'sinNotas' => 'You do not have any notes yet ...',
 'Oportunidades' => 'but opportunities do not happen, believe them.',
 'Comenzar' => 'Do we start?',
-'Bienvenido a Gestnote' =>'Welcome to GestNote, ',
+'Bienvenido a Gestnote' =>'Welcome to GestNote, '
 
  )
 ;
