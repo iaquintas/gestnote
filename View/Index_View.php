@@ -19,7 +19,7 @@
         <div class="navbar navbar-expand-lg" id="navbarNavDropdown">
           <ul class="navbar-nav" id="menus">
             <li class="nav-item active">
-              <a class="nav-link" href="../Controller/NOTAS_Controller.php?action=Add"><i class="fa fa-plus-square-o" aria-hidden="true"></i><?php echo(" ");echo $strings['Nueva nota']; ?></a>
+              <a class="nav-link" href="../Controller/NOTAS_Controller.php?action=ADD"><i class="fa fa-plus-square-o" aria-hidden="true"></i><?php echo(" ");echo $strings['Nueva nota']; ?></a>
             </li>
 
             <li class="nav-item dropdown">
