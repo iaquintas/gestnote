@@ -1,8 +1,9 @@
 <?php
 Class NOTAS_SHOWALL{
-private $datos;
+          private $datos;
           private $lista;
           private $volver;
+
 function __Construct($lista,$array){
 
           $this->datos = $array;
@@ -34,47 +35,42 @@ include '../View/Header.php'; ?>
   </div>
 </nav>
 
+    <br><br>
+
+    <div class="imagenes">
 
 
-          <br><br>
+              <?php
+              foreach($this->datos as $datos){
+              ?>
 
-<div class="imagenes">
+      <div class="image">
+        <img id="posit" src="../View/img/nota2.png">
+        <h2> <?php echo $datos["CONTENIDO"]; ?>
+          <div id="botones">
 
+              <a href="../Controller/NOTAS_Controller.php?AUTOR=<?php echo $datos['AUTOR']; ?>&action=EDIT" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              <a href="../Controller/NOTAS_Controller.php?AUTOR=<?php echo $datos['AUTOR']; ?>&action=SHARE"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
+              <a href="../Controller/NOTAS_Controller.php?AUTOR=<?php echo $datos['AUTOR']; ?>&action=DELETE"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
+                <div id="pienota">
+                  <?php echo $datos["AUTOR"]; echo(" ");  echo $datos["FECHA"]; ?>
+                </div>
+                </h2>
+        </div>
 
-                  <?php
-				foreach($this->lista as $titulo){
-?>
+    <?php
 
+              }
 
-
-  <div class="image">
-    <img id="posit" src="../View/img/nota2.png">
-    <h2>Ir a casa de juan y hacer la lista de canciones que para fin de año
-
-    <div id="botones">
-
-  <a href="../Controller/NOTAS_Controller.php" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-  <a href="../Controller/NOTAS_Controller.php?action=SHARE"title="Compartir"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
-  <a href="../Controller/NOTAS_Controller.php?action=DELETE"title="Eliminar"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
-    <div id="pienota">
-     Ignacio 16/10/2017
+    ?>
     </div>
-    </h2>
-    </div>
+
+    		
 
 
+    <?php
+    	include 'Footer.php';
 
-<?php
-				}
-?>
-</div>
+      }
 
-		<a href='../index.php'><img src='../View/Icons/salir.png'></a>
-
-
-<?php
-	include 'Footer.php';
-
-  }
-
-}
+    }

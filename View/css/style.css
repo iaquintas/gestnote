@@ -327,6 +327,9 @@ header{
 
 
 h1{
+  font-size: 50px;
+  color: #0080ff;
+  font-family: 'Cabin Sketch', cursive;
   text-align: center;
 }
 
@@ -346,6 +349,7 @@ form#register{
 div#bienvenido{
   font-size: 40px;
   text-align: center;
+  color: #0080ff;
 }
 
 

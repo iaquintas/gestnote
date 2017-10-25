@@ -33,6 +33,7 @@
   <link href="https://fonts.googleapis.com/css?family=Philosopher|Varela+Round|Tangerine" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Julius+Sans+One" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Cabin+Sketch|Dosis" rel="stylesheet">
 
 
 
@@ -64,7 +65,7 @@
 
 			<div id="idioma" class="dropdown show">
         <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-   <?php echo $strings['Bienvenido']; echo(" "); echo $_SESSION['login']; ?>
+   <?php echo $strings['Hola']; echo(" "); echo $_SESSION['login']; ?>
   </a>
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">

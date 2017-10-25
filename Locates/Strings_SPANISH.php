@@ -50,13 +50,17 @@
 'REGISTRO'=>'REGISTRO',
 '¿Todavía no estás registrado?'=>'¿Todavía no estás registrado?',
 'LOGIN'=>'LOGIN',
-'Bienvenido' => 'Bienvenido',
 'Salir' => 'Salir',
 'Mis notas' => 'Mis notas',
 'Nueva nota' => 'Nueva nota',
 'Fecha' => 'Fecha',
 'Ordenar por:' => 'Ordenar por:',
-'Creada por:' => 'Creada por'
+'Creada por:' => 'Creada por',
+'Hola' => 'Hola,',
+'sinNotas' => 'Todavía no tienes notas...',
+'Oportunidades' => 'pero las oportunidades no pasan, las creas.',
+'Comenzar' => '¿Comenzamos?',
+'Bienvenido a Gestnote' =>'Bienvenido a GestNote, ',
 
  )
   ;

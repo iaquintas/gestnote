@@ -38,27 +38,8 @@
 
   </div>
   </nav>
-
-  <div class="imagenes">
-
-    <div class="image">
-      <img id="posit" src="../View/img/nota2.png">
-      <h2>Ir a casa de juan y hacer la lista de canciones que para fin de año
-
-      <div id="botones">
-
-    <a href="../Controller/NOTAS_Controller.php" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-    <a href="../Controller/NOTAS_Controller.php?action=SHARE"title="Compartir"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
-    <a href="../Controller/NOTAS_Controller.php?action=DELETE"title="Eliminar"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
-      <div id="pienota">
-       Ignacio 16/10/2017
-      </div>
-      </h2>
-      </div>
-
-    </div>
-
-</div>
+  <br> <br>
+  <h1> <?php echo $strings['Bienvenido a Gestnote']; echo(" ");?> <?php echo $_SESSION['login'];  ?> <br> <br> <?php echo $strings['sinNotas']; ?> <br> <br> <?php echo $strings['Oportunidades']; ?> <br> <br> <?php echo $strings['Comenzar']; ?> </h1>
 
 
 
@@ -70,7 +51,7 @@
 
 
       <?php
-      include 'Footer.php';
+        include 'Footer.php';
     	}
 
     }
