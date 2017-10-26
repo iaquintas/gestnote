@@ -48,12 +48,9 @@ public function ADD(){
     }
 
     //funcion de busqueda para una determinada instacia de la entidad actual
-    public function SEARCH(){
-        $sql = "SELECT * FROM NOTAS WHERE ((Numero LIKE '%$this->Numero%') &&
-        (AUTOR LIKE '%$this->AUTOR%') &&
-        (FECHA LIKE '%$this->FECHA%') &&
-        (CONTENIDO LIKE '%$this->CONTENIDO%') &&
-        (COMPARTIDO LIKE '%$this->COMPARTIDO%'))";
+    public function SEARCH(){ //CREADAS POR USUARIO
+        $log=$_SESSION['login'];
+        $sql= "SELECT * FROM NOTAS WHERE (AUTOR='$log')";
         if (!($resultado = $this->mysqli->query($sql))){
             return 'Error en la consulta sobre la base de datos';
         }
@@ -61,6 +58,18 @@ public function ADD(){
             return $resultado;
         }
     }
+
+    public function getSHARE(){ // LAS Q LE COMPARTEN
+        $log=$_SESSION['login'];
+        $sql= "SELECT * FROM NOTAS N, COMPARTE C WHERE N.Numero=C.Numero AND C.login='$log'";
+        if (!($resultado = $this->mysqli->query($sql))){
+            return 'Error en la consulta sobre la base de datos';
+        }
+        else{
+            return $resultado;
+        }
+    }
+
 
     //funcion de modificación de la instancia actual de la entidad
     public function EDIT(){
@@ -83,6 +92,8 @@ public function ADD(){
     }
     //Borra la instancia actual de la base de datos. Es un borrado completo
     public function DELETE(){
+      $log=$_SESSION['login'];
+      if($this->AUTOR=$log){
         $sql = "SELECT * FROM NOTAS WHERE (Numero = '$this->Numero')";
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 1){
@@ -93,6 +104,7 @@ public function ADD(){
         }else{
             return 'No existe en la base de datos';
         }
+      }
     }
 //funcion que rellena una instancia de la entidad y la devuelve
    public function RellenaDatos(){
@@ -105,15 +117,6 @@ public function ADD(){
             }
         }
 
-  public function tieneNotas(){
-          $log=$_SESSION['login'];
-          $sql= "SELECT * FROM NOTAS N, COMPARTE C WHERE N.Numero=C.Numero AND (N.AUTOR='$log' OR C.login='$log')";
-          $resultado = $this->mysqli->query($sql);
-          if($resultado->num_rows > 0){
-            return true;
-          }else{
-            return false;
-          }
-    }
+
 
   }

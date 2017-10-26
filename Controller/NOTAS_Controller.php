@@ -21,7 +21,7 @@
 
     //funcion que recoge los datos de las vistas
     function get_data_form(){
-        $Numero = "";
+        $Numero = $_REQUEST['Numero'];
         $AUTOR = $_REQUEST['AUTOR'];
         $FECHA = $_REQUEST['FECHA'];
         $CONTENIDO = $_REQUEST['CONTENIDO'];
@@ -41,7 +41,12 @@
             if (!$_POST){
                 new NOTAS_ADD();
             }else{
-                $NOTAS = get_data_form();
+              $Numero = "";
+              $AUTOR = $_REQUEST['AUTOR'];
+              $FECHA = $_REQUEST['FECHA'];
+              $CONTENIDO = $_REQUEST['CONTENIDO'];
+              $COMPARTIDO = $_REQUEST['COMPARTIDO'];
+              $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->ADD();
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
@@ -77,8 +82,10 @@
             }else{
                 $NOTAS = get_data_form();
                 $datos = $NOTAS->SEARCH();
+                $datos2= $NOTAS->getSHARE();
+
                 $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
-                new NOTAS_SHOWALL($lista, $datos, '../index.php');
+                new NOTAS_SHOWALL($lista, $datos,$datos2,'../index.php');
             }
             break;
         //Muestra el/la NOTAS seleccionado
@@ -95,7 +102,9 @@
                 $NOTAS = get_data_form();
             }
             $datos = $NOTAS->SEARCH();
+            $datos2= $NOTAS->getSHARE();
+
             $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
-            new NOTAS_SHOWALL($lista, $datos);
+            new NOTAS_SHOWALL($lista, $datos,$datos2);
         }
     ?>

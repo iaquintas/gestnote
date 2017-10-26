@@ -41,7 +41,7 @@
   </nav>
   <br> <br>
   <h1> <?php
-    if(!tieneNotas()){
+    if(!tieneNotasShare() || !tieneNotasCreadas()){
    echo $strings['Bienvenido a Gestnote']; echo(" ");?> <?php echo $_SESSION['login'];  ?> <br> <br> <?php echo $strings['sinNotas']; ?> <br> <br> <?php echo $strings['Oportunidades']; ?>
    <br> <br> <?php echo $strings['Comenzar']; ?> </h1>
 

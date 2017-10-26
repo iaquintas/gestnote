@@ -1,12 +1,14 @@
 <?php
 Class NOTAS_SHOWALL{
           private $datos;
+          private $datos2;
           private $lista;
           private $volver;
 
-function __Construct($lista,$array){
+function __Construct($lista,$array,$array2){
 
           $this->datos = $array;
+          $this->datos2 = $array2;
           $this->lista = $lista;
           $this->render();
 }
@@ -63,8 +65,36 @@ include '../View/Header.php'; ?>
               }
 
     ?>
-    </div>
 
+
+    <?php
+    foreach($this->datos2 as $datos2){
+    ?>
+
+        <div class="image">
+        <img id="posit" src="../View/img/nota2.png">
+        <h2> <?php echo $datos2["CONTENIDO"]; ?>
+        <div id="botones">
+
+            <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos2['Numero']; ?>&action=EDIT" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos2['Numero']; ?>&action=SHARE"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
+            <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos2['Numero']; ?>&action=DELETE"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
+              <div id="pienota">
+                <?php echo $datos2["AUTOR"]; echo(" ");  echo $datos2["FECHA"]; ?>
+              </div>
+              </h2>
+        </div>
+
+        <?php
+
+            }
+
+        ?>
+        </div>
+
+
+
+</div>
 
 
 
