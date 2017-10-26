@@ -82,7 +82,7 @@ img {
 }
 
 .imagenes {
-  height: 100%;
+  height: auto;
   display: block;
   text-align: center;
   margin-bottom: 1cm;
@@ -147,7 +147,8 @@ a.dropdown-item {
 
 div#botones {
   position: absolute;
-  top: 205px;
+  top: 247px;
+  margin-left: 2.5cm;
 
 
 }
@@ -179,8 +180,6 @@ div.dropdown-menu.show {
   font-size: 12pt;
   left:0;
   color: #6b6e6b;
-  margin-top: 1cm;
-  float: right;
 
 }
 
@@ -222,7 +221,7 @@ button.btn.btn-primary{
 
 footer {
  display: block;
- min-height: 16%;
+ text-align: center;
  background-color: #ffffff;
 }
 #iconoeditar{
@@ -233,6 +232,10 @@ footer {
 }
 #iconoeliminar{
   color: #DD0000;
+}
+
+div#main{
+  height: auto;
 }
 
 
@@ -279,7 +282,7 @@ footer {
     font-size: 30px;
   }
   #pienota{
-    margin-top: 1.3cm;
+
   }
 
   div.dropdown-menu.show {
@@ -289,7 +292,8 @@ footer {
 
   div#botones {
     position: absolute;
-    top: 205px;
+    top: 247px;
+    margin-left: 2.5cm;
 
 }
 
@@ -342,8 +346,9 @@ form#register{
 
  footer {
 	display: block;
-	min-height: 16%;
+  height: auto;
   background-color: #ffffff;
+  color: #0080ff;
 }
 
 div#bienvenido{
@@ -382,7 +387,7 @@ div#bienvenido{
     font-size: 30px;
   }
   #pienota{
-    margin-top: 1.3cm;
+
   }
   div.dropdown-menu.show {
     font-size: 15px;
@@ -428,7 +433,7 @@ div#bienvenido{
     font-size: 30px;
   }
   #pienota{
-    margin-top: 1.2cm;
+
   }
   div.dropdown-menu.show {
     font-size: 15px;

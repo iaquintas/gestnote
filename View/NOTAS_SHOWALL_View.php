@@ -27,8 +27,9 @@ include '../View/Header.php'; ?>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><?php echo $strings['Ordenar por:']; ?></a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#"><?php echo $strings['Creada por:']; ?></a>
-          <a class="dropdown-item" href="#"><?php echo $strings['Fecha']; ?></a>
+          <a class="dropdown-item" href="../Controller/NOTAS_Controller.php?action=ORDERCREATE"><?php echo $strings['Creada por:']; ?></a>
+            <a class="dropdown-item" href="../Controller/NOTAS_Controller.php?action=ORDERSHARE"><?php echo $strings['Compartidas']; ?></a>
+          
 
         </div>
 
@@ -37,7 +38,7 @@ include '../View/Header.php'; ?>
   </div>
 </nav>
 
-    
+
 
     <div class="imagenes">
 

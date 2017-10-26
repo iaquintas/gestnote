@@ -129,6 +129,45 @@ public function ADD(){
             }
         }
 
+        public function ORDERCREATE(){ //CREADAS POR USUARIO
+            $log=$_SESSION['login'];
+            $sql= "SELECT * FROM NOTAS WHERE (AUTOR='$log') ORDER BY AUTOR";
+            if (!($resultado = $this->mysqli->query($sql))){
+                return 'Error en la consulta sobre la base de datos';
+            }
+            else{
+                return $resultado;
+            }
+        }
+
+        public function ORDERCREATESHARE(){ // LAS Q LE COMPARTEN
+            $log=$_SESSION['login'];
+            $sql= "SELECT * FROM NOTAS N, COMPARTE C WHERE N.Numero=C.Numero AND C.login='$log' AND C.BORRADO='NO' ORDER BY C.login";
+            if (!($resultado = $this->mysqli->query($sql))){
+                return 'Error en la consulta sobre la base de datos';
+            }
+            else{
+                return $resultado;
+            }
+        }
+
+        public function SHARE(){
+
+                 $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
+                $resultado = $this->mysqli->query($sql);
+                if($resultado->num_rows == 0){
+                    $sql= "INSERT INTO COMPARTE(Numero,login) VALUES ('$this->Numero','$this->login')";
+                    if(!$this->mysqli->query($sql)){
+        		             return 'Error en la inserción';
+                    }else{
+                        return 'Inserción realizada con éxito';
+                    }
+                }else{
+                    return 'Ya existe en la base de datos';
+                }
+
+        }
+
 
 
   }

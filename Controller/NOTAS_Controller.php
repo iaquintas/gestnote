@@ -94,6 +94,38 @@
             $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_SHOWCURRENT($valores);
                 break;
+
+        case 'ORDERCREATE':
+        if (!$_POST){
+            $NOTAS = new NOTAS_Model( '', '', '', '', '');
+        }else{
+            $NOTAS = get_data_form();
+          }
+            $datos = $NOTAS->ORDERCREATE();
+            $datos2= $NOTAS->ORDERCREATESHARE();
+
+            $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+            new NOTAS_SHOWALL($lista, $datos,$datos2,'../index.php');
+
+          break;
+
+          case 'ORDERSHARE':
+          if (!$_POST){
+              $NOTAS = new NOTAS_Model( '', '', '', '', '');
+          }else{
+              $NOTAS = get_data_form();
+            }
+              $datos2= $NOTAS->ORDERCREATESHARE();
+              $datos = $NOTAS->ORDERCREATE();
+
+
+              $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+              new NOTAS_SHOWALL($lista, $datos2,$datos,'../index.php');
+
+            break;
+
+          
+
         //Opcion por defecto, que muestra todas las instancias de la entidad
         default:
             if (!$_POST){

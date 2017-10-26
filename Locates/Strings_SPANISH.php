@@ -55,12 +55,13 @@
 'Nueva nota' => 'Nueva nota',
 'Fecha' => 'Fecha',
 'Ordenar por:' => 'Ordenar por:',
-'Creada por:' => 'Creada por',
+'Creada por:' => 'Creadas',
 'Hola' => 'Hola,',
 'sinNotas' => 'Todavía no tienes notas...',
 'Oportunidades' => 'pero las oportunidades no pasan, las creas.',
 'Comenzar' => '¿Comenzamos?',
 'Bienvenido a Gestnote' =>'Bienvenido a GestNote, ',
+'Compartidas'=>'Compartidas'
 
  )
   ;
