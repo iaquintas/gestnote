@@ -61,7 +61,8 @@
 'Oportunidades' => 'pero las oportunidades no pasan, las creas.',
 'Comenzar' => '¿Comenzamos?',
 'Bienvenido a Gestnote' =>'Bienvenido a GestNote, ',
-'Compartidas'=>'Compartidas'
+'Compartidas'=>'Compartidas',
+'Compartir' => 'Compartir'
 
  )
   ;

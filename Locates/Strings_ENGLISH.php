@@ -61,7 +61,8 @@
 'Oportunidades' => 'but opportunities do not happen, believe them.',
 'Comenzar' => 'Do we start?',
 'Bienvenido a Gestnote' =>'Welcome to GestNote, ',
-'Compartidas'=>'Shared'
+'Compartidas'=>'Shared',
+'Compartir' => 'Share'
 
  )
 ;

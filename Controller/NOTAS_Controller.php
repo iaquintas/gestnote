@@ -16,7 +16,7 @@
     include '../View/NOTAS_ADD_View.php';
     include '../View/NOTAS_EDIT_View.php';
     include '../View/NOTAS_DELETE_View.php';
-    include '../View/NOTAS_SHOWCURRENT_View.php';
+    include '../View/NOTAS_SHARE_View.php';
     include '../View/MESSAGE_View.php';
 
     //funcion que recoge los datos de las vistas
@@ -42,7 +42,7 @@
                 new NOTAS_ADD();
             }else{
               $Numero = "";
-              $AUTOR = $_REQUEST['AUTOR'];
+              $AUTOR = $_SESSION['login'];
               $FECHA = $_REQUEST['FECHA'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
               $COMPARTIDO = $_REQUEST['COMPARTIDO'];
@@ -89,11 +89,17 @@
             }
             break;
         //Muestra el/la NOTAS seleccionado
-        case 'SHOWCURRENT':
-            $NOTAS = new NOTAS_Model($_REQUEST['Numero'],'','','','');
-            $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
-                new NOTAS_SHOWCURRENT($valores);
-                break;
+        case 'SHARE':
+            if (!$_POST){
+                $NOTAS = new NOTAS_Model($_REQUEST['Numero'],'','','','');
+                $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
+                new NOTAS_SHARE($valores);
+            }else{
+                $NOTAS = get_data_form();
+                $respuesta = $NOTAS->DELETE();
+                new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
+            }
+            break;
 
         case 'ORDERCREATE':
         if (!$_POST){
@@ -124,7 +130,7 @@
 
             break;
 
-          
+
 
         //Opcion por defecto, que muestra todas las instancias de la entidad
         default:
