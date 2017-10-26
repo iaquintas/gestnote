@@ -96,7 +96,7 @@ h2 {
   top: -57px;
   left: 50px;
   right: 30px;
-  font-size: 20px;
+  font-size: 18px;
 
 }
 
@@ -147,8 +147,9 @@ a.dropdown-item {
 
 div#botones {
   position: absolute;
-  top: 247px;
-  margin-left: 2.5cm;
+  top: 167px;
+  font-size: 20px;
+  margin-left: 1cm;
 
 
 }
@@ -236,6 +237,16 @@ footer {
 
 div#main{
   height: auto;
+}
+
+div#bienvenido{
+  font-size: 20px;
+  text-align: center;
+  color: #0080ff;
+}
+
+div#idioma2{
+  text-align: center;
 }
 
 
