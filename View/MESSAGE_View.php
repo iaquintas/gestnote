@@ -14,7 +14,7 @@ class MESSAGE{
     include '../View/Header.php';
 
 
-    echo $strings[$this->string];
+  //  echo $strings[$this->string];
     echo '<a href=\'' . $this->volver . "'>" . $strings['Volver'] . " </a>";
     include '../View/Footer.php';
   } //fin metodo render

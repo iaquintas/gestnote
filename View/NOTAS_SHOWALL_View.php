@@ -37,7 +37,7 @@ include '../View/Header.php'; ?>
   </div>
 </nav>
 
-    <br><br>
+    
 
     <div class="imagenes">
 
