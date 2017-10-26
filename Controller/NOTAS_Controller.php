@@ -21,11 +21,12 @@
 
     //funcion que recoge los datos de las vistas
     function get_data_form(){
+        $Numero = "";
         $AUTOR = $_REQUEST['AUTOR'];
         $FECHA = $_REQUEST['FECHA'];
         $CONTENIDO = $_REQUEST['CONTENIDO'];
         $COMPARTIDO = $_REQUEST['COMPARTIDO'];
-        $NOTAS = new NOTAS_Model($AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
+        $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
         return $NOTAS;
     }
 
@@ -48,8 +49,8 @@
         //Realiza un borrado
         case 'DELETE':
             if (!$_POST){
-                $NOTAS = new NOTAS_Model($_REQUEST['AUTOR'],'','','');
-                $valores= $NOTAS->RellenaDatos($_REQUEST['AUTOR']);
+                $NOTAS = new NOTAS_Model($_REQUEST['Numero'],'','','','');
+                $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_DELETE($valores);
             }else{
                 $NOTAS = get_data_form();
@@ -60,8 +61,8 @@
         //Edita los datos que quiera el usuario
         case 'EDIT':
             if (!$_POST){
-                $NOTAS = new NOTAS_Model($_REQUEST['AUTOR'],'','','');
-                $valores= $NOTAS->RellenaDatos($_REQUEST['AUTOR']);
+                $NOTAS = new NOTAS_Model($_REQUEST['Numero'],'','','','');
+                $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_EDIT($valores);
             }else{
                 $NOTAS = get_data_form();
@@ -76,25 +77,25 @@
             }else{
                 $NOTAS = get_data_form();
                 $datos = $NOTAS->SEARCH();
-                $lista = array( 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+                $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
                 new NOTAS_SHOWALL($lista, $datos, '../index.php');
             }
             break;
         //Muestra el/la NOTAS seleccionado
         case 'SHOWCURRENT':
-            $NOTAS = new NOTAS_Model($_REQUEST['AUTOR'],'','','');
-            $valores= $NOTAS->RellenaDatos($_REQUEST['AUTOR']);
+            $NOTAS = new NOTAS_Model($_REQUEST['Numero'],'','','','');
+            $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_SHOWCURRENT($valores);
                 break;
         //Opcion por defecto, que muestra todas las instancias de la entidad
         default:
             if (!$_POST){
-                $NOTAS = new NOTAS_Model( '', '', '', '');
+                $NOTAS = new NOTAS_Model( '', '', '', '', '');
             }else{
                 $NOTAS = get_data_form();
             }
             $datos = $NOTAS->SEARCH();
-            $lista = array( 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+            $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
             new NOTAS_SHOWALL($lista, $datos);
         }
     ?>

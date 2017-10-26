@@ -4,6 +4,7 @@
     session_start();
     if(!isset($_REQUEST['login']) && !(isset($_REQUEST['password']))){
     	include '../View/Login_View.php';
+      
     	$login = new Login();
     }
     else{
@@ -56,7 +57,7 @@
     		new MESSAGE($respuesta, '../Controller/Login_Controller.php');
     	}
 
-      
+
 
     }
 

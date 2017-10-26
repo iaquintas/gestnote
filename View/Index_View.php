@@ -10,6 +10,7 @@
 
     		include '../Locates/Strings_SPANISH.php';
     		include 'Header.php';
+        include '../Functions/tieneNotas.php';
 
         ?>
         <body>
@@ -39,11 +40,10 @@
   </div>
   </nav>
   <br> <br>
-  <h1> <?php echo $strings['Bienvenido a Gestnote']; echo(" ");?> <?php echo $_SESSION['login'];  ?> <br> <br> <?php echo $strings['sinNotas']; ?> <br> <br> <?php echo $strings['Oportunidades']; ?> <br> <br> <?php echo $strings['Comenzar']; ?> </h1>
-
-
-
-
+  <h1> <?php
+    if(!tieneNotas()){
+   echo $strings['Bienvenido a Gestnote']; echo(" ");?> <?php echo $_SESSION['login'];  ?> <br> <br> <?php echo $strings['sinNotas']; ?> <br> <br> <?php echo $strings['Oportunidades']; ?>
+   <br> <br> <?php echo $strings['Comenzar']; ?> </h1>
 
 
   </body>
@@ -52,7 +52,9 @@
 
       <?php
         include 'Footer.php';
-    	}
-
+    	}else{
+        header('Location:../Controller/NOTAS_Controller.php');
+      }
+    }
     }
     ?>

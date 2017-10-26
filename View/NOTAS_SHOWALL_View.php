@@ -49,9 +49,9 @@ include '../View/Header.php'; ?>
         <h2> <?php echo $datos["CONTENIDO"]; ?>
           <div id="botones">
 
-              <a href="../Controller/NOTAS_Controller.php?AUTOR=<?php echo $datos['AUTOR']; ?>&action=EDIT" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-              <a href="../Controller/NOTAS_Controller.php?AUTOR=<?php echo $datos['AUTOR']; ?>&action=SHARE"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
-              <a href="../Controller/NOTAS_Controller.php?AUTOR=<?php echo $datos['AUTOR']; ?>&action=DELETE"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
+              <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos['Numero']; ?>&action=EDIT" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+              <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos['Numero']; ?>&action=SHARE"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
+              <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos['Numero']; ?>&action=DELETE"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
                 <div id="pienota">
                   <?php echo $datos["AUTOR"]; echo(" ");  echo $datos["FECHA"]; ?>
                 </div>
@@ -65,7 +65,7 @@ include '../View/Header.php'; ?>
     ?>
     </div>
 
-    		
+
 
 
     <?php
