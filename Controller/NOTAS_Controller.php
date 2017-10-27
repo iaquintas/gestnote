@@ -110,8 +110,24 @@
                 $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_SHARE($valores);
             }else{
-                $NOTAS = get_data_form();
-                $respuesta = $NOTAS->DELETE();
+              $Numero = $_REQUEST['Numero'];
+              $AUTOR = $_SESSION['login'];
+              $FECHA = "";
+              $CONTENIDO = $_REQUEST['CONTENIDO'];
+              $COMPARTIDO=array();
+
+              if(isset($_POST['COMPARTIDO'])){
+                    $COMPARTIDO = $_POST['COMPARTIDO'];
+                }else{
+                    $COMPARTIDO = "";#default value
+                }
+
+              foreach ($COMPARTIDO as $com) {
+                var_dump($com);
+                $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$com);
+                  $respuesta = $NOTAS->SHARE();
+              }
+
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
             break;
