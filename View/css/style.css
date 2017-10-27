@@ -214,6 +214,12 @@ a{
   color: #ffffff;
 
 }
+#botonvuelve{
+  margin-bottom: 1cm;
+  background-color: #0080ff;
+  color: #ffffff;
+
+}
 
 button.btn.btn-primary{
   background-color:#0080ff;
@@ -224,7 +230,14 @@ footer {
  display: block;
  text-align: center;
  background-color: #ffffff;
+ bottom: 0px;
 }
+#lugar{
+  font-size: 40px;
+  text-align: center;
+  color:#0080ff;
+}
+
 #iconoeditar{
   color: 	#32CD32;
 }
@@ -360,6 +373,7 @@ form#register{
   height: auto;
   background-color: #ffffff;
   color: #0080ff;
+  bottom: 0px;
 
 }
 
@@ -385,6 +399,10 @@ div#bienvenido{
   .navbar {
     background-color: #0080ff;
     height: auto;
+  }
+  #lugar{
+    font-size: 90px;
+      color: #0080ff;
   }
 
   .navbar-brand {

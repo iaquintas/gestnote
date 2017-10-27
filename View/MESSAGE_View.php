@@ -14,9 +14,17 @@ class MESSAGE{
     include '../View/Header.php';
 
 
-  //  echo $strings[$this->string];
-    echo '<a href=\'' . $this->volver . "'>" . $strings['Volver'] . " </a>";
+?> <div id="lugar">
+  <?php echo $strings[$this->string];?>
+</div>
+
+</br>
+</br>
+</br>
+</br><a class="btn btn-primary" id="botonvuelve" href="../Controller/NOTAS_Controller.php" role="button"><?php echo $strings['Volver']?></a>
+<?php
     include '../View/Footer.php';
   } //fin metodo render
 
 }
+?>
