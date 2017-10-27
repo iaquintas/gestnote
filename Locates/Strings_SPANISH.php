@@ -65,7 +65,8 @@
 'Compartir' => 'Compartir',
 'Eliminar Nota'=>'Eliminar nota',
 'Eliminar' => 'Eliminar',
-'Añadir Nota'=>'Añadir Nota'
+'Añadir Nota'=>'Añadir Nota',
+'Numero'=>'Numero'
 
  )
   ;

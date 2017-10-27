@@ -54,7 +54,7 @@ function render(){
 
 
                 <div id="alineados">
-                <button type="submit"  name='action' value='SHARE' class="btn btn-primary"><?php echo $strings['Compartir']?></button>
+                <button type="submit"  id="botoneditar" name='action' value='SHARE' class="btn btn-primary"><?php echo $strings['Compartir']?></button>
                 <a class="btn btn-primary" id="botoneditar" href="../Controller/NOTAS_Controller.php" role="button"><?php echo $strings['Volver']?></a>
 
                 </div>
