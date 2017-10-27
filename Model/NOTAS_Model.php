@@ -73,7 +73,8 @@ public function ADD(){
 
     //funcion de modificación de la instancia actual de la entidad
     public function EDIT(){
-        $sql = "SELECT * FROM NOTAS WHERE (Numero = '$this->Numero')";
+        $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
+        var_dump($sql);
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 0){
             return 'No existe en la base de datos';
@@ -168,7 +169,7 @@ public function ADD(){
 
         }
 
-      
+
 
 
   }

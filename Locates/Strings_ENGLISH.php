@@ -65,7 +65,8 @@
 'Compartir' => 'Share',
 'Eliminar Nota'=>'Delete note',
 'Eliminar' => 'Eliminar',
-'Añadir Nota'=>'Add Note'
+'Añadir Nota'=>'Add Note',
+'Numero'=>'Number'
 
  )
 ;
