@@ -26,6 +26,25 @@ include_once '../Model/Access_DB.php';
          }
    }
 
+    function getUsers(){
+      $mysqli = ConnectDB();
+
+        $sql = "SELECT login FROM USUARIOS";
+        $usuarios= array();
+
+        if($resultado = $mysqli->query($sql)){
+          while($usuario=mysqli_fetch_assoc($resultado)){
+
+            array_push($usuarios,$usuario['login']);
+
+          }
+            return $usuarios;
+        }else{
+            return 'No existe en la base de datos';
+        }
+   }
+
+
 
 
 

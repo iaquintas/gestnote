@@ -4,7 +4,10 @@ function __Construct(){
 $this->render();
 }
 function render(){
-include '../View/Header.php';?>
+include '../View/Header.php';
+include '../Functions/tieneNotas.php';
+
+?>
 
 <nav class="navbar navbar-expand-lg">
 <a id="edit" class="navbar-brand" href="#"><?php echo $strings['Añadir Nota']?></a>
@@ -29,24 +32,23 @@ include '../View/Header.php';?>
 
     <div class="form-group col-md-6">
       <label for="exampleFormControlTextarea1"><?php echo$strings['COMPARTIDO']?></label>
+      <?php
+            $usarios=array();
+            $usuarios=getUsers();
+
+            foreach ($usuarios as $usuario) { ?>
     <div class="form-check  ">
       <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Juan
-  </label>
-    </div>
 
-    <div class="form-check ">
-      <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Anxo
-  </label>
-    </div>
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo $usuario ?>
+              </label>
+                </div>
+<?php
+              }
 
-    <div class="form-check  ">
-      <label class="form-check-label">
-    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" > Roberto
-  </label>
-</div>
-    </div>
+
+
+?>
 
 
 
