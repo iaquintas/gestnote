@@ -30,20 +30,15 @@
                   </div>
                 </div>
 
-                <div class="form-group row">
-                   <label for="email" class="col-sm-2 col-form-label">Email</label>
-                   <div class="col-sm-5">
-                     <input type="email" class="form-control" name="email"  placeholder="Email">
-                   </div>
-                 </div>
 
 
-                  <button type="submit" name='action' value='Register' class="btn btn-primary">Register</button>
-                  <button type="submit" name='action' value='Volver' class="btn btn-primary">Volver</button>
+
+                  <button type="submit" name='action' value='Register' class="btn btn-primary"><?php echo $strings['Registro']?></button>
+                  <button type="submit" name='action' value='Volver' class="btn btn-primary"><?php echo $strings['Volver']?></button>
                 </form>
 
 
-        			<a href='../Controller/USUARIOS_Controller.php'>Volver </a>
+
 
 
         		<?php

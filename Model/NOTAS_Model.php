@@ -5,19 +5,16 @@
 class NOTAS_Model{
    var $Numero;
    var $AUTOR;
-   var $FECHA;
+   var $TITULO;
    var $CONTENIDO;
+   var $COMPARTIDO;
    var $mysqli;
 
 //Constructor de la clase
-public function __construct(   $Numero,   $AUTOR,   $FECHA,   $CONTENIDO,   $COMPARTIDO){
+public function __construct(   $Numero,   $AUTOR,   $TITULO,   $CONTENIDO,   $COMPARTIDO){
 $this->Numero = $Numero;
 $this->AUTOR = $AUTOR;
-if($FECHA==''){
-    $this->FECHA = $FECHA;
-}else{
-    $this->FECHA = date_format(date_create($FECHA), 'Y-m-d');
-}
+$this->TITULO = $TITULO;
 $this->CONTENIDO = $CONTENIDO;
 $this->COMPARTIDO = $COMPARTIDO;
 include_once 'Access_DB.php';
@@ -31,7 +28,7 @@ public function ADD(){
          $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 0){
-            $sql= "INSERT INTO NOTAS(Numero,AUTOR,FECHA,CONTENIDO,COMPARTIDO) VALUES ('$this->Numero','$this->AUTOR','$this->FECHA','$this->CONTENIDO','$this->COMPARTIDO')";
+            $sql= "INSERT INTO NOTAS(Numero,AUTOR,TITULO,CONTENIDO,COMPARTIDO) VALUES ('$this->Numero','$this->AUTOR','$this->TITULO','$this->CONTENIDO','$this->COMPARTIDO')";
             if(!$this->mysqli->query($sql)){
 		             return 'Error en la inserción';
             }else{
@@ -81,7 +78,7 @@ public function ADD(){
         }else{
             $sql = "UPDATE NOTAS SET Numero = '$this->Numero',
             AUTOR = '$this->AUTOR',
-            FECHA = '$this->FECHA',
+            TITULO = '$this->TITULO',
             CONTENIDO = '$this->CONTENIDO',
             COMPARTIDO = '$this->COMPARTIDO' WHERE (Numero = '$this->Numero')";
             if ($resultado = $this->mysqli->query($sql)){
@@ -107,7 +104,8 @@ public function ADD(){
             return 'No existe en la base de datos';
         }
       }else{
-        $sql = "SELECT * FROM COMPARTE WHERE (Numero = '$this->Numero')";
+        $sql = "SELECT * FROM COMPARTE WHERE (Numero = '$this->Numero' AND login='$this->COMPARTIDO')";
+        var_dump($sql);
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 1){
             $sql="UPDATE COMPARTE SET BORRADO='SI' WHERE Numero = '$this->Numero'";

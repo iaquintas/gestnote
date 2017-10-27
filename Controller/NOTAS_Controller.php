@@ -23,12 +23,12 @@
     function get_data_form(){
         $Numero = $_REQUEST['Numero'];
         $AUTOR = $_REQUEST['AUTOR'];
-        $FECHA = $_REQUEST['FECHA'];
+        $TITULO = $_REQUEST['TITULO'];
         $CONTENIDO = $_REQUEST['CONTENIDO'];
         $COMPARTIDO = $_POST['COMPARTIDO'];
 
 
-        $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
+        $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$COMPARTIDO);
         return $NOTAS;
     }
 
@@ -45,11 +45,11 @@
             }else{
               $Numero = "";
               $AUTOR = $_SESSION['login'];
-              $FECHA = $_REQUEST['FECHA'];
+              $TITULO = $_REQUEST['TITULO'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
               $COMPARTIDO = "";
 
-              $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
+              $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->ADD();
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
@@ -63,12 +63,12 @@
             }else{
               $Numero = $_REQUEST['Numero'];
               $AUTOR = $_REQUEST['AUTOR'];
-              $FECHA = $_REQUEST['FECHA'];
+              $TITULO = $_REQUEST['TITULO'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
-              $COMPARTIDO = "";
+              $COMPARTIDO = $_SESSION['login'];
 
 
-              $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
+              $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->DELETE();
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
@@ -82,10 +82,10 @@
             }else{
               $Numero =$_REQUEST['Numero'];
               $AUTOR = $_SESSION['login'];
-              $FECHA = $_REQUEST['FECHA'];
+              $TITULO = $_REQUEST['TITULO'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
               $COMPARTIDO = "";
-                $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
+                $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->EDIT();
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
@@ -99,7 +99,7 @@
                 $datos = $NOTAS->SEARCH();
                 $datos2= $NOTAS->getSHARE();
 
-                $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+                $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
                 new NOTAS_SHOWALL($lista, $datos,$datos2,'../index.php');
             }
             break;
@@ -112,7 +112,7 @@
             }else{
               $Numero = $_REQUEST['Numero'];
               $AUTOR = $_SESSION['login'];
-              $FECHA = "";
+              $TITULO = $_REQUEST['TITULO'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
               $COMPARTIDO=array();
 
@@ -124,7 +124,7 @@
 
               foreach ($COMPARTIDO as $com) {
                 var_dump($com);
-                $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$com);
+                $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$com);
                   $respuesta = $NOTAS->SHARE();
               }
 
@@ -141,7 +141,7 @@
             $datos = $NOTAS->ORDERCREATE();
             $datos2= $NOTAS->ORDERCREATESHARE();
 
-            $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+            $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
             new NOTAS_SHOWALL($lista, $datos,$datos2,'../index.php');
 
           break;
@@ -156,7 +156,7 @@
               $datos = $NOTAS->ORDERCREATE();
 
 
-              $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+              $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
               new NOTAS_SHOWALL($lista, $datos2,$datos,'../index.php');
 
             break;
@@ -173,7 +173,7 @@
             $datos = $NOTAS->SEARCH();
             $datos2= $NOTAS->getSHARE();
 
-            $lista = array( 'Numero', 'AUTOR', 'FECHA', 'CONTENIDO', 'COMPARTIDO');
+            $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
             new NOTAS_SHOWALL($lista, $datos,$datos2);
         }
     ?>

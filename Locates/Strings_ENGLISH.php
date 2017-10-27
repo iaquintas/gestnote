@@ -42,8 +42,8 @@
 'Error'=>'Error',
 'AUTOR'=>'AUTOR',
 'FECHA'=>'DATE',
-'CONTENIDO'=>'CONTENT',
-'COMPARTIDO'=>'SHARE',
+'CONTENIDO'=>'Content',
+'COMPARTIDO'=>'Share',
 'Gestión de NOTAS'=>'Management of NOTAS',
 'Gestión de USUARIOS'=>'Management of USUARIOS',
 '¡Bienvenido a Gestnote!' => '¡Welcome to GestNote!',
@@ -71,6 +71,7 @@
 'Editar Nota'=>'Edit Note',
 'Compartir Nota'=>'Share Note',
 'Compartir con'=>'share with',
+'Titulo'=>'Title'
 
  )
 ;

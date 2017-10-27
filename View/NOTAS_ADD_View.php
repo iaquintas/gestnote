@@ -19,13 +19,13 @@ include '../Functions/tieneNotas.php';
 
 
     <div class="form-group col-md-6">
-      <label for="inputAddress" class="col-form-label"><?php echo $strings['FECHA']?></label>
-      <input type="date" class="form-control" name="FECHA"  placeholder="Fecha" >
+      <label for="inputAddress" class="col-form-label"><?php echo $strings['Titulo']?></label>
+      <input type="text" class="form-control" name="TITULO"  placeholder="Titulo" >
     </div>
 
     <div class="form-group col-md-6">
       <label for="exampleFormControlTextarea1"><?php echo $strings['CONTENIDO']?></label>
-      <textarea class="form-control" name="CONTENIDO"  rows="3" ></textarea>
+      <textarea class="form-control" name="CONTENIDO"  rows="3" placeholder="MAX: 50"></textarea>
     </div>
 
 

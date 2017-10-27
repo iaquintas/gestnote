@@ -29,7 +29,7 @@ include '../View/Header.php'; ?>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="../Controller/NOTAS_Controller.php?action=ORDERCREATE"><?php echo $strings['Creada por:']; ?></a>
             <a class="dropdown-item" href="../Controller/NOTAS_Controller.php?action=ORDERSHARE"><?php echo $strings['Compartidas']; ?></a>
-          
+
 
         </div>
 
@@ -49,14 +49,19 @@ include '../View/Header.php'; ?>
 
       <div class="image">
         <img id="posit" src="../View/img/nota2.png">
-        <h2> <?php echo $datos["CONTENIDO"]; ?>
-          <div id="botones">
+        <h2>
+            <div id="titulonota">
+            <?php echo $datos["TITULO"]; ?>
+            </div>
+              <?php  echo " <br>"; echo $datos["CONTENIDO"]; ?>
+
+                <div id="botones">
 
               <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos['Numero']; ?>&action=EDIT" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
               <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos['Numero']; ?>&action=SHARE"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
               <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos['Numero']; ?>&action=DELETE"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
                 <div id="pienota">
-                  <?php echo $datos["AUTOR"]; echo(" ");  echo $datos["FECHA"]; ?>
+                  <?php echo $datos["AUTOR"];  ?>
                 </div>
                 </h2>
         </div>
@@ -72,25 +77,30 @@ include '../View/Header.php'; ?>
     foreach($this->datos2 as $datos2){
     ?>
 
-        <div class="image">
-        <img id="posit" src="../View/img/nota2.png">
-        <h2> <?php echo $datos2["CONTENIDO"]; ?>
-        <div id="botones">
+    <div class="image">
+      <img id="posit" src="../View/img/nota2.png">
+      <h2>
+          <div id="titulonota">
+          <?php echo $datos2["TITULO"]; ?>
+          </div>
+            <?php  echo " <br>"; echo $datos2["CONTENIDO"]; ?>
+
+              <div id="botones">
 
             <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos2['Numero']; ?>&action=EDIT" title="Editar"><i id="iconoeditar"class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
             <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos2['Numero']; ?>&action=SHARE"><i id="iconocompartir"class="fa fa-bullhorn" aria-hidden="true"></i></a>
             <a href="../Controller/NOTAS_Controller.php?Numero=<?php echo $datos2['Numero']; ?>&action=DELETE"><i id="iconoeliminar"class="fa fa-trash" aria-hidden="true"></i></a>
               <div id="pienota">
-                <?php echo $datos2["AUTOR"]; echo(" ");  echo $datos2["FECHA"]; ?>
+                <?php echo $datos2["AUTOR"];  ?>
               </div>
               </h2>
-        </div>
+      </div>
 
-        <?php
+  <?php
 
             }
 
-        ?>
+  ?>
         </div>
 
 

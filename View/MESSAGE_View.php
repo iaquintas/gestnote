@@ -15,15 +15,16 @@ class MESSAGE{
 
 
 ?> <div id="lugar">
+  <br> 
   <?php echo $strings[$this->string];?>
 </div>
+<br>
 
-</br>
-</br>
-</br>
-</br><a class="btn btn-primary" id="botonvuelve" href="../Controller/NOTAS_Controller.php" role="button"><?php echo $strings['Volver']?></a>
+
+
+<br><a class="btn btn-primary" id="botonvuelve" href="../Controller/NOTAS_Controller.php" role="button"><?php echo $strings['Volver']?></a>
 <?php
-  
+
   } //fin metodo render
 
 }

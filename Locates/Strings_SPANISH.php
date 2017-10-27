@@ -42,8 +42,8 @@
 'Error'=>'Error',
 'AUTOR'=>'AUTOR',
 'FECHA'=>'FECHA',
-'CONTENIDO'=>'CONTENIDO',
-'COMPARTIDO'=>'COMPARTIDO',
+'CONTENIDO'=>'Contenido',
+'COMPARTIDO'=>'Compartido',
 'Gestión de NOTAS'=>'Gestión de NOTAS',
 'Gestión de USUARIOS'=>'Gestión de USUARIOS',
 '¡Bienvenido a Gestnote!' =>'¡Bienvenido a GestNote!',
@@ -70,7 +70,8 @@
 'Editar'=>'Editar',
 'Editar Nota'=>'Editar Nota',
 'Compartir Nota'=>'Compartir Nota',
-'Compartir con'=>'Compartir con'
+'Compartir con'=>'Compartir con',
+'Titulo'=>'Titulo'
 
  )
   ;

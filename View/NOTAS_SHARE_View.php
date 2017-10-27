@@ -24,6 +24,11 @@ function render(){
                     <input type="number" class="form-control" name="Numero" value="<?php echo ($this->valores['Numero']);?>" placeholder="Numero" readonly>
                   </div>
 
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4" class="col-form-label"><?php echo $strings['Titulo']?></label>
+                    <input type="text" class="form-control" name="TITULO" value="<?php echo ($this->valores['TITULO']);?>" placeholder="Titulo" readonly>
+                  </div>
+
 
                   <div class="form-group col-md-6">
                     <label for="exampleFormControlTextarea1"><?php echo $strings['CONTENIDO']?></label>
