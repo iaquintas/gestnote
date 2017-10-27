@@ -64,7 +64,8 @@
 'Compartidas'=>'Compartidas',
 'Compartir' => 'Compartir',
 'Eliminar Nota'=>'Eliminar nota',
-'Eliminar' => 'Eliminar'
+'Eliminar' => 'Eliminar',
+'Añadir Nota'=>'Añadir Nota'
 
  )
   ;

@@ -6,22 +6,68 @@ $this->render();
 function render(){
 include '../View/Header.php';?>
 
-        <h1><?php echo $strings['Insertar'] . ' NOTAS' ?></h1>
+<nav class="navbar navbar-expand-lg">
+<a id="edit" class="navbar-brand" href="#"><?php echo $strings['Añadir Nota']?></a>
 
-      <form name='Form' action='../Controller/NOTAS_Controller.php' method='post'   onsubmit='return comprobar_NOTAS()'>
+</nav>
+
+  <form name = 'Form' action='../Controller/NOTAS_Controller.php' method='post'>
 
 
 
-<?php echo $strings['FECHA'] ?> :<input class = 'tcal' type = 'date' name = 'FECHA' min = '' max = '' value = '' onblur='esVacio(this) && validarFecha(this)' ><br>
-<?php echo $strings['CONTENIDO'] ?>  :<input type ='text' name ='CONTENIDO' size='100'  value='' onblur='esVacio(this) && comprobarText(this,100)' ><br>
-<?php echo $strings['COMPARTIDO'] ?> :<input type ='text' name ='COMPARTIDO' size='200'  value='' onblur='esVacio(this) && comprobarText(this,200)' ><br>
-<input type='submit' name='action' value='ADD'>
+    <div class="form-group col-md-6">
+      <label for="inputAddress" class="col-form-label"><?php echo $strings['FECHA']?></label>
+      <input type="date" class="form-control" id="Fecha"  placeholder="Fecha" >
+    </div>
 
-        </form>
- <a href='../Controller/NOTAS_Controller.php'><?php echo $strings['Volver'] ?> </a>
-        <?php
-            include '../View/Footer.php';
-          }
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlTextarea1"><?php echo $strings['CONTENIDO']?></label>
+      <textarea class="form-control" id="Contenido"  rows="3" ></textarea>
+    </div>
 
-        }
-        ?>
+
+
+    <div class="form-group col-md-6">
+      <label for="exampleFormControlTextarea1"><?php echo$strings['COMPARTIDO']?></label>
+    <div class="form-check  ">
+      <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> Juan
+  </label>
+    </div>
+
+    <div class="form-check ">
+      <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2"> Anxo
+  </label>
+    </div>
+
+    <div class="form-check  ">
+      <label class="form-check-label">
+    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3" > Roberto
+  </label>
+</div>
+    </div>
+
+
+
+
+
+
+  <div id="alineados">
+  <button type="submit"  name='action' value='ADD' class="btn btn-primary"><?php echo $strings['Añadir Nota']?></button>
+  <a class="btn btn-primary" id="botoneditar" href="../Controller/NOTAS_Controller.php" role="button"><?php echo $strings['Volver']?></a>
+
+  </div>
+
+
+  </form>
+
+
+
+              <?php
+                    include '../View/Footer.php';
+
+                }
+
+              }
+              ?>
