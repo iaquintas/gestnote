@@ -66,7 +66,11 @@
 'Eliminar Nota'=>'Delete note',
 'Eliminar' => 'Eliminar',
 'Añadir Nota'=>'Add Note',
-'Numero'=>'Number'
+'Numero'=>'Number',
+'Editar'=>'Edit',
+'Editar Nota'=>'Edit Note',
+'Compartir Nota'=>'Share Note',
+'Compartir con'=>'share with',
 
  )
 ;

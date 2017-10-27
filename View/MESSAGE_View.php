@@ -23,8 +23,7 @@ class MESSAGE{
 </br>
 </br><a class="btn btn-primary" id="botonvuelve" href="../Controller/NOTAS_Controller.php" role="button"><?php echo $strings['Volver']?></a>
 <?php
-    include '../View/Footer.php';
+  
   } //fin metodo render
 
 }
-?>

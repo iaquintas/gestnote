@@ -14,7 +14,7 @@ function render(){
 
               ?>
               <nav class="navbar navbar-expand-lg">
-                <a id="edit" class="navbar-brand" href="#"><?php echo $strings['Compartir Notas']?></a>
+                <a id="edit" class="navbar-brand" href="#"><?php echo $strings['Compartir Nota']?></a>
               </nav>
 
                 <form name = 'Form' action='../Controller/NOTAS_Controller.php' method='post'>
@@ -32,7 +32,7 @@ function render(){
 
 
                   <div class="form-group col-md-6">
-                    <label for="exampleFormControlTextarea1"><?php echo$strings['COMPARTIDO']?></label>
+                    <label for="exampleFormControlTextarea1"><?php echo$strings['Compartir con']?></label>
                     <?php
                           $usarios=array();
                           $usuarios=getUsers();

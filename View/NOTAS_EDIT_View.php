@@ -9,7 +9,7 @@ function render(){
 include '../View/Header.php'; ?>
 
 <nav class="navbar navbar-expand-lg">
-  <a id="edit" class="navbar-brand" href="#"><?php echo $strings['Modificar Notas']?></a>
+  <a id="edit" class="navbar-brand" href="#"><?php echo $strings['Editar Nota']?></a>
 </nav>
 
   <form name = 'Form' action='../Controller/NOTAS_Controller.php' method='post'>
@@ -42,7 +42,7 @@ include '../View/Header.php'; ?>
 
 
   <div id="alineados">
-  <button type="submit"  id="botoneditar" name='action' value='EDIT' class="btn btn-primary"><?php echo $strings['Eliminar']?></button>
+  <button type="submit"  id="botoneditar" name='action' value='EDIT' class="btn btn-primary"><?php echo $strings['Editar']?></button>
   <a class="btn btn-primary" id="botoneditar" href="../Controller/NOTAS_Controller.php" role="button"><?php echo $strings['Volver']?></a>
 
   </div>

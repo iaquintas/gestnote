@@ -66,7 +66,11 @@
 'Eliminar Nota'=>'Eliminar nota',
 'Eliminar' => 'Eliminar',
 'Añadir Nota'=>'Añadir Nota',
-'Numero'=>'Numero'
+'Numero'=>'Numero',
+'Editar'=>'Editar',
+'Editar Nota'=>'Editar Nota',
+'Compartir Nota'=>'Compartir Nota',
+'Compartir con'=>'Compartir con'
 
  )
   ;
