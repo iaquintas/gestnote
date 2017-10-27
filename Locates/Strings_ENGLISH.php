@@ -62,7 +62,9 @@
 'Comenzar' => 'Do we start?',
 'Bienvenido a Gestnote' =>'Welcome to GestNote, ',
 'Compartidas'=>'Shared',
-'Compartir' => 'Share'
+'Compartir' => 'Share',
+'Eliminar Nota'=>'Delete note',
+'Eliminar' => 'Eliminar'
 
  )
 ;
