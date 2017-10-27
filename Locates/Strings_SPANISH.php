@@ -71,7 +71,8 @@
 'Editar Nota'=>'Editar Nota',
 'Compartir Nota'=>'Compartir Nota',
 'Compartir con'=>'Compartir con',
-'Titulo'=>'Titulo'
+'Titulo'=>'Titulo',
+'Nomensajes' => 'No hay usuarios para compartir la nota'
 
  )
   ;

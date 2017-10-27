@@ -28,8 +28,9 @@ include_once '../Model/Access_DB.php';
 
     function getUsers(){
       $mysqli = ConnectDB();
-
-        $sql = "SELECT login FROM USUARIOS";
+        $log=$_SESSION['login'];
+        $sql = "SELECT login FROM USUARIOS WHERE login not LIKE '$log'";
+        
         $usuarios= array();
 
         if($resultado = $mysqli->query($sql)){

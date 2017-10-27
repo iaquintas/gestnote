@@ -18,6 +18,8 @@
     include '../View/NOTAS_DELETE_View.php';
     include '../View/NOTAS_SHARE_View.php';
     include '../View/MESSAGE_View.php';
+    include '../Locates/Strings_SPANISH.php';
+        include '../Locates/Strings_ENGLISH.php';
 
     //funcion que recoge los datos de las vistas
     function get_data_form(){
@@ -122,14 +124,20 @@
                     $COMPARTIDO = "";#default value
                 }
 
+
+                if($COMPARTIDO == ""){
+                  $noUsers="Nomensajes";
+                    new MESSAGE("$noUsers", '../Controller/NOTAS_Controller.php');
+                }else{
               foreach ($COMPARTIDO as $com) {
-                var_dump($com);
+
                 $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$com);
                   $respuesta = $NOTAS->SHARE();
               }
 
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
+          }
             break;
 
         case 'ORDERCREATE':
