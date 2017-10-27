@@ -25,7 +25,7 @@
 
         //funcion de registro
     	function Register($login){
-
+    
     		$mysqli = ConnectBD();
     		$sql = "select * from USUARIOS where login = '".$login."'";
 
