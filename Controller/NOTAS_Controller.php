@@ -47,7 +47,7 @@
               $AUTOR = $_SESSION['login'];
               $FECHA = $_REQUEST['FECHA'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
-              $COMPARTIDO = $_POST['COMPARTIDO'];
+              $COMPARTIDO = "";
 
               $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->ADD();
