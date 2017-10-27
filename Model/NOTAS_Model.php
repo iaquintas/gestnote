@@ -71,7 +71,7 @@ public function ADD(){
     //funcion de modificación de la instancia actual de la entidad
     public function EDIT(){
         $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
-        var_dump($sql);
+
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 0){
             return 'No existe en la base de datos';
@@ -92,7 +92,7 @@ public function ADD(){
     public function DELETE(){
       $log=$_SESSION['login'];
       if($this->AUTOR==$log){
-        //var_dump($this->AUTOR);
+
         $sql = "SELECT * FROM NOTAS WHERE (Numero = '$this->Numero')";
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 1){
@@ -105,7 +105,7 @@ public function ADD(){
         }
       }else{
         $sql = "SELECT * FROM COMPARTE WHERE (Numero = '$this->Numero' AND login='$this->COMPARTIDO')";
-        var_dump($sql);
+
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 1){
             $sql="UPDATE COMPARTE SET BORRADO='SI' WHERE Numero = '$this->Numero'";
@@ -155,7 +155,7 @@ public function ADD(){
                  $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
                 $resultado = $this->mysqli->query($sql);
                 if($resultado->num_rows > 0){
-                //  var_dump($COMPARTIDO);
+              
                     $sql= "INSERT INTO COMPARTE(Numero,login) VALUES ('$this->Numero','$this->COMPARTIDO')";
                     if(!$this->mysqli->query($sql)){
         		             return 'Error en la inserción';

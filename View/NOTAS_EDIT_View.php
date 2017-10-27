@@ -27,7 +27,7 @@ include '../View/Header.php'; ?>
 
     <div class="form-group col-md-6">
       <label for="inputAddress" class="col-form-label"><?php echo $strings['Titulo']?></label>
-      <input type="date" class="form-control" name="TITULO" value="<?php echo ($this->valores['FECHA']);?>" placeholder="Fecha" readonly>
+      <input type="text" class="form-control" name="TITULO" value="<?php echo ($this->valores['TITULO']);?>" placeholder="Fecha" >
     </div>
 
     <div class="form-group col-md-6">
