@@ -17,6 +17,13 @@ include '../View/Header.php'; ?>
 
   <form name = 'Form' action='../Controller/NOTAS_Controller.php' method='post'>
 
+
+    <div class="form-group col-md-6">
+      <label for="inputEmail4" class="col-form-label"><?php echo $strings['Numero']?></label>
+      <input type="number" class="form-control" name="Numero" value="<?php echo ($this->valores['Numero']);?>" placeholder="Numero" readonly>
+    </div>
+
+
       <div class="form-group col-md-6">
         <label for="inputEmail4" class="col-form-label"><?php echo $strings['AUTOR']?></label>
         <input type="text" class="form-control" id="Autor" name='AUTOR' value="<?php echo ($this->valores['AUTOR']);?>" placeholder="Autor" readonly>

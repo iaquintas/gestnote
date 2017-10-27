@@ -61,16 +61,13 @@
                 $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_DELETE($valores);
             }else{
-              $Numero = "";
+              $Numero = $_REQUEST['Numero'];
               $AUTOR = $_REQUEST['AUTOR'];
               $FECHA = $_REQUEST['FECHA'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
-              $COMPARTIDO = array();
-          if(isset($_POST['COMPARTIDO'])){
-              $COMPARTIDO = $_POST['COMPARTIDO'];
-          }else{
-              $COMPARTIDO = "";#default value
-          }
+              $COMPARTIDO = "";
+
+
               $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->DELETE();
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');

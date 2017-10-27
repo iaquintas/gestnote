@@ -16,7 +16,7 @@ include '../View/Header.php'; ?>
 
     <div class="form-group col-md-6">
       <label for="inputEmail4" class="col-form-label"><?php echo $strings['Numero']?></label>
-      <input type="email" class="form-control" name="Numero" value="<?php echo ($this->valores['Numero']);?>" placeholder="Numero" readonly>
+      <input type="number" class="form-control" name="Numero" value="<?php echo ($this->valores['Numero']);?>" placeholder="Numero" readonly>
     </div>
 
       <div class="form-group col-md-6">
