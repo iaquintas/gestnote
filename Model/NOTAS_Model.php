@@ -168,6 +168,16 @@ public function ADD(){
 
         }
 
+        public function getUsers(){
+             $sql = "SELECT login FROM USUARIOS";
+             if($resultado = $this->mysqli->query($sql)){
+                 $return = $resultado->fetch_array();
+                 return $return;
+             }else{
+                 return 'No existe en la base de datos';
+             }
+        }
+
 
 
   }

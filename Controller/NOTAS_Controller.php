@@ -25,7 +25,12 @@
         $AUTOR = $_REQUEST['AUTOR'];
         $FECHA = $_REQUEST['FECHA'];
         $CONTENIDO = $_REQUEST['CONTENIDO'];
-        $COMPARTIDO = $_REQUEST['COMPARTIDO'];
+        $COMPARTIDO = array();
+    if(isset($_POST['COMPARTIDO'])){
+        $COMPARTIDO = $_POST['COMPARTIDO'];
+    }else{
+        $COMPARTIDO = "";#default value
+    }
         $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
         return $NOTAS;
     }
@@ -45,7 +50,12 @@
               $AUTOR = $_SESSION['login'];
               $FECHA = $_REQUEST['FECHA'];
               $CONTENIDO = $_REQUEST['CONTENIDO'];
-              $COMPARTIDO = $_REQUEST['COMPARTIDO'];
+              $COMPARTIDO = array();
+          if(isset($_POST['COMPARTIDO'])){
+              $COMPARTIDO = $_POST['COMPARTIDO'];
+          }else{
+              $COMPARTIDO = "";#default value
+          }
               $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->ADD();
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
@@ -58,7 +68,17 @@
                 $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_DELETE($valores);
             }else{
-                $NOTAS = get_data_form();
+              $Numero = "";
+              $AUTOR = $_REQUEST['AUTOR'];
+              $FECHA = $_REQUEST['FECHA'];
+              $CONTENIDO = $_REQUEST['CONTENIDO'];
+              $COMPARTIDO = array();
+          if(isset($_POST['COMPARTIDO'])){
+              $COMPARTIDO = $_POST['COMPARTIDO'];
+          }else{
+              $COMPARTIDO = "";#default value
+          }
+              $NOTAS = new NOTAS_Model($Numero,$AUTOR,$FECHA,$CONTENIDO,$COMPARTIDO);
                 $respuesta = $NOTAS->DELETE();
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
