@@ -9,7 +9,9 @@ function __Construct($valores){
 function render(){
 include '../View/Header.php'; ?>
 
-              <h1><?php echo $strings['Borrar'] . 'NOTAS' ?></h1>
+<nav class="navbar navbar-expand-lg">
+  <a id="edit" class="navbar-brand" href="#"><?php echo $strings['Eliminar nota']; ?></a>
+</nav>
 
             <form name='Form' action='../Controller/NOTAS_Controller.php' method='post' onsubmit='return comprobar()'>
               <div class="form-group row">
