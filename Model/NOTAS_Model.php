@@ -156,8 +156,9 @@ public function ADD(){
 
                  $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
                 $resultado = $this->mysqli->query($sql);
-                if($resultado->num_rows == 0){
-                    $sql= "INSERT INTO COMPARTE(Numero,login) VALUES ('$this->Numero','$this->login')";
+                if($resultado->num_rows > 0){
+                //  var_dump($COMPARTIDO);
+                    $sql= "INSERT INTO COMPARTE(Numero,login) VALUES ('$this->Numero','$this->COMPARTIDO')";
                     if(!$this->mysqli->query($sql)){
         		             return 'Error en la inserción';
                     }else{

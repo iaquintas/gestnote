@@ -19,12 +19,15 @@ function render(){
 
                 <form name = 'Form' action='../Controller/NOTAS_Controller.php' method='post'>
 
-
+                  <div class="form-group col-md-6">
+                    <label for="inputEmail4" class="col-form-label"><?php echo $strings['Numero']?></label>
+                    <input type="number" class="form-control" name="Numero" value="<?php echo ($this->valores['Numero']);?>" placeholder="Numero" readonly>
+                  </div>
 
 
                   <div class="form-group col-md-6">
                     <label for="exampleFormControlTextarea1"><?php echo $strings['CONTENIDO']?></label>
-                    <textarea class="form-control" id="Contenido"  rows="3" readonly><?php echo ($this->valores['CONTENIDO']);?></textarea>
+                    <textarea class="form-control" name="CONTENIDO"  rows="3" readonly><?php echo ($this->valores['CONTENIDO']);?></textarea>
                   </div>
 
 
@@ -38,7 +41,7 @@ function render(){
                   <div class="form-check  ">
                     <label class="form-check-label">
 
-                              <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"> <?php echo $usuario ?>
+                              <input class="form-check-input" type="checkbox"  id="inlineCheckbox1" name="COMPARTIDO[]" value="<?php echo $usuario ?>"> <?php echo $usuario ?>
                             </label>
                               </div>
                 <?php
