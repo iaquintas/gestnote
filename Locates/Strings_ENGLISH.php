@@ -21,20 +21,17 @@
 'Login'=>'Authenticate',
 'Registro'=>'Registry',
 'Insertar Usuario'=>'Insert User',
-'Borrar Usuario'=>'Delete User',
-'Modificar Usuario'=>'Modify User',
-'Consultar Usuario'=>'Query User',
-'Buscar Usuario'=>'Search Usuario',
+
 'idioma'=>'Language',
 'ESPAÑOL'=>'Spanish',
 'INGLES'=>'English',
-'GALLEGO'=>'Gallaecian',
+
 'Insertar'=>'Insert',
 'Modificar'=>'Modify',
 'Borrar'=>'Delete',
 'Consultar'=>'Query',
 'Buscar'=>'Search',
-'Mostrar todos'=>'Show All',
+
 'Detalle'=>'Detail',
 'Portal de Gestión'=>'Management Site',
 'Cerrar Sesión'=>'Close Session',
