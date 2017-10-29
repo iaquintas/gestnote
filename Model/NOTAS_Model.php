@@ -28,7 +28,7 @@ public function ADD(){
          $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 0){
-            $sql= "INSERT INTO NOTAS(Numero,AUTOR,TITULO,CONTENIDO,COMPARTIDO) VALUES ('$this->Numero','$this->AUTOR','$this->TITULO','$this->CONTENIDO','$this->COMPARTIDO')";
+            $sql= "INSERT INTO NOTAS(Numero,AUTOR,TITULO,CONTENIDO,COMPARTIDO) VALUES ('0','$this->AUTOR','$this->TITULO','$this->CONTENIDO','$this->COMPARTIDO')";
             if(!$this->mysqli->query($sql)){
 		             return 'Error en la inserción';
             }else{
@@ -155,7 +155,7 @@ public function ADD(){
                  $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
                 $resultado = $this->mysqli->query($sql);
                 if($resultado->num_rows > 0){
-              
+
                     $sql= "INSERT INTO COMPARTE(Numero,login) VALUES ('$this->Numero','$this->COMPARTIDO')";
                     if(!$this->mysqli->query($sql)){
         		             return 'Error en la inserción';
