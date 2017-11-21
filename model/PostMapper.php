@@ -133,8 +133,8 @@ class PostMapper {
 		* @return int The mew post Numero
 		*/
 		public function save(Post $post) {
-			$stmt = $this->db->prepare("INSERT INTO notas(Numero, AUTOR,TITULO,CONTENIDO,COMPARTIDO) values (?,?,?,?,?)");
-			$stmt->execute(array($post->gettitulo(), $post->getcontenido(), $post->getautor()->getUsername()));
+			$stmt = $this->db->prepare("INSERT INTO notas(AUTOR,TITULO,CONTENIDO,COMPARTIDO) values (?,?,?,?)");
+			$stmt->execute(array($post->getautor()->getUsername(),$post->gettitulo(), $post->getcontenido(), $post->getcompartido()));
 			return $this->db->lastInsertNumero();
 		}
 

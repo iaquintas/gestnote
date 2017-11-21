@@ -56,13 +56,13 @@ class PostRest extends BaseRest {
 
 	public function createPost($data) {
 		$currentUser = parent::authenticateUser();
+
 		$post = new Post();
 
 		if (isset($data->titulo) && isset($data->contenido)) {
 			$post->settitulo($data->titulo);
 			$post->setcontenido($data->contenido);
-
-			$post->setAuthor($currentUser);
+			$post->setautor($currentUser);
 		}
 
 		try {
@@ -79,7 +79,8 @@ class PostRest extends BaseRest {
 			echo(json_encode(array(
 				"numero"=>$postnumero,
 				"titulo"=>$post->gettitulo(),
-				"contenido" => $post->getcontenido()
+				"contenido" => $post->getcontenido(),
+				"compartido"=> $post->getcompartido()
 			)));
 
 		} catch (ValnumeroationException $e) {

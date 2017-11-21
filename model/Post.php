@@ -21,7 +21,7 @@ class Post {
 
 	/**
 	* The titulo of this post
-	* 
+	*
 	*/
 	private $autor;
 
@@ -29,13 +29,13 @@ class Post {
 	* The contenido of this post
 	* @var string
 	*/
-	private $contennumeroo;
+	private $contenido;
 
 	/**
 	* The autor of this post
 	* @var string
 	*/
-	private $compartnumeroo;
+	private $compartido;
 
 	/**
 	* The list of compartido of this post

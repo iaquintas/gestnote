@@ -1,30 +1,48 @@
 class PostModel extends Fronty.Model {
 
-  constructor(id, title, author_id) {
+  constructor(numero,autor_id,titulo,contenido,compartido) {
     super('PostModel'); //call super
-    
-    if (id) {
-      this.id = id;
+
+    if (numero) {
+      this.numero = numero;
     }
-    
-    if (title) {
-      this.title = title;
+    if (autor_id) {
+      this.autor_id = autor_id;
     }
-    
-    if (author_id) {
-      this.author_id = author_id;
+
+    if (titulo) {
+      this.titulo = titulo;
     }
+
+    if (contenido) {
+      this.contenido = contenido;
+    }
+    if (compartido) {
+      this.titulo = compartido;
+    }
+
+
   }
 
-  setTitle(title) {
+  setitulo(titulo) {
     this.set((self) => {
-      self.title = title;
+      self.titulo = titulo;
     });
   }
 
-  setAuthor_id(author_id) {
+  setautor_id(autor_id) {
     this.set((self) => {
-      self.author_id = author_id;
+      self.autor_id = autor_id;
+    });
+  }
+  setcontenido(contenido) {
+    this.set((self) => {
+      self.contenido = contenido;
+    });
+  }
+  setcompartido(compartido) {
+    this.set((self) => {
+      self.compartido = compartido;
     });
   }
 }
