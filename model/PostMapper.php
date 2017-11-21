@@ -11,7 +11,7 @@ require_once(__DIR__."/../model/Comment.php");
 *
 * Database interface for Post entities
 *
-* @author lipido <lipido@gmail.com>
+* @author lipNumeroo <lipNumeroo@gmail.com>
 */
 class PostMapper {
 
@@ -34,21 +34,21 @@ class PostMapper {
 	* @return mixed Array of Post instances (without comments)
 	*/
 	public function findAll() {
-		$stmt = $this->db->query("SELECT * FROM posts, users WHERE users.username = posts.author");
+		$stmt = $this->db->query("SELECT * FROM notas, usuarios WHERE usuarios.login = notas.AUTOR");
 		$posts_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		$posts = array();
 
 		foreach ($posts_db as $post) {
-			$author = new User($post["username"]);
-			array_push($posts, new Post($post["id"], $post["title"], $post["content"], $author));
+			$author = new User($post["login"]);
+			array_push($posts, new Post($post["Numero"], $post["TITULO"],  $post["CONTENIDO"], $author, $post["COMPARTIDO"]));
 		}
 
 		return $posts;
 	}
 
 	/**
-	* Loads a Post from the database given its id
+	* Loads a Post from the database given its Numero
 	*
 	* Note: Comments are not added to the Post
 	*
@@ -56,24 +56,25 @@ class PostMapper {
 	* @return Post The Post instances (without comments). NULL
 	* if the Post is not found
 	*/
-	public function findById($postid){
-		$stmt = $this->db->prepare("SELECT * FROM posts WHERE id=?");
-		$stmt->execute(array($postid));
+	public function findByNumero($postNumero){
+		$stmt = $this->db->prepare("SELECT * FROM notas WHERE Numero=?");
+		$stmt->execute(array($postNumero));
 		$post = $stmt->fetch(PDO::FETCH_ASSOC);
 
 		if($post != null) {
 			return new Post(
-			$post["id"],
-			$post["title"],
-			$post["content"],
-			new User($post["author"]));
+			$post["Numero"],
+			$post["TITULO"],
+			$post["CONTENIDO"],
+			$post["COMPARTIDO"],
+			new User($post["AUTOR"]));
 		} else {
 			return NULL;
 		}
 	}
 
 	/**
-	* Loads a Post from the database given its id
+	* Loads a Post from the database given its Numero
 	*
 	* It includes all the comments
 	*
@@ -81,35 +82,36 @@ class PostMapper {
 	* @return Post The Post instances (without comments). NULL
 	* if the Post is not found
 	*/
-	public function findByIdWithComments($postid){
+	/*
+	public function findByNumeroWithComments($postNumero){
 		$stmt = $this->db->prepare("SELECT
-			P.id as 'post.id',
-			P.title as 'post.title',
-			P.content as 'post.content',
+			P.Numero as 'post.Numero',
+			P.titulo as 'post.titulo',
+			P.CONTENIDO as 'post.CONTENIDO',
 			P.author as 'post.author',
-			C.id as 'comment.id',
-			C.content as 'comment.content',
+			C.Numero as 'comment.Numero',
+			C.CONTENIDO as 'comment.CONTENIDO',
 			C.post as 'comment.post',
 			C.author as 'comment.author'
 
 			FROM posts P LEFT OUTER JOIN comments C
-			ON P.id = C.post
+			ON P.Numero = C.post
 			WHERE
-			P.id=? ");
+			P.Numero=? ");
 
-			$stmt->execute(array($postid));
+			$stmt->execute(array($postNumero));
 			$post_wt_comments= $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 			if (sizeof($post_wt_comments) > 0) {
-				$post = new Post($post_wt_comments[0]["post.id"],
-				$post_wt_comments[0]["post.title"],
-				$post_wt_comments[0]["post.content"],
+				$post = new Post($post_wt_comments[0]["post.Numero"],
+				$post_wt_comments[0]["post.titulo"],
+				$post_wt_comments[0]["post.CONTENIDO"],
 				new User($post_wt_comments[0]["post.author"]));
 				$comments_array = array();
-				if ($post_wt_comments[0]["comment.id"]!=null) {
+				if ($post_wt_comments[0]["comment.Numero"]!=null) {
 					foreach ($post_wt_comments as $comment){
-						$comment = new Comment( $comment["comment.id"],
-						$comment["comment.content"],
+						$comment = new Comment( $comment["comment.Numero"],
+						$comment["comment.CONTENIDO"],
 						new User($comment["comment.author"]),
 						$post);
 						array_push($comments_array, $comment);
@@ -122,18 +124,18 @@ class PostMapper {
 				return NULL;
 			}
 		}
-
+*/
 		/**
 		* Saves a Post into the database
 		*
 		* @param Post $post The post to be saved
 		* @throws PDOException if a database error occurs
-		* @return int The mew post id
+		* @return int The mew post Numero
 		*/
 		public function save(Post $post) {
-			$stmt = $this->db->prepare("INSERT INTO posts(title, content, author) values (?,?,?)");
-			$stmt->execute(array($post->getTitle(), $post->getContent(), $post->getAuthor()->getUsername()));
-			return $this->db->lastInsertId();
+			$stmt = $this->db->prepare("INSERT INTO notas(Numero, AUTOR,TITULO,CONTENIDO,COMPARTIDO) values (?,?,?,?,?)");
+			$stmt->execute(array($post->gettitulo(), $post->getcontenido(), $post->getautor()->getUsername()));
+			return $this->db->lastInsertNumero();
 		}
 
 		/**
@@ -141,11 +143,11 @@ class PostMapper {
 		*
 		* @param Post $post The post to be updated
 		* @throws PDOException if a database error occurs
-		* @return void
+		* @return voNumero
 		*/
 		public function update(Post $post) {
-			$stmt = $this->db->prepare("UPDATE posts set title=?, content=? where id=?");
-			$stmt->execute(array($post->getTitle(), $post->getContent(), $post->getId()));
+			$stmt = $this->db->prepare("UPDATE notas set titulo=?, contenido=? where Numero=?");
+			$stmt->execute(array($post->gettitulo(), $post->getcontenido(), $post->getnumero()));
 		}
 
 		/**
@@ -153,11 +155,11 @@ class PostMapper {
 		*
 		* @param Post $post The post to be deleted
 		* @throws PDOException if a database error occurs
-		* @return void
+		* @return voNumero
 		*/
 		public function delete(Post $post) {
-			$stmt = $this->db->prepare("DELETE from posts WHERE id=?");
-			$stmt->execute(array($post->getId()));
+			$stmt = $this->db->prepare("DELETE from notas WHERE Numero=?");
+			$stmt->execute(array($post->getnumero()));
 		}
 
 	}

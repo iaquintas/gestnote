@@ -18,7 +18,7 @@ require_once(__DIR__."/BaseRest.php");
 * listing posts, as well as to create comments to posts.
 *
 * Methods gives responses following Restful standards. Methods of this class
-* are intended to be mapped as callbacks using the URIDispatcher class.
+* are intended to be mapped as callbacks using the URnumeroispatcher class.
 *
 */
 class PostRest extends BaseRest {
@@ -42,15 +42,15 @@ class PostRest extends BaseRest {
 		$posts_array = array();
 		foreach($posts as $post) {
 			array_push($posts_array, array(
-				"id" => $post->getId(),
-				"title" => $post->getTitle(),
-				"content" => $post->getContent(),
-				"author_id" => $post->getAuthor()->getusername()
+				"numero" => $post->getnumero(),
+				"titulo" => $post->gettitulo(),
+				"contenido" => $post->getcontenido(),
+				"author_numero" => $post->getautor()->getusername()
 			));
 		}
 
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
-		header('Content-Type: application/json');
+		header('contenido-Type: application/json');
 		echo(json_encode($posts_array));
 	}
 
@@ -58,50 +58,50 @@ class PostRest extends BaseRest {
 		$currentUser = parent::authenticateUser();
 		$post = new Post();
 
-		if (isset($data->title) && isset($data->content)) {
-			$post->setTitle($data->title);
-			$post->setContent($data->content);
+		if (isset($data->titulo) && isset($data->contenido)) {
+			$post->settitulo($data->titulo);
+			$post->setcontenido($data->contenido);
 
 			$post->setAuthor($currentUser);
 		}
 
 		try {
-			// validate Post object
-			$post->checkIsValidForCreate(); // if it fails, ValidationException
+			// valnumeroate Post object
+			$post->checkIsValnumeroForCreate(); // if it fails, ValnumeroationException
 
 			// save the Post object into the database
-			$postId = $this->postMapper->save($post);
+			$postnumero = $this->postMapper->save($post);
 
-			// response OK. Also send post in content
+			// response OK. Also send post in contenido
 			header($_SERVER['SERVER_PROTOCOL'].' 201 Created');
-			header('Location: '.$_SERVER['REQUEST_URI']."/".$postId);
-			header('Content-Type: application/json');
+			header('Location: '.$_SERVER['REQUEST_URI']."/".$postnumero);
+			header('contenido-Type: application/json');
 			echo(json_encode(array(
-				"id"=>$postId,
-				"title"=>$post->getTitle(),
-				"content" => $post->getContent()
+				"numero"=>$postnumero,
+				"titulo"=>$post->gettitulo(),
+				"contenido" => $post->getcontenido()
 			)));
 
-		} catch (ValidationException $e) {
+		} catch (ValnumeroationException $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			header('Content-Type: application/json');
+			header('contenido-Type: application/json');
 			echo(json_encode($e->getErrors()));
 		}
 	}
 
-	public function readPost($postId) {
+	public function readPost($postnumero) {
 		// find the Post object in the database
-		$post = $this->postMapper->findByIdWithComments($postId);
+		$post = $this->postMapper->findBynumeroWithComments($postnumero);
 		if ($post == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with id ".$postId." not found");
+			echo("Post with numero ".$postnumero." not found");
 		}
 
 		$post_array = array(
-			"id" => $post->getId(),
-			"title" => $post->getTitle(),
-			"content" => $post->getContent(),
-			"author_id" => $post->getAuthor()->getusername()
+			"numero" => $post->getnumero(),
+			"titulo" => $post->gettitulo(),
+			"contenido" => $post->getcontenido(),
+			"author_numero" => $post->getautor()->getusername()
 
 		);
 
@@ -109,91 +109,91 @@ class PostRest extends BaseRest {
 		$post_array["comments"] = array();
 		foreach ($post->getComments() as $comment) {
 			array_push($post_array["comments"], array(
-				"id" => $comment->getId(),
-				"content" => $comment->getContent(),
-				"author" => $comment->getAuthor()->getusername()
+				"numero" => $comment->getnumero(),
+				"contenido" => $comment->getcontenido(),
+				"author" => $comment->getautor()->getusername()
 			));
 		}
 
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
-		header('Content-Type: application/json');
+		header('contenido-Type: application/json');
 		echo(json_encode($post_array));
 	}
 
-	public function updatePost($postId, $data) {
+	public function updatePost($postnumero, $data) {
 		$currentUser = parent::authenticateUser();
 
-		$post = $this->postMapper->findById($postId);
+		$post = $this->postMapper->findBynumero($postnumero);
 		if ($post == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with id ".$postId." not found");
+			echo("Post with numero ".$postnumero." not found");
 		}
 
 		// Check if the Post author is the currentUser (in Session)
-		if ($post->getAuthor() != $currentUser) {
-			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+		if ($post->getautor() != $currentUser) {
+			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbnumeroden');
 			echo("you are not the author of this post");
 		}
-		$post->setTitle($data->title);
-		$post->setContent($data->content);
+		$post->settitulo($data->titulo);
+		$post->setcontenido($data->contenido);
 
 		try {
-			// validate Post object
-			$post->checkIsValidForUpdate(); // if it fails, ValidationException
+			// valnumeroate Post object
+			$post->checkIsValnumeroForUpdate(); // if it fails, ValnumeroationException
 			$this->postMapper->update($post);
 			header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
-		}catch (ValidationException $e) {
+		}catch (ValnumeroationException $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			header('Content-Type: application/json');
+			header('contenido-Type: application/json');
 			echo(json_encode($e->getErrors()));
 		}
 	}
 
-	public function deletePost($postId) {
+	public function deletePost($postnumero) {
 		$currentUser = parent::authenticateUser();
-		$post = $this->postMapper->findById($postId);
+		$post = $this->postMapper->findBynumero($postnumero);
 
 		if ($post == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with id ".$postId." not found");
+			echo("Post with numero ".$postnumero." not found");
 			return;
 		}
 		// Check if the Post author is the currentUser (in Session)
-		if ($post->getAuthor() != $currentUser) {
-			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbidden');
+		if ($post->getautor() != $currentUser) {
+			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbnumeroden');
 			echo("you are not the author of this post");
 			return;
 		}
 
 		$this->postMapper->delete($post);
 
-		header($_SERVER['SERVER_PROTOCOL'].' 204 No Content');
+		header($_SERVER['SERVER_PROTOCOL'].' 204 No contenido');
 	}
 
-	public function createComment($postId, $data) {
+	public function createComment($postnumero, $data) {
 		$currentUser = parent::authenticateUser();
 
-		$post = $this->postMapper->findById($postId);
+		$post = $this->postMapper->findBynumero($postnumero);
 		if ($post == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with id ".$postId." not found");
+			echo("Post with numero ".$postnumero." not found");
 		}
 
 		$comment = new Comment();
-		$comment->setContent($data->content);
+		$comment->setcontenido($data->contenido);
 		$comment->setAuthor($currentUser);
 		$comment->setPost($post);
 
 		try {
-			$comment->checkIsValidForCreate(); // if it fails, ValidationException
+			$comment->checkIsValnumeroForCreate(); // if it fails, ValnumeroationException
 
 			$this->commentMapper->save($comment);
 
 			header($_SERVER['SERVER_PROTOCOL'].' 201 Created');
 
-		}catch(ValidationException $e) {
+		}catch(ValnumeroationException $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			header('Content-Type: application/json');
+			header('contenido-Type: application/json');
 			echo(json_encode($e->getErrors()));
 		}
 	}

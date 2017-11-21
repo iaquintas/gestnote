@@ -1,202 +1,200 @@
 <?php
 // file: model/Post.php
 
-require_once(__DIR__."/../core/ValidationException.php");
+
 
 /**
 * Class Post
 *
 * Represents a Post in the blog. A Post was written by an
-* specific User (author) and contains a list of Comments
+* specific User (autor) and contains a list of compartido
 *
-* @author lipido <lipido@gmail.com>
+* @autor lipnumeroo <lipnumeroo@gmail.com>
 */
 class Post {
 
 	/**
-	* The id of this post
+	* The numero of this post
 	* @var string
 	*/
-	private $id;
+	private $numero;
 
 	/**
-	* The title of this post
+	* The titulo of this post
+	* 
+	*/
+	private $autor;
+
+	/**
+	* The contenido of this post
 	* @var string
 	*/
-	private $title;
+	private $contennumeroo;
 
 	/**
-	* The content of this post
+	* The autor of this post
 	* @var string
 	*/
-	private $content;
+	private $compartnumeroo;
 
 	/**
-	* The author of this post
-	* @var User
-	*/
-	private $author;
-
-	/**
-	* The list of comments of this post
+	* The list of compartido of this post
 	* @var mixed
 	*/
-	private $comments;
+	private $titulo;
 
 	/**
 	* The constructor
 	*
-	* @param string $id The id of the post
-	* @param string $title The id of the post
-	* @param string $content The content of the post
-	* @param User $author The author of the post
-	* @param mixed $comments The list of comments
+	* @param string $numero The numero of the post
+	* @param string $titulo The numero of the post
+	* @param string $contenido The contenido of the post
+	* @param User $autor The autor of the post
+	* @param mixed $compartido The list of compartido
 	*/
-	public function __construct($id=NULL, $title=NULL, $content=NULL, User $author=NULL, array $comments=NULL) {
-		$this->id = $id;
-		$this->title = $title;
-		$this->content = $content;
-		$this->author = $author;
-		$this->comments = $comments;
+	public function __construct($numero=NULL, $titulo=NULL, $contenido=NULL, User $autor=NULL, $compartido=NULL) {
+		$this->numero = $numero;
+		$this->titulo = $titulo;
+		$this->contenido = $contenido;
+		$this->autor = $autor;
+		$this->compartido = $compartido;
 
 	}
 
 	/**
-	* Gets the id of this post
+	* Gets the numero of this post
 	*
-	* @return string The id of this post
+	* @return string The numero of this post
 	*/
-	public function getId() {
-		return $this->id;
+	public function getnumero() {
+		return $this->numero;
 	}
 
 	/**
-	* Gets the title of this post
+	* Gets the titulo of this post
 	*
-	* @return string The title of this post
+	* @return string The titulo of this post
 	*/
-	public function getTitle() {
-		return $this->title;
+	public function gettitulo() {
+		return $this->titulo;
 	}
 
 	/**
-	* Sets the title of this post
+	* Sets the titulo of this post
 	*
-	* @param string $title the title of this post
-	* @return void
+	* @param string $titulo the titulo of this post
+	* @return vonumero
 	*/
-	public function setTitle($title) {
-		$this->title = $title;
+	public function settitulo($titulo) {
+		$this->titulo = $titulo;
 	}
 
 	/**
-	* Gets the content of this post
+	* Gets the contenido of this post
 	*
-	* @return string The content of this post
+	* @return string The contenido of this post
 	*/
-	public function getContent() {
-		return $this->content;
+	public function getcontenido() {
+		return $this->contenido;
 	}
 
 	/**
-	* Sets the content of this post
+	* Sets the contenido of this post
 	*
-	* @param string $content the content of this post
-	* @return void
+	* @param string $contenido the contenido of this post
+	* @return vonumero
 	*/
-	public function setContent($content) {
-		$this->content = $content;
+	public function setcontenido($contenido) {
+		$this->contenido = $contenido;
 	}
 
 	/**
-	* Gets the author of this post
+	* Gets the autor of this post
 	*
-	* @return User The author of this post
+	* @return User The autor of this post
 	*/
-	public function getAuthor() {
-		return $this->author;
+	public function getautor() {
+		return $this->autor;
 	}
 
 	/**
-	* Sets the author of this post
+	* Sets the autor of this post
 	*
-	* @param User $author the author of this post
-	* @return void
+	* @param User $autor the autor of this post
+	* @return vonumero
 	*/
-	public function setAuthor(User $author) {
-		$this->author = $author;
+	public function setautor(User $autor) {
+		$this->autor = $autor;
 	}
 
 	/**
-	* Gets the list of comments of this post
+	* Gets the list of compartido of this post
 	*
-	* @return mixed The list of comments of this post
+	* @return mixed The list of compartido of this post
 	*/
-	public function getComments() {
-		return $this->comments;
+	public function getcompartido() {
+		return $this->compartido;
 	}
 
 	/**
-	* Sets the comments of the post
+	* Sets the compartido of the post
 	*
-	* @param mixed $comments the comments list of this post
-	* @return void
+	* @param mixed $compartido the compartido list of this post
+	* @return vonumero
 	*/
-	public function setComments(array $comments) {
-		$this->comments = $comments;
+	public function setcompartido(array $compartido) {
+		$this->compartido = $compartido;
 	}
 
 	/**
-	* Checks if the current instance is valid
+	* Checks if the current instance is valnumero
 	* for being updated in the database.
 	*
-	* @throws ValidationException if the instance is
-	* not valid
+	* @throws ValnumeroationException if the instance is
+	* not valnumero
 	*
-	* @return void
+	* @return vonumero
 	*/
-	public function checkIsValidForCreate() {
+	public function checkIsValnumeroForCreate() {
 		$errors = array();
-		if (strlen(trim($this->title)) == 0 ) {
-			$errors["title"] = "title is mandatory";
+		if (strlen(trim($this->titulo)) == 0 ) {
+			$errors["titulo"] = "titulo is mandatory";
 		}
-		if (strlen(trim($this->content)) == 0 ) {
-			$errors["content"] = "content is mandatory";
+		if (strlen(trim($this->contenido)) == 0 ) {
+			$errors["contenido"] = "contenido is mandatory";
 		}
-		if ($this->author == NULL ) {
-			$errors["author"] = "author is mandatory";
+		if ($this->autor == NULL ) {
+			$errors["autor"] = "autor is mandatory";
 		}
 
-		if (sizeof($errors) > 0){
-			throw new ValidationException($errors, "post is not valid");
-		}
+
 	}
 
 	/**
-	* Checks if the current instance is valid
+	* Checks if the current instance is valnumero
 	* for being updated in the database.
 	*
-	* @throws ValidationException if the instance is
-	* not valid
+	* @throws ValnumeroationException if the instance is
+	* not valnumero
 	*
-	* @return void
+	* @return vonumero
 	*/
-	public function checkIsValidForUpdate() {
+	public function checkIsValnumeroForUpdate() {
 		$errors = array();
 
-		if (!isset($this->id)) {
-			$errors["id"] = "id is mandatory";
+		if (!isset($this->numero)) {
+			$errors["numero"] = "numero is mandatory";
 		}
 
 		try{
-			$this->checkIsValidForCreate();
-		}catch(ValidationException $ex) {
+			$this->checkIsValnumeroForCreate();
+		}catch(ValnumeroationException $ex) {
 			foreach ($ex->getErrors() as $key=>$error) {
 				$errors[$key] = $error;
 			}
 		}
 		if (sizeof($errors) > 0) {
-			throw new ValidationException($errors, "post is not valid");
+			throw new ValnumeroationException($errors, "post is not valnumero");
 		}
 	}
 }
