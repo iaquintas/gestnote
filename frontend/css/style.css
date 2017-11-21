@@ -5,6 +5,12 @@ body {
 
 }
 
+div#frontyapp{
+  background-color: #D9D9D9;
+  font-family: 'Merienda', cursive;
+
+}
+
 
 
 .contenedor {
@@ -269,6 +275,10 @@ div#titulonota{
   color: #0080ff;
 }
 
+ul,a,h3{
+  color: #007bff;
+}
+
 
 
 
@@ -391,6 +401,12 @@ div#bienvenido{
   color: #0080ff;
 }
 
+div.formlogin{
+  text-align: -webkit-center;
+}
+h3{
+  text-align: center;
+}
 
 
 

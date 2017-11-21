@@ -30,6 +30,8 @@ I18n.translations = {
   'edit': 'editar',
   'logout': 'cerrar sesión',
   'Login': 'Iniciar sesión',
-  'Username': 'Usuario'
+  'Username': 'Usuario',
+  'welcome': '¡Bienvenido a GestNote!',
+  'noRegister': '¿Todavia no estás registrado?'
 
 }

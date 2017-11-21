@@ -3,23 +3,36 @@
   {{i18n 'Your are logged. Logout first'}}
 {{else}}
 
-  {{i18n 'Username'}}:
-  <div class="col-sm-5">
+  <div class="formlogin">
+ {{i18n 'Username'}}:
+ <br>
+  <div class="col-sm-6">
   <input type="text" class="form-control" id="login"> </div>
   <br>
   {{i18n 'Password'}}:
-  <div class="col-sm-5">
+  <div class="col-sm-6">
   <input type="password" class="form-control" id="password"><br>
-</div>
+  </div>
 
-  <input type="submit" id='loginbutton' value="{{i18n 'Login'}}"> {{i18n 'New here?'}} <a href="#login" id='registerlink'>{{i18n 'Register Here!'}}</a>
+
+  <input type="submit" id='loginbutton' value="{{i18n 'Login'}}"> <a href="#login" id='registerlink'>{{i18n 'Register Here!'}}</a>
+  </div>
   {{#if registerMode}}
-    <h2>{{i18n 'New user'}}</h2>
+  <br> <br>
+  <h3>{{i18n 'New user'}}</h3>
     <div id="registration-form">
-      {{i18n 'Username'}}: <input type="text" id="registerusername">
-      {{#i18n}}{{registerErrors.username}}{{/i18n}}<br> {{i18n 'Password'}}: <input type="password" id="registerpassword">
+      <div class="formlogin">
+      {{i18n 'Username'}}:
+        <div class="col-sm-6">
+      <input type="text" class="form-control" id="registerusername">
+    </div>
+      {{#i18n}}{{registerErrors.username}}{{/i18n}}<br> {{i18n 'Password'}}:
+        <div class="col-sm-6">
+      <input type="password" class="form-control"  id="registerpassword">
+    </div>
       {{#i18n}}{{registerErrors.passwd}}{{/i18n}}<br>
       <input type="submit" id='registerbutton' value="{{i18n 'Create user'}}">
+    </div>
     </div>
   {{/if}}
 
