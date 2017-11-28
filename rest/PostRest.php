@@ -50,7 +50,7 @@ class PostRest extends BaseRest {
 		}
 
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
-		header('contenido-Type: application/json');
+		header('Content-Type: application/json');
 		echo(json_encode($posts_array));
 	}
 
@@ -75,7 +75,7 @@ class PostRest extends BaseRest {
 			// response OK. Also send post in contenido
 			header($_SERVER['SERVER_PROTOCOL'].' 201 Created');
 			header('Location: '.$_SERVER['REQUEST_URI']."/".$postnumero);
-			header('contenido-Type: application/json');
+			header('Content-Type: application/json');
 			echo(json_encode(array(
 				"numero"=>$postnumero,
 				"titulo"=>$post->gettitulo(),
@@ -85,14 +85,14 @@ class PostRest extends BaseRest {
 
 		} catch (ValnumeroationException $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			header('contenido-Type: application/json');
+			header('Content-Type: application/json');
 			echo(json_encode($e->getErrors()));
 		}
 	}
 
 	public function readPost($postnumero) {
 		// find the Post object in the database
-		$post = $this->postMapper->findBynumeroWithComments($postnumero);
+		$post = $this->postMapper->findBynumero($postnumero);
 		if ($post == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
 			echo("Post with numero ".$postnumero." not found");
@@ -102,22 +102,13 @@ class PostRest extends BaseRest {
 			"numero" => $post->getnumero(),
 			"titulo" => $post->gettitulo(),
 			"contenido" => $post->getcontenido(),
-			"author_numero" => $post->getautor()->getusername()
+			"author_numero" => $post->getautor()->getUsername()
 
 		);
 
-		//add comments
-		$post_array["comments"] = array();
-		foreach ($post->getComments() as $comment) {
-			array_push($post_array["comments"], array(
-				"numero" => $comment->getnumero(),
-				"contenido" => $comment->getcontenido(),
-				"author" => $comment->getautor()->getusername()
-			));
-		}
-
+		
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
-		header('contenido-Type: application/json');
+		header('Content-Type: application/json');
 		echo(json_encode($post_array));
 	}
 
@@ -145,7 +136,7 @@ class PostRest extends BaseRest {
 			header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
 		}catch (ValnumeroationException $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			header('contenido-Type: application/json');
+			header('Content-Type: application/json');
 			echo(json_encode($e->getErrors()));
 		}
 	}
@@ -194,7 +185,7 @@ class PostRest extends BaseRest {
 
 		}catch(ValnumeroationException $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			header('contenido-Type: application/json');
+			header('Content-Type: application/json');
 			echo(json_encode($e->getErrors()));
 		}
 	}

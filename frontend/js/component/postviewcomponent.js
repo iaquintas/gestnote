@@ -10,7 +10,7 @@ class PostViewComponent extends Fronty.ModelComponent {
     this.postsService = new PostsService();
 
     this.addEventListener('click', '#savecommentbutton', () => {
-      var selectedId = this.router.getRouteQueryParam('id');
+      var selectedId = this.router.getRouteQueryParam('numero');
       this.postsService.createComment(selectedId, {
           content: $('#commentcontent').val()
         })

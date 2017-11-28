@@ -66,8 +66,9 @@ class PostMapper {
 			$post["Numero"],
 			$post["TITULO"],
 			$post["CONTENIDO"],
-			$post["COMPARTIDO"],
-			new User($post["AUTOR"]));
+			new User($post["AUTOR"]),
+			$post["COMPARTIDO"]
+			);
 		} else {
 			return NULL;
 		}

@@ -4,12 +4,38 @@
       <img id="logotipo" src="../View/img/logotipo.png">
     </div>
 
+    <nav class="navbar navbar-expand-lg ">
+    <a class="navbar-brand" href="#">{{i18n 'Mis notas'}}</a>
+
+    <div class="navbar navbar-expand-lg" id="navbarNavDropdown">
+      <ul class="navbar-nav" id="menus">
+        <li class="nav-item active">
+          <a class="nav-link" href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>{{i18n 'Nueva Nota'}}</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{i18n 'Ordenar por:'}}</a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#">{{i18n 'Creadas'}}</a>
+            <a class="dropdown-item" href="#">{{i18n 'Compartidas'}}</a>
+
+          </div>
+
+    </li>
+    </ul>
+
+
+
+
+    </div>
+    </nav>
+
+
     <nav id="menu">
+
+
       <br>
     <ul>
-
-
-          
 
         <ul>
         <div id="userbar">Loading...</div>
@@ -18,6 +44,7 @@
 
 
   </nav>
+
 
 
 
