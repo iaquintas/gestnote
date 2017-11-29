@@ -36,6 +36,7 @@ I18n.translations = {
   'Add note':'Nueva nota',
   'Order by:':'Ordenar por:',
   'Created:':'Creadas',
-  'Shared':'Compartidas'
+  'Shared':'Compartidas',
+  'My notes': 'Mis notas'
 
 }
