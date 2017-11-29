@@ -32,6 +32,10 @@ I18n.translations = {
   'Login': 'Iniciar sesión',
   'Username': 'Usuario',
   'welcome': '¡Bienvenido a GestNote!',
-  'noRegister': '¿Todavia no estás registrado?'
+  'noRegister': '¿Todavia no estás registrado?',
+  'Add note':'Nueva nota',
+  'Order by':'Ordenar por:',
+  'Created:':'Creadas',
+  'Shared':'Compartidas'
 
 }

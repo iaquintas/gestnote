@@ -1,0 +1,35 @@
+<div>
+
+<div id="posts-table">
+  {{#if posts.length}}
+  <div class="imagenes">
+    {{#each posts}}
+      fronty-component="PostRowComponent" key="{{numero}}" model="posts[{{@index}}]" id="item-{{numero}}">
+      <div class="image">
+        <img id="posit" src="../View/img/nota2.png">
+        <h2>
+            <div id="titulonota">
+
+            </div>
+            <div id="botones">
+
+
+            <div id="pienota">
+
+            </div>
+            </h2>
+    </div>
+
+      {{/each}}
+
+  {{/if}}
+      </div>
+
+    </div>
+</div>
+{{#if user.isLogged}}
+  <a href='#add-post'>{{i18n 'Add post'}}</a>
+{{/if}}
+
+
+</div>

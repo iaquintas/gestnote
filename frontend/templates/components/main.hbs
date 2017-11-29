@@ -1,28 +1,41 @@
+
 <div>
 <header>
     <div id="cabecera">
       <img id="logotipo" src="../View/img/logotipo.png">
     </div>
 
+    
+    <div id="idioma" class="dropdown show">
+      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{i18n 'Hello'}} {{currentUser}}
+      </a>
+
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <input type="button" id='logoutbutton' value="{{i18n 'logout'}}"></input>
+      </div>
+    </div>
+
+
     <nav class="navbar navbar-expand-lg ">
-    <a class="navbar-brand" href="#">{{i18n 'Mis notas'}}</a>
+    <a class="navbar-brand" href="#">{{i18n 'My notes'}}</a>
 
     <div class="navbar navbar-expand-lg" id="navbarNavDropdown">
-      <ul class="navbar-nav" id="menus">
-        <li class="nav-item active">
-          <a class="nav-link" href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>{{i18n 'Nueva Nota'}}</a>
-        </li>
+          <ul class="navbar-nav" id="menus">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"><i class="fa fa-plus-square-o" aria-hidden="true"></i>{{i18n 'Add note'}}</a>
+            </li>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{i18n 'Ordenar por:'}}</a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <a class="dropdown-item" href="#">{{i18n 'Creadas'}}</a>
-            <a class="dropdown-item" href="#">{{i18n 'Compartidas'}}</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{i18n 'Order by:'}}</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="#">{{i18n 'Created'}}</a>
+                <a class="dropdown-item" href="#">{{i18n 'Shared'}}</a>
 
           </div>
 
-    </li>
-    </ul>
+            </li>
+          </ul>
 
 
 
@@ -31,30 +44,30 @@
     </nav>
 
 
-    <nav id="menu">
+          <nav id="menu">
 
 
-      <br>
-    <ul>
+            <br>
+          <ul>
 
-        <ul>
-        <div id="userbar">Loading...</div>
-        </ul>
-    </ul>
-
-
-  </nav>
+              <ul>
+              <div id="userbar">Loading...</div>
+              </ul>
+          </ul>
 
 
+        </nav>
 
 
-</header>
-
-<!-- router contents -->
-<main id="maincontent">Loading...</main>
 
 
-<footer>
-  <div id="languagecontrol">Loading...</div>
-</footer>
-</div>
+      </header>
+
+      <!-- router contents -->
+      <main id="maincontent">Loading...</main>
+
+
+      <footer>
+        <div id="languagecontrol">Loading...</div>
+      </footer>
+      </div>
