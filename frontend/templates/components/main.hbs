@@ -5,17 +5,17 @@
       <img id="logotipo" src="../View/img/logotipo.png">
     </div>
 
-    
+    {{#if user.isLogged}}
     <div id="idioma" class="dropdown show">
       <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{i18n 'Hello'}} {{currentUser}}
+          {{i18n 'Hello'}} {{user.currentUser}}
       </a>
 
       <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <input type="button" id='logoutbutton' value="{{i18n 'logout'}}"></input>
       </div>
     </div>
-
+    {{/if}}
 
     <nav class="navbar navbar-expand-lg ">
     <a class="navbar-brand" href="#">{{i18n 'My notes'}}</a>
