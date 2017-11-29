@@ -3,7 +3,7 @@ class PostsService {
 
   }
 
-  findAllPosts() {
+  findAllPosts(user) {
     return $.get(AppConfig.backendServer+'/rest/post');
   }
 

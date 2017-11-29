@@ -1,6 +1,6 @@
-class PostEditComponent extends Fronty.ModelComponent {
+class PostShareComponent extends Fronty.ModelComponent {
   constructor(postsModel, userModel, router) {
-    super(Handlebars.templates.postedit, postsModel);
+    super(Handlebars.templates.postshare, postsModel);
     this.postsModel = postsModel; // posts
     this.userModel = userModel; // global
     this.addModel('user', userModel);
@@ -9,8 +9,8 @@ class PostEditComponent extends Fronty.ModelComponent {
     this.postsService = new PostsService();
 
     this.addEventListener('click', '#savebutton', () => {
-      this.postsModel.selectedPost.titulo = $('#titulo').val();
-      this.postsModel.selectedPost.contenido = $('#contenido').val();
+      this.postsModel.selectedPost.title = $('#title').val();
+      this.postsModel.selectedPost.content = $('#content').val();
       this.postsService.savePost(this.postsModel.selectedPost)
         .then(() => {
           this.postsModel.set((model) => {

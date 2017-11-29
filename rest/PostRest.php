@@ -45,7 +45,8 @@ class PostRest extends BaseRest {
 				"numero" => $post->getnumero(),
 				"titulo" => $post->gettitulo(),
 				"contenido" => $post->getcontenido(),
-				"author_numero" => $post->getautor()->getusername()
+				"author_numero" => $post->getautor()->getusername(),
+				"compartido" => $post->getcompartido()
 			));
 		}
 
@@ -63,6 +64,7 @@ class PostRest extends BaseRest {
 			$post->settitulo($data->titulo);
 			$post->setcontenido($data->contenido);
 			$post->setautor($currentUser);
+			$post->setcompartido($data->compartido);
 		}
 
 		try {
@@ -102,11 +104,12 @@ class PostRest extends BaseRest {
 			"numero" => $post->getnumero(),
 			"titulo" => $post->gettitulo(),
 			"contenido" => $post->getcontenido(),
-			"author_numero" => $post->getautor()->getUsername()
+			"author_numero" => $post->getautor()->getUsername(),
+			"compartido" => $post->getcompartido()
 
 		);
 
-		
+
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
 		header('Content-Type: application/json');
 		echo(json_encode($post_array));
@@ -128,6 +131,7 @@ class PostRest extends BaseRest {
 		}
 		$post->settitulo($data->titulo);
 		$post->setcontenido($data->contenido);
+		$post->setcompartido($data->compartido);
 
 		try {
 			// valnumeroate Post object
@@ -152,9 +156,7 @@ class PostRest extends BaseRest {
 		}
 		// Check if the Post author is the currentUser (in Session)
 		if ($post->getautor() != $currentUser) {
-			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbnumeroden');
-			echo("you are not the author of this post");
-			return;
+			$this->postMapper->deleteC($post);
 		}
 
 		$this->postMapper->delete($post);

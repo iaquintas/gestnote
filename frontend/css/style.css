@@ -215,10 +215,11 @@ a{
   color: #000000;
 }
 
-#botoneditar{
+#savebutton,#backbutton{
   margin-bottom: 1cm;
   background-color: #0080ff;
   color: #ffffff;
+  margin-left: 0.5cm;
 
 }
 #botonvuelve{

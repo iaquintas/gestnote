@@ -18,7 +18,7 @@ class PostModel extends Fronty.Model {
       this.contenido = contenido;
     }
     if (compartido) {
-      this.titulo = compartido;
+      this.compartido = compartido;
     }
 
 

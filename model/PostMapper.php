@@ -34,6 +34,7 @@ class PostMapper {
 	* @return mixed Array of Post instances (without comments)
 	*/
 	public function findAll() {
+		//$stmt = $this->db->query("SELECT * FROM notas, usuarios,comparte WHERE usuarios.login = notas.AUTOR OR (usuarios.login=comparte.login and comparte.numero=notas.numero)");
 		$stmt = $this->db->query("SELECT * FROM notas, usuarios WHERE usuarios.login = notas.AUTOR");
 		$posts_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -139,6 +140,13 @@ class PostMapper {
 			return $this->db->lastInsertId();
 		}
 
+		public function share(Post $post) {
+
+			$stmt = $this->db->prepare("INSERT INTO comparte(Numero,login,borrado) values (?,?,?)");
+			$stmt->execute(array($post->getnumero(),$post->getcompartido(), "NO"));
+			return $this->db->lastInsertId();
+		}
+
 		/**
 		* Updates a Post in the database
 		*
@@ -163,4 +171,11 @@ class PostMapper {
 			$stmt->execute(array($post->getnumero()));
 		}
 
-	}
+		public function deleteC(Post $post) {
+			$stmt = $this->db->prepare("UPDATE comparte SET borrado='?' WHERE Numero=?");
+			$stmt->execute(array("SI", $post->getnumero()));
+		}
+
+
+
+}

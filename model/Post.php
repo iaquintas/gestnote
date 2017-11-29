@@ -142,7 +142,7 @@ class Post {
 	* @param mixed $compartido the compartido list of this post
 	* @return vonumero
 	*/
-	public function setcompartido(array $compartido) {
+	public function setcompartido($compartido) {
 		$this->compartido = $compartido;
 	}
 
