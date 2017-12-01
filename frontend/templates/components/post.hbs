@@ -1,8 +1,11 @@
 <div key="{{numero}}">
-  <a href="#view-post?id={{numero}}">{{titulo}}</a><br><br>
+  <div id="titulonota">
+    <h3>{{titulo}} </h3>
+  </div><br><br>
   <p>{{contenido}} </p>
+  
 
-<div class="actions">
+<div class="botones">
     {{#if_eq user.currentUser autor_id}}
 
       <a class="fa fa-trash" id="remove-button" item="{{numero}}"></a>

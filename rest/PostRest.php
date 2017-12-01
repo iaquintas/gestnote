@@ -119,6 +119,7 @@ class PostRest extends BaseRest {
 		$currentUser = parent::authenticateUser();
 
 		$post = $this->postMapper->findBynumero($postnumero);
+
 		if ($post == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
 			echo("Post with numero ".$postnumero." not found");
