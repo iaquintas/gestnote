@@ -1,12 +1,12 @@
 <div>
   <div class="form-group col-md-6">
   {{i18n 'Title'}}:
-  <input type="text" class="form-control" id="titulo" value="{{selectedPost.title}}">
+  <input type="text" class="form-control" id="titulo" value="{{selectedPost.titulo}}">
   </div>
   <br>
   <div class="form-group col-md-6">
   {{#i18n}}{{errors.title}}{{/i18n}}<br> {{i18n 'Content'}}:
-  <textarea id="contenido" class="form-control" rows="3">{{selectedPost.content}}</textarea>
+  <textarea id="contenido" class="form-control" rows="3">{{selectedPost.contenido}}</textarea>
   {{#i18n}}{{errors.content}}{{/i18n}}
   </div>
   <br>

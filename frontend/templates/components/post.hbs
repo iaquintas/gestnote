@@ -1,0 +1,13 @@
+<div key="{{numero}}">
+  <a href="#view-post?id={{numero}}">{{titulo}}</a>
+  <p>{{autor_id}} ({{user.currentUser}})</p>
+
+<div class="actions">
+    {{#if_eq user.currentUser autor_id}}
+
+      <button class="remove-button" item="{{numero}}">{{i18n 'remove'}}</button>
+      <button class="edit-button" item="{{numero}}">{{i18n 'edit'}}</button>
+      <button class="share-button" item="{{numero}}">{{i18n 'Share'}}</button>
+    {{/if_eq}}
+  </div>
+</div>

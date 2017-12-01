@@ -16,6 +16,11 @@
       {{/each}}
     </tbody>
     </table>
+    aaaa
+    {{#each posts}}
+    bbbb
+      <div fronty-component="PostComponent" key="{{numero}}" model="posts[{{@index}}]" id="item2-{{numero}}"></div>
+    {{/each}}
   {{/if}}
 </div>
 {{#if user.isLogged}}
