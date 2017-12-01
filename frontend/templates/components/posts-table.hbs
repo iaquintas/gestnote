@@ -2,29 +2,22 @@
 
 <div id="posts-table">
   {{#if posts.length}}
-    <table border="1">
-      <thead>
-      <tr>
-        <th>{{i18n 'Titulo'}}</th>
-        <th>{{i18n 'Autor'}}</th>
-        <th>{{i18n 'Actions'}}</th>
-      </tr>
-      </thead>
-      <tbody>
-      {{#each posts}}
-        <tr fronty-component="PostRowComponent" key="{{numero}}" model="posts[{{@index}}]" id="item-{{numero}}"></tr>
-      {{/each}}
-    </tbody>
-    </table>
-    aaaa
+
+      <div class="imagenes">
     {{#each posts}}
-    bbbb
+
+            <div class="image">
+                <img id="posit" src="../View/img/nota2.png">
+                <h2>
+
       <div fronty-component="PostComponent" key="{{numero}}" model="posts[{{@index}}]" id="item2-{{numero}}"></div>
+    </h2>
+    </div>
+
     {{/each}}
+
+      </div>
   {{/if}}
 </div>
-{{#if user.isLogged}}
-  <a href='#add-post'>{{i18n 'Add post'}}</a>
 
-{{/if}}
 </div>

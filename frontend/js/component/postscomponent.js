@@ -29,44 +29,15 @@ class PostsComponent extends Fronty.ModelComponent {
 
   // Override
   createChildModelComponent(className, element, id, modelItem) {
-    return new PostRowComponent(modelItem, this.userModel, this.router, this);
+    return new PostComponent(modelItem, this.userModel, this.router, this);
   }
 }
 
-class PostRowComponent extends Fronty.ModelComponent {
-  constructor(postModel, userModel, router, postsComponent) {
-    super(Handlebars.templates.postrow, postModel, null, null);
 
-    this.postsComponent = postsComponent;
-
-    this.userModel = userModel;
-    this.addModel('user', userModel); // a secondary model
-
-    this.router = router;
-
-    this.addEventListener('click', '.remove-button', (event) => {
-      if (confirm(I18n.translate('Are you sure?'))) {
-        var postId = event.target.getAttribute('item');
-        this.postsComponent.postsService.deletePost(postId)
-          .fail(() => {
-            alert('post cannot be deleted')
-          })
-          .always(() => {
-            this.postsComponent.updatePosts();
-          });
-      }
-    });
-
-    this.addEventListener('click', '.edit-button', (event) => {
-      var postId = event.target.getAttribute('item');
-      this.router.goToPage('edit-post?id=' + postId);
-    });
-  }
-}
 
   class PostComponent extends Fronty.ModelComponent {
     constructor(postModel, userModel, router, postsComponent) {
-      super(Handlebars.templates.postrow, postModel, null, null);
+      super(Handlebars.templates.post, postModel, null, null);
 
       this.postsComponent = postsComponent;
 
@@ -75,7 +46,7 @@ class PostRowComponent extends Fronty.ModelComponent {
 
       this.router = router;
 
-      this.addEventListener('click', '.remove-button', (event) => {
+      this.addEventListener('click', '#remove-button', (event) => {
         if (confirm(I18n.translate('Are you sure?'))) {
           var postId = event.target.getAttribute('item');
           this.postsComponent.postsService.deletePost(postId)
@@ -88,7 +59,7 @@ class PostRowComponent extends Fronty.ModelComponent {
         }
       });
 
-      this.addEventListener('click', '.edit-button', (event) => {
+      this.addEventListener('click', '#edit-button', (event) => {
         var postId = event.target.getAttribute('item');
         this.router.goToPage('edit-post?id=' + postId);
       });

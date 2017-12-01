@@ -72,6 +72,8 @@ class MainComponent extends Fronty.RouterComponent {
     return userbar;
   }
 
+
+
   _createLanguageComponent() {
     var languageComponent = new Fronty.ModelComponent(Handlebars.templates.language, this.routerModel, 'languagecontrol');
     // language change links
