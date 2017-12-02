@@ -33,17 +33,32 @@ class PostMapper {
 	* @throws PDOException if a database error occurs
 	* @return mixed Array of Post instances (without comments)
 	*/
-	public function findAll() {
+	public function findAll($currentUser) {
+
 		//$stmt = $this->db->query("SELECT * FROM notas, usuarios,comparte WHERE usuarios.login = notas.AUTOR OR (usuarios.login=comparte.login and comparte.numero=notas.numero)");
-		$stmt = $this->db->query("SELECT * FROM notas, usuarios WHERE usuarios.login = notas.AUTOR");
+		$stmt = $this->db->query("SELECT notas.Numero,notas.AUTOR,notas.TITULO,notas.CONTENIDO,notas.COMPARTIDO FROM notas,comparte WHERE(notas.Numero=comparte.Numero AND comparte.login='$currentUser' AND comparte.BORRADO='NO')");
 		$posts_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		$posts = array();
 
 		foreach ($posts_db as $post) {
-			$author = new User($post["login"]);
+			$author = new User($post["AUTOR"]);
 			array_push($posts, new Post($post["Numero"], $post["TITULO"],  $post["CONTENIDO"], $author, $post["COMPARTIDO"]));
 		}
+
+		$stmt = $this->db->query("SELECT * FROM notas WHERE AUTOR='$currentUser'");
+		$postsC_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+		foreach ($postsC_db as $post) {
+			$author = new User($post["AUTOR"]);
+			array_push($posts, new Post($post["Numero"], $post["TITULO"],  $post["CONTENIDO"], $author, $post["COMPARTIDO"]));
+		}
+
+
+
+
 
 		return $posts;
 	}
@@ -155,8 +170,8 @@ class PostMapper {
 		* @return voNumero
 		*/
 		public function update(Post $post) {
-			$stmt = $this->db->prepare("UPDATE notas set titulo=?, contenido=? where Numero=?");
-			$stmt->execute(array($post->gettitulo(), $post->getcontenido(), $post->getnumero()));
+			$stmt = $this->db->prepare("UPDATE notas set titulo=?, contenido=?,compartido=? where Numero=?");
+			$stmt->execute(array($post->gettitulo(), $post->getcontenido(),$post->getcompartido(), $post->getnumero()));
 		}
 
 		/**
@@ -171,9 +186,9 @@ class PostMapper {
 			$stmt->execute(array($post->getnumero()));
 		}
 
-		public function deleteC(Post $post) {
-			$stmt = $this->db->prepare("UPDATE comparte SET borrado='?' WHERE Numero=?");
-			$stmt->execute(array("SI", $post->getnumero()));
+		public function deleteC(Post $post,$currentUser) {
+			$stmt = $this->db->prepare("UPDATE comparte SET borrado='SI' WHERE Numero=? AND login='$currentUser'");
+			$stmt->execute(array( $post->getnumero()));
 		}
 
 

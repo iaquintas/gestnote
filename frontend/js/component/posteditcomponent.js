@@ -11,7 +11,7 @@ class PostEditComponent extends Fronty.ModelComponent {
     this.addEventListener('click', '#savebutton', () => {
       this.postsModel.selectedPost.titulo = $('#titulo').val();
       this.postsModel.selectedPost.contenido = $('#contenido').val();
-      this.postsModel.selectedPost.compartido = $('#compartido').val();
+
       this.postsService.savePost(this.postsModel.selectedPost)
         .then(() => {
           this.postsModel.set((model) => {

@@ -11,16 +11,16 @@ class PostsService {
     return $.get(AppConfig.backendServer+'/rest/post/' + id);
   }
 
-  deletePost(id) {
+  deletePost(numero) {
     return $.ajax({
-      url: AppConfig.backendServer+'/rest/post/' + id,
+      url: AppConfig.backendServer+'/rest/post/' + numero,
       method: 'DELETE'
     });
   }
 
   savePost(post) {
     return $.ajax({
-      url: AppConfig.backendServer+'/rest/post/' + post.id,
+      url: AppConfig.backendServer+'/rest/post/' + post.numero,
       method: 'PUT',
       data: JSON.stringify(post),
       contentType: 'application/json'

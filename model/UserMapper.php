@@ -49,6 +49,20 @@ class UserMapper {
 		}
 	}
 
+	public function getUsers(){
+		$stmt = $this->db->prepare("SELECT login FROM usuarios");
+		$users_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+		$users = array();
+
+		foreach ($users_db as $user) {
+
+			array_push($users, $user);
+		}
+
+		return $users;
+	}
+
 	/**
 	* Checks if a given pair of username/password exists in the database
 	*

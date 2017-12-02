@@ -33,7 +33,10 @@ class PostRest extends BaseRest {
 	}
 
 	public function getPosts() {
-		$posts = $this->postMapper->findAll();
+
+		$currentUser = parent::authenticateUser();
+
+		$posts = $this->postMapper->findAll($currentUser->getUsername());
 
 		// json_encode Post objects.
 		// since Post objects have private fields, the PHP json_encode will not
@@ -64,7 +67,8 @@ class PostRest extends BaseRest {
 			$post->settitulo($data->titulo);
 			$post->setcontenido($data->contenido);
 			$post->setautor($currentUser);
-			$post->setcompartido($data->compartido);
+
+
 		}
 
 		try {
@@ -120,6 +124,7 @@ class PostRest extends BaseRest {
 
 		$post = $this->postMapper->findBynumero($postnumero);
 
+
 		if ($post == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
 			echo("Post with numero ".$postnumero." not found");
@@ -137,6 +142,9 @@ class PostRest extends BaseRest {
 		try {
 			// valnumeroate Post object
 			$post->checkIsValnumeroForUpdate(); // if it fails, ValnumeroationException
+			if($post->getcompartido()){
+				$this->postMapper->share($post);
+			}
 			$this->postMapper->update($post);
 			header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
 		}catch (ValnumeroationException $e) {
@@ -148,6 +156,7 @@ class PostRest extends BaseRest {
 
 	public function deletePost($postnumero) {
 		$currentUser = parent::authenticateUser();
+
 		$post = $this->postMapper->findBynumero($postnumero);
 
 		if ($post == NULL) {
@@ -157,10 +166,13 @@ class PostRest extends BaseRest {
 		}
 		// Check if the Post author is the currentUser (in Session)
 		if ($post->getautor() != $currentUser) {
-			$this->postMapper->deleteC($post);
+
+			$this->postMapper->deleteC($post,$currentUser->getUsername());
+		}else{
+			$this->postMapper->delete($post);
 		}
 
-		$this->postMapper->delete($post);
+
 
 		header($_SERVER['SERVER_PROTOCOL'].' 204 No contenido');
 	}

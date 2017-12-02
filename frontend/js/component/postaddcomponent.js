@@ -13,7 +13,7 @@ class PostAddComponent extends Fronty.ModelComponent {
       var newPost = {};
       newPost.titulo = $('#titulo').val();
       newPost.contenido = $('#contenido').val();
-      newPost.compartido = $('#compartido').val();
+    
       newPost.autor = this.userModel.currentUser;
       this.postsService.addPost(newPost)
         .then(() => {

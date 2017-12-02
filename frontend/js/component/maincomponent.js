@@ -29,7 +29,7 @@ class MainComponent extends Fronty.RouterComponent {
       },
 
       'share-post': {
-        //component: new PostShareComponent(postsModel, userModel, this),
+        component: new PostShareComponent(postsModel, userModel, this),
         title: 'Share Post'
       },
 

@@ -1,5 +1,7 @@
-<div>
 
+
+<div>
+{{#if user.isLogged}}
 <div id="posts-table">
   {{#if posts.length}}
 
@@ -19,5 +21,5 @@
       </div>
   {{/if}}
 </div>
-
+  {{/if}}
 </div>
