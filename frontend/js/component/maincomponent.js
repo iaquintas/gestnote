@@ -13,24 +13,24 @@ class MainComponent extends Fronty.RouterComponent {
     super.setRouterConfig({
       posts: {
         component: new PostsComponent(postsModel, userModel, this),
-        title: 'Posts'
+        title: 'Notes'
       },
       'view-post': {
         component: new PostViewComponent(postsModel, userModel, this),
-        title: 'Post'
+        title: 'Note'
       },
       'edit-post': {
         component: new PostEditComponent(postsModel, userModel, this),
-        title: 'Edit Post'
+        title: 'Edit Note'
       },
       'add-post': {
         component: new PostAddComponent(postsModel, userModel, this),
-        title: 'Add Post'
+        title: 'Add Note'
       },
 
       'share-post': {
         component: new PostShareComponent(postsModel, userModel, this),
-        title: 'Share Post'
+        title: 'Share Note'
       },
 
 
