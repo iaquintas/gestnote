@@ -6,7 +6,7 @@
     </div>
 
     {{#if user.isLogged}}
-    
+      <div id="userbar">Loading...</div>
 
     <nav class="navbar navbar-expand-lg ">
     <a class="navbar-brand" href="#">{{i18n 'My notes'}}</a>
@@ -25,19 +25,19 @@
 
     </div>
     </nav>
-    {{/if}}
 
-          <nav id="menu">
+      <nav id="menu">
+    {{else}}
 
 
             <br>
-          <ul>
+            <div id="bienvenido" >
+            {{i18n '¡Welcome to GestNote!'}} <br>
+            {{i18n 'Not registered yet?'}} <br> <br>
 
-              <ul>
-              <div id="userbar">Loading...</div>
-              </ul>
-          </ul>
-
+              <a href='#login'>{{i18n 'Login'}}</a>
+            </div>
+            {{/if}}
 
         </nav>
 

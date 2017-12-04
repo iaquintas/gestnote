@@ -48,7 +48,15 @@ class MainComponent extends Fronty.RouterComponent {
 
 
     var userService = new UserService();
-    this.addChildComponent(this._createUserBarComponent(userModel, userService));
+    this.userBarComponent = this._createUserBarComponent(userModel, userService);
+    this.addChildComponent(this.userBarComponent);
+    userModel.addObserver(() => {
+      if (!userModel.isLogged) {
+        this.userBarComponent.stop();
+      } else {
+        this.userBarComponent.start();
+      }
+    });
     this.addChildComponent(this._createLanguageComponent());
 
   }
