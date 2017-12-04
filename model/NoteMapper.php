@@ -90,58 +90,7 @@ class NoteMapper {
 		}
 	}
 
-	/**
-	* Loads a Note from the database given its Numero
-	*
-	* It includes all the comments
-	*
-	* @throws PDOException if a database error occurs
-	* @return Note The Note instances (without comments). NULL
-	* if the Note is not found
-	*/
-	/*
-	public function findByNumeroWithComments($noteNumero){
-		$stmt = $this->db->prepare("SELECT
-			P.Numero as 'note.Numero',
-			P.titulo as 'note.titulo',
-			P.CONTENIDO as 'note.CONTENIDO',
-			P.author as 'note.author',
-			C.Numero as 'comment.Numero',
-			C.CONTENIDO as 'comment.CONTENIDO',
-			C.note as 'comment.note',
-			C.author as 'comment.author'
-
-			FROM notes P LEFT OUTER JOIN comments C
-			ON P.Numero = C.note
-			WHERE
-			P.Numero=? ");
-
-			$stmt->execute(array($noteNumero));
-			$note_wt_comments= $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-			if (sizeof($note_wt_comments) > 0) {
-				$note = new Note($note_wt_comments[0]["note.Numero"],
-				$note_wt_comments[0]["note.titulo"],
-				$note_wt_comments[0]["note.CONTENIDO"],
-				new User($note_wt_comments[0]["note.author"]));
-				$comments_array = array();
-				if ($note_wt_comments[0]["comment.Numero"]!=null) {
-					foreach ($note_wt_comments as $comment){
-						$comment = new Comment( $comment["comment.Numero"],
-						$comment["comment.CONTENIDO"],
-						new User($comment["comment.author"]),
-						$note);
-						array_push($comments_array, $comment);
-					}
-				}
-				$note->setComments($comments_array);
-
-				return $note;
-			}else {
-				return NULL;
-			}
-		}
-*/
+	
 		/**
 		* Saves a Note into the database
 		*

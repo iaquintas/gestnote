@@ -209,9 +209,9 @@ class NoteRest extends BaseRest {
 // URI-MAPPING for this Rest endpoint
 $noteRest = new NoteRest();
 URIDispatcher::getInstance()
-->map("GET",	"/post", array($noteRest,"getNotes"))
-->map("GET",	"/post/$1", array($noteRest,"readNote"))
-->map("POST", "/post", array($noteRest,"createNote"))
-->map("POST", "/post/$1/comment", array($noteRest,"createComment"))
-->map("PUT",	"/post/$1", array($noteRest,"updateNote"))
-->map("DELETE", "/post/$1", array($noteRest,"deleteNote"));
+->map("GET",	"/note", array($noteRest,"getNotes"))
+->map("GET",	"/note/$1", array($noteRest,"readNote"))
+->map("POST", "/note", array($noteRest,"createNote"))
+->map("POST", "/note/$1/comment", array($noteRest,"createComment"))
+->map("PUT",	"/note/$1", array($noteRest,"updateNote"))
+->map("DELETE", "/note/$1", array($noteRest,"deleteNote"));

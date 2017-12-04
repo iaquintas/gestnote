@@ -9,10 +9,10 @@ class NoteEditComponent extends Fronty.ModelComponent {
     this.notesService = new NotesService();
 
     this.addEventListener('click', '#savebutton', () => {
-      this.notesModel.selectedPost.titulo = $('#titulo').val();
-      this.notesModel.selectedPost.contenido = $('#contenido').val();
+      this.notesModel.selectedNote.titulo = $('#titulo').val();
+      this.notesModel.selectedNote.contenido = $('#contenido').val();
 
-      this.notesService.savePost(this.notesModel.selectedPost)
+      this.notesService.saveNote(this.notesModel.selectedNote)
         .then(() => {
           this.notesModel.set((model) => {
             model.errors = []
@@ -49,9 +49,9 @@ class NoteEditComponent extends Fronty.ModelComponent {
   onStart() {
     var selectedId = this.router.getRouteQueryParam('id');
     if (selectedId != null) {
-      this.notesService.findPost(selectedId)
-        .then((post) => {
-          this.notesModel.setSelectedPost(post);
+      this.notesService.findNote(selectedId)
+        .then((note) => {
+          this.notesModel.setSelectedNote(note);
         });
     }
   }
