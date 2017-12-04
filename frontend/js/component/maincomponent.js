@@ -5,31 +5,27 @@ class MainComponent extends Fronty.RouterComponent {
     // models instantiation
     // we can instantiate models at any place
     var userModel = new UserModel();
-    var postsModel = new PostsModel();
+    var notesModel = new NotesModel();
     this.addModel('user', userModel);
 
 
 
     super.setRouterConfig({
-      posts: {
-        component: new PostsComponent(postsModel, userModel, this),
+      notes: {
+        component: new NotesComponent(notesModel, userModel, this),
         title: 'Notes'
       },
-      'view-post': {
-        component: new PostViewComponent(postsModel, userModel, this),
-        title: 'Note'
-      },
-      'edit-post': {
-        component: new PostEditComponent(postsModel, userModel, this),
+      'edit-note': {
+        component: new NoteEditComponent(notesModel, userModel, this),
         title: 'Edit Note'
       },
-      'add-post': {
-        component: new PostAddComponent(postsModel, userModel, this),
+      'add-note': {
+        component: new NoteAddComponent(notesModel, userModel, this),
         title: 'Add Note'
       },
 
-      'share-post': {
-        component: new PostShareComponent(postsModel, userModel, this),
+      'share-note': {
+        component: new NoteShareComponent(notesModel, userModel, this),
         title: 'Share Note'
       },
 
@@ -38,7 +34,7 @@ class MainComponent extends Fronty.RouterComponent {
         component: new LoginComponent(userModel, this),
         title: 'Login'
       },
-      defaultRoute: 'posts'
+      defaultRoute: 'notes'
     });
 
     Handlebars.registerHelper('currentPage', () => {

@@ -11,7 +11,7 @@
 *
 * @autor lipnumeroo <lipnumeroo@gmail.com>
 */
-class Post {
+class Note {
 
 	/**
 	* The numero of this post

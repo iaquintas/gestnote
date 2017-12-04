@@ -31,18 +31,16 @@ Promise.all([
       Handlebars.templates.user = Handlebars.compile(source)),
     loadTextFile('templates/components/login.hbs').then((source) =>
       Handlebars.templates.login = Handlebars.compile(source)),
-    loadTextFile('templates/components/posts-table.hbs').then((source) =>
-      Handlebars.templates.poststable = Handlebars.compile(source)),
-    loadTextFile('templates/components/post-edit.hbs').then((source) =>
-      Handlebars.templates.postedit = Handlebars.compile(source)),
-    loadTextFile('templates/components/post-view.hbs').then((source) =>
-      Handlebars.templates.postview = Handlebars.compile(source)),
-      loadTextFile('templates/components/post-share.hbs').then((source) =>
-      Handlebars.templates.postshare = Handlebars.compile(source)),
-    loadTextFile('templates/components/post-row.hbs').then((source) =>
-      Handlebars.templates.postrow = Handlebars.compile(source)),
-    loadTextFile('templates/components/post.hbs').then((source) =>
-        Handlebars.templates.post = Handlebars.compile(source)),
+    loadTextFile('templates/components/notes-table.hbs').then((source) =>
+      Handlebars.templates.notestable = Handlebars.compile(source)),
+    loadTextFile('templates/components/note-edit.hbs').then((source) =>
+      Handlebars.templates.noteedit = Handlebars.compile(source)),
+      loadTextFile('templates/components/note-share.hbs').then((source) =>
+      Handlebars.templates.noteshare = Handlebars.compile(source)),
+    loadTextFile('templates/components/note-row.hbs').then((source) =>
+      Handlebars.templates.noterow = Handlebars.compile(source)),
+    loadTextFile('templates/components/note.hbs').then((source) =>
+        Handlebars.templates.note = Handlebars.compile(source)),
 
   ])
   .then(() => {

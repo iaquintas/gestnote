@@ -1,28 +1,28 @@
-class PostAddComponent extends Fronty.ModelComponent {
-  constructor(postsModel, userModel, router) {
-    super(Handlebars.templates.postedit, postsModel);
-    this.postsModel = postsModel; // posts
+class NoteAddComponent extends Fronty.ModelComponent {
+  constructor(notesModel, userModel, router) {
+    super(Handlebars.templates.noteedit, notesModel);
+    this.notesModel = notesModel; // notes
 
     this.userModel = userModel; // global
     this.addModel('user', userModel);
     this.router = router;
 
-    this.postsService = new PostsService();
+    this.notesService = new NotesService();
 
     this.addEventListener('click', '#savebutton', () => {
-      var newPost = {};
-      newPost.titulo = $('#titulo').val();
-      newPost.contenido = $('#contenido').val();
-    
-      newPost.autor = this.userModel.currentUser;
-      this.postsService.addPost(newPost)
+      var newNote = {};
+      newNote.titulo = $('#titulo').val();
+      newNote.contenido = $('#contenido').val();
+
+      newNote.autor = this.userModel.currentUser;
+      this.notesService.addNote(newNote)
         .then(() => {
-          this.router.goToPage('posts');
+          this.router.goToPage('notes');
         })
         .fail((xhr, errorThrown, statusText) => {
           if (xhr.status == 400) {
-            this.postsModel.set(() => {
-              this.postsModel.errors = xhr.responseJSON;
+            this.notesModel.set(() => {
+              this.notesModel.errors = xhr.responseJSON;
             });
           } else {
             alert('an error has occurred during request: ' + statusText + '.' + xhr.responseText);
@@ -32,11 +32,11 @@ class PostAddComponent extends Fronty.ModelComponent {
 
     this.addEventListener('click', '#backbutton', () => {
 
-        this.router.goToPage('posts');
+        this.router.goToPage('notes');
         fail((xhr, errorThrown, statusText) => {
           if (xhr.status == 400) {
-            this.postsModel.set(() => {
-              this.postsModel.errors = xhr.responseJSON;
+            this.notesModel.set(() => {
+              this.notesModel.errors = xhr.responseJSON;
             });
           } else {
             alert('an error has occurred during request: ' + statusText + '.' + xhr.responseText);

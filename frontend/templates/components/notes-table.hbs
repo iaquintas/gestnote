@@ -2,17 +2,17 @@
 
 <div>
 {{#if user.isLogged}}
-<div id="posts-table">
-  {{#if posts.length}}
+<div id="notes-table">
+  {{#if notes.length}}
 
       <div class="imagenes">
-    {{#each posts}}
+    {{#each notes}}
 
             <div class="image">
                 <img id="posit" src="../View/img/nota2.png">
                 <h2>
 
-      <div fronty-component="PostComponent" key="{{numero}}" model="posts[{{@index}}]" id="item2-{{numero}}"></div>
+      <div fronty-component="NoteComponent" key="{{numero}}" model="notes[{{@index}}]" id="item2-{{numero}}"></div>
     </h2>
     </div>
 

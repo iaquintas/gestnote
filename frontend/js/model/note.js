@@ -1,7 +1,7 @@
-class PostModel extends Fronty.Model {
+class NoteModel extends Fronty.Model {
 
   constructor(numero,autor_id,titulo,contenido,compartido) {
-    super('PostModel'); //call super
+    super('NoteModel'); //call super
 
     if (numero) {
       this.numero = numero;

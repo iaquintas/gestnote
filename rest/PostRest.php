@@ -3,8 +3,8 @@
 require_once(__DIR__."/../model/User.php");
 require_once(__DIR__."/../model/UserMapper.php");
 
-require_once(__DIR__."/../model/Post.php");
-require_once(__DIR__."/../model/PostMapper.php");
+require_once(__DIR__."/../model/Note.php");
+require_once(__DIR__."/../model/NoteMapper.php");
 
 require_once(__DIR__."/../model/Comment.php");
 require_once(__DIR__."/../model/CommentMapper.php");
@@ -21,72 +21,72 @@ require_once(__DIR__."/BaseRest.php");
 * are intended to be mapped as callbacks using the URnumeroispatcher class.
 *
 */
-class PostRest extends BaseRest {
-	private $postMapper;
+class NoteRest extends BaseRest {
+	private $noteMapper;
 	private $commentMapper;
 
 	public function __construct() {
 		parent::__construct();
 
-		$this->postMapper = new PostMapper();
+		$this->noteMapper = new NoteMapper();
 		$this->commentMapper = new CommentMapper();
 	}
 
-	public function getPosts() {
+	public function getNotes() {
 
 		$currentUser = parent::authenticateUser();
 
-		$posts = $this->postMapper->findAll($currentUser->getUsername());
+		$notes = $this->noteMapper->findAll($currentUser->getUsername());
 
-		// json_encode Post objects.
-		// since Post objects have private fields, the PHP json_encode will not
+		// json_encode Note objects.
+		// since Note objects have private fields, the PHP json_encode will not
 		// encode them, so we will create an intermediate array using getters and
 		// encode it finally
-		$posts_array = array();
-		foreach($posts as $post) {
-			array_push($posts_array, array(
-				"numero" => $post->getnumero(),
-				"titulo" => $post->gettitulo(),
-				"contenido" => $post->getcontenido(),
-				"author_numero" => $post->getautor()->getusername(),
-				"compartido" => $post->getcompartido()
+		$notes_array = array();
+		foreach($notes as $note) {
+			array_push($notes_array, array(
+				"numero" => $note->getnumero(),
+				"titulo" => $note->gettitulo(),
+				"contenido" => $note->getcontenido(),
+				"author_numero" => $note->getautor()->getusername(),
+				"compartido" => $note->getcompartido()
 			));
 		}
 
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
 		header('Content-Type: application/json');
-		echo(json_encode($posts_array));
+		echo(json_encode($notes_array));
 	}
 
-	public function createPost($data) {
+	public function createNote($data) {
 		$currentUser = parent::authenticateUser();
 
-		$post = new Post();
+		$note = new Note();
 
 		if (isset($data->titulo) && isset($data->contenido)) {
-			$post->settitulo($data->titulo);
-			$post->setcontenido($data->contenido);
-			$post->setautor($currentUser);
+			$note->settitulo($data->titulo);
+			$note->setcontenido($data->contenido);
+			$note->setautor($currentUser);
 
 
 		}
 
 		try {
-			// valnumeroate Post object
-			$post->checkIsValnumeroForCreate(); // if it fails, ValnumeroationException
+			// valnumeroate Note object
+			$note->checkIsValnumeroForCreate(); // if it fails, ValnumeroationException
 
-			// save the Post object into the database
-			$postnumero = $this->postMapper->save($post);
+			// save the Note object into the database
+			$notenumero = $this->noteMapper->save($note);
 
 			// response OK. Also send post in contenido
 			header($_SERVER['SERVER_PROTOCOL'].' 201 Created');
-			header('Location: '.$_SERVER['REQUEST_URI']."/".$postnumero);
+			header('Location: '.$_SERVER['REQUEST_URI']."/".$notenumero);
 			header('Content-Type: application/json');
 			echo(json_encode(array(
-				"numero"=>$postnumero,
-				"titulo"=>$post->gettitulo(),
-				"contenido" => $post->getcontenido(),
-				"compartido"=> $post->getcompartido()
+				"numero"=>$notenumero,
+				"titulo"=>$note->gettitulo(),
+				"contenido" => $note->getcontenido(),
+				"compartido"=> $note->getcompartido()
 			)));
 
 		} catch (ValnumeroationException $e) {
@@ -96,56 +96,56 @@ class PostRest extends BaseRest {
 		}
 	}
 
-	public function readPost($postnumero) {
-		// find the Post object in the database
-		$post = $this->postMapper->findBynumero($postnumero);
-		if ($post == NULL) {
+	public function readNote($notenumero) {
+		// find the Note object in the database
+		$note = $this->noteMapper->findBynumero($notenumero);
+		if ($note == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with numero ".$postnumero." not found");
+			echo("Note with numero ".$notenumero." not found");
 		}
 
-		$post_array = array(
-			"numero" => $post->getnumero(),
-			"titulo" => $post->gettitulo(),
-			"contenido" => $post->getcontenido(),
-			"author_numero" => $post->getautor()->getUsername(),
-			"compartido" => $post->getcompartido()
+		$note_array = array(
+			"numero" => $note->getnumero(),
+			"titulo" => $note->gettitulo(),
+			"contenido" => $note->getcontenido(),
+			"author_numero" => $note->getautor()->getUsername(),
+			"compartido" => $note->getcompartido()
 
 		);
 
 
 		header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
 		header('Content-Type: application/json');
-		echo(json_encode($post_array));
+		echo(json_encode($note_array));
 	}
 
-	public function updatePost($postnumero, $data) {
+	public function updateNote($notenumero, $data) {
 		$currentUser = parent::authenticateUser();
 
-		$post = $this->postMapper->findBynumero($postnumero);
+		$note = $this->noteMapper->findBynumero($notenumero);
 
 
-		if ($post == NULL) {
+		if ($note == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with numero ".$postnumero." not found");
+			echo("Note with numero ".$notenumero." not found");
 		}
 
-		// Check if the Post author is the currentUser (in Session)
-		if ($post->getautor() != $currentUser) {
+		// Check if the Note author is the currentUser (in Session)
+		if ($note->getautor() != $currentUser) {
 			header($_SERVER['SERVER_PROTOCOL'].' 403 Forbnumeroden');
-			echo("you are not the author of this post");
+			echo("you are not the author of this note");
 		}
-		$post->settitulo($data->titulo);
-		$post->setcontenido($data->contenido);
-		
+		$note->settitulo($data->titulo);
+		$note->setcontenido($data->contenido);
+
 
 		try {
-			// valnumeroate Post object
-			$post->checkIsValnumeroForUpdate(); // if it fails, ValnumeroationException
-			if($post->getcompartido()){
-				$this->postMapper->share($post, $data->compartido);
+			// valnumeroate Note object
+			$note->checkIsValnumeroForUpdate(); // if it fails, ValnumeroationException
+			if($data->compartido){
+				$this->noteMapper->share($note, $data->compartido);
 			}
-			$this->postMapper->update($post);
+			$this->noteMapper->update($note);
 			header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');
 		}catch (ValnumeroationException $e) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
@@ -154,22 +154,22 @@ class PostRest extends BaseRest {
 		}
 	}
 
-	public function deletePost($postnumero) {
+	public function deleteNote($notenumero) {
 		$currentUser = parent::authenticateUser();
 
-		$post = $this->postMapper->findBynumero($postnumero);
+		$note = $this->noteMapper->findBynumero($notenumero);
 
-		if ($post == NULL) {
+		if ($note == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with numero ".$postnumero." not found");
+			echo("Note with numero ".$notenumero." not found");
 			return;
 		}
-		// Check if the Post author is the currentUser (in Session)
-		if ($post->getautor() != $currentUser) {
+		// Check if the Note author is the currentUser (in Session)
+		if ($note->getautor() != $currentUser) {
 
-			$this->postMapper->deleteC($post,$currentUser->getUsername());
+			$this->noteMapper->deleteC($note,$currentUser->getUsername());
 		}else{
-			$this->postMapper->delete($post);
+			$this->noteMapper->delete($note);
 		}
 
 
@@ -177,19 +177,19 @@ class PostRest extends BaseRest {
 		header($_SERVER['SERVER_PROTOCOL'].' 204 No contenido');
 	}
 
-	public function createComment($postnumero, $data) {
+	public function createComment($notenumero, $data) {
 		$currentUser = parent::authenticateUser();
 
-		$post = $this->postMapper->findBynumero($postnumero);
-		if ($post == NULL) {
+		$note = $this->noteMapper->findBynumero($notenumero);
+		if ($note == NULL) {
 			header($_SERVER['SERVER_PROTOCOL'].' 400 Bad request');
-			echo("Post with numero ".$postnumero." not found");
+			echo("Note with numero ".$notenumero." not found");
 		}
 
 		$comment = new Comment();
 		$comment->setcontenido($data->contenido);
 		$comment->setAuthor($currentUser);
-		$comment->setPost($post);
+		$comment->setNote($note);
 
 		try {
 			$comment->checkIsValnumeroForCreate(); // if it fails, ValnumeroationException
@@ -207,11 +207,11 @@ class PostRest extends BaseRest {
 }
 
 // URI-MAPPING for this Rest endpoint
-$postRest = new PostRest();
+$noteRest = new NoteRest();
 URIDispatcher::getInstance()
-->map("GET",	"/post", array($postRest,"getPosts"))
-->map("GET",	"/post/$1", array($postRest,"readPost"))
-->map("POST", "/post", array($postRest,"createPost"))
-->map("POST", "/post/$1/comment", array($postRest,"createComment"))
-->map("PUT",	"/post/$1", array($postRest,"updatePost"))
-->map("DELETE", "/post/$1", array($postRest,"deletePost"));
+->map("GET",	"/post", array($noteRest,"getNotes"))
+->map("GET",	"/post/$1", array($noteRest,"readNote"))
+->map("POST", "/post", array($noteRest,"createNote"))
+->map("POST", "/post/$1/comment", array($noteRest,"createComment"))
+->map("PUT",	"/post/$1", array($noteRest,"updateNote"))
+->map("DELETE", "/post/$1", array($noteRest,"deleteNote"));

@@ -1,27 +1,27 @@
-class PostEditComponent extends Fronty.ModelComponent {
-  constructor(postsModel, userModel, router) {
-    super(Handlebars.templates.postedit, postsModel);
-    this.postsModel = postsModel; // posts
+class NoteEditComponent extends Fronty.ModelComponent {
+  constructor(notesModel, userModel, router) {
+    super(Handlebars.templates.noteedit, notesModel);
+    this.notesModel = notesModel; // notes
     this.userModel = userModel; // global
     this.addModel('user', userModel);
     this.router = router;
 
-    this.postsService = new PostsService();
+    this.notesService = new NotesService();
 
     this.addEventListener('click', '#savebutton', () => {
-      this.postsModel.selectedPost.titulo = $('#titulo').val();
-      this.postsModel.selectedPost.contenido = $('#contenido').val();
+      this.notesModel.selectedPost.titulo = $('#titulo').val();
+      this.notesModel.selectedPost.contenido = $('#contenido').val();
 
-      this.postsService.savePost(this.postsModel.selectedPost)
+      this.notesService.savePost(this.notesModel.selectedPost)
         .then(() => {
-          this.postsModel.set((model) => {
+          this.notesModel.set((model) => {
             model.errors = []
           });
-          this.router.goToPage('posts');
+          this.router.goToPage('notes');
         })
         .fail((xhr, errorThrown, statusText) => {
           if (xhr.status == 400) {
-            this.postsModel.set((model) => {
+            this.notesModel.set((model) => {
               model.errors = xhr.responseJSON;
             });
           } else {
@@ -32,11 +32,11 @@ class PostEditComponent extends Fronty.ModelComponent {
     });
     this.addEventListener('click', '#backbutton', () => {
 
-        this.router.goToPage('posts');
+        this.router.goToPage('notes');
         fail((xhr, errorThrown, statusText) => {
           if (xhr.status == 400) {
-            this.postsModel.set(() => {
-              this.postsModel.errors = xhr.responseJSON;
+            this.notesModel.set(() => {
+              this.notesModel.errors = xhr.responseJSON;
             });
           } else {
             alert('an error has occurred during request: ' + statusText + '.' + xhr.responseText);
@@ -49,9 +49,9 @@ class PostEditComponent extends Fronty.ModelComponent {
   onStart() {
     var selectedId = this.router.getRouteQueryParam('id');
     if (selectedId != null) {
-      this.postsService.findPost(selectedId)
+      this.notesService.findPost(selectedId)
         .then((post) => {
-          this.postsModel.setSelectedPost(post);
+          this.notesModel.setSelectedPost(post);
         });
     }
   }
