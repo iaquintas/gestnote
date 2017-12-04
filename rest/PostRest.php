@@ -137,13 +137,13 @@ class PostRest extends BaseRest {
 		}
 		$post->settitulo($data->titulo);
 		$post->setcontenido($data->contenido);
-		$post->setcompartido($data->compartido);
+		
 
 		try {
 			// valnumeroate Post object
 			$post->checkIsValnumeroForUpdate(); // if it fails, ValnumeroationException
 			if($post->getcompartido()){
-				$this->postMapper->share($post);
+				$this->postMapper->share($post, $data->compartido);
 			}
 			$this->postMapper->update($post);
 			header($_SERVER['SERVER_PROTOCOL'].' 200 Ok');

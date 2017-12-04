@@ -1,5 +1,15 @@
 <div>
   {{#if isLogged}}
+  <div id="idioma" class="dropdown show">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{i18n 'Hello'}} {{user.currentUser}}
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+    <input type="button" id='logoutbutton' value="{{i18n 'logout'}}"></input>
+    </div>
+  </div>
+
     {{i18n 'Hello'}} {{currentUser}}
     <input type="button" id='logoutbutton' value="{{i18n 'logout'}}"></input>
   {{else}}

@@ -6,16 +6,7 @@
     </div>
 
     {{#if user.isLogged}}
-    <div id="idioma" class="dropdown show">
-      <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{i18n 'Hello'}} {{user.currentUser}}
-      </a>
-
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <input type="button" id='logoutbutton' value="{{i18n 'logout'}}"></input>
-      </div>
-    </div>
-
+    
 
     <nav class="navbar navbar-expand-lg ">
     <a class="navbar-brand" href="#">{{i18n 'My notes'}}</a>
@@ -26,7 +17,7 @@
               <a class="nav-link" href="#add-post"><i class="fa fa-plus-square-o" aria-hidden="true"></i>{{i18n 'Add note'}}</a>
             </li>
 
-          
+
           </ul>
 
 

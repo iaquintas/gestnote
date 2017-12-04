@@ -10,11 +10,17 @@ class PostsComponent extends Fronty.ModelComponent {
 
     this.postsService = new PostsService();
 
+    this.userModel.addObserver(()=> {
+      if (this.userModel.isLogged) {
+        this.updatePosts();
+      }
+    });
   }
 
   onStart() {
-
-    this.updatePosts();
+    if (this.userModel.isLogged) {
+      this.updatePosts();
+    }
   }
 
   updatePosts() {
@@ -51,7 +57,7 @@ class PostsComponent extends Fronty.ModelComponent {
         if (confirm(I18n.translate('Are you sure?'))) {
           var postId = event.target.getAttribute('item');
           this.postsComponent.postsService.deletePost(postId)
-          
+
             .always(() => {
               this.postsComponent.updatePosts();
             });

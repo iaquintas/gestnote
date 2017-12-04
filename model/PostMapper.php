@@ -155,10 +155,10 @@ class PostMapper {
 			return $this->db->lastInsertId();
 		}
 
-		public function share(Post $post) {
+		public function share(Post $post, $username) {
 
 			$stmt = $this->db->prepare("INSERT INTO comparte(Numero,login,borrado) values (?,?,?)");
-			$stmt->execute(array($post->getnumero(),$post->getcompartido(), "NO"));
+			$stmt->execute(array($post->getnumero(),$username, "NO"));
 			return $this->db->lastInsertId();
 		}
 
