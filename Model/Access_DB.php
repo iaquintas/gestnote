@@ -20,4 +20,25 @@ function ConnectDB()
 	}
 }
 
+function Login($login, $password){
+
+  $mysqli = ConnectDB();
+  $sql = "select * from USUARIOS where login = '".$login."'";
+
+  $result = $mysqli->query($sql);
+  if ($result->num_rows == 1){  // existe el usuario
+    $tupla = $result->fetch_array();
+    if ($tupla['password'] == $password){ //  coinciden las passwords
+      return true;
+    }
+    else{
+      return 'La contraseña para este usuario es errónea'; //las passwords no coinciden
+    }
+  }
+  else{
+        return "El usuario no existe"; //no existe el usuario
+  }
+
+}
+
 ?>

@@ -45,8 +45,8 @@ public function ADD(){
     }
 
     //funcion de busqueda para una determinada instacia de la entidad actual
-    public function SEARCH(){ //CREADAS POR USUARIO
-        $log=$_SESSION['login'];
+    public function SEARCH($log){ //CREADAS POR USUARIO
+
         $sql= "SELECT * FROM NOTAS WHERE (AUTOR='$log')";
         if (!($resultado = $this->mysqli->query($sql))){
             return 'Error en la consulta sobre la base de datos';
@@ -56,8 +56,9 @@ public function ADD(){
         }
     }
 
-    public function getSHARE(){ // LAS Q LE COMPARTEN
-        $log=$_SESSION['login'];
+    public function getSHARE($log){ // LAS Q LE COMPARTEN
+
+
         $sql= "SELECT * FROM NOTAS N, COMPARTE C WHERE N.Numero=C.Numero AND C.login='$log' AND C.BORRADO='NO'";
         if (!($resultado = $this->mysqli->query($sql))){
             return 'Error en la consulta sobre la base de datos';
@@ -69,15 +70,14 @@ public function ADD(){
 
 
     //funcion de modificación de la instancia actual de la entidad
-    public function EDIT(){
-        $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
+    public function EDIT($log){
+        $sql = "SELECT * FROM NOTAS,COMPARTE WHERE NOTAS.Numero=COMPARTE.Numero AND NOTAS.Numero = '$this->Numero' AND (NOTAS.AUTOR='$log' OR COMPARTE.login='$log')";
 
         $resultado = $this->mysqli->query($sql);
         if($resultado->num_rows == 0){
             return 'No existe en la base de datos';
         }else{
-            $sql = "UPDATE NOTAS SET Numero = '$this->Numero',
-            AUTOR = '$this->AUTOR',
+            $sql = "UPDATE NOTAS SET
             TITULO = '$this->TITULO',
             CONTENIDO = '$this->CONTENIDO',
             COMPARTIDO = '$this->COMPARTIDO' WHERE (Numero = '$this->Numero')";
@@ -89,8 +89,8 @@ public function ADD(){
         }
     }
     //Borra la instancia actual de la base de datos. Es un borrado completo
-    public function DELETE(){
-      $log=$_SESSION['login'];
+    public function DELETE($log){
+
       if($this->AUTOR==$log){
 
         $sql = "SELECT * FROM NOTAS WHERE (Numero = '$this->Numero')";
@@ -128,8 +128,8 @@ public function ADD(){
             }
         }
 
-        public function ORDERCREATE(){ //CREADAS POR USUARIO
-            $log=$_SESSION['login'];
+        public function ORDERCREATE($log){ //CREADAS POR USUARIO
+
             $sql= "SELECT * FROM NOTAS WHERE (AUTOR='$log') ORDER BY AUTOR";
             if (!($resultado = $this->mysqli->query($sql))){
                 return 'Error en la consulta sobre la base de datos';
@@ -139,8 +139,8 @@ public function ADD(){
             }
         }
 
-        public function ORDERCREATESHARE(){ // LAS Q LE COMPARTEN
-            $log=$_SESSION['login'];
+        public function ORDERCREATESHARE($log){ // LAS Q LE COMPARTEN
+
             $sql= "SELECT * FROM NOTAS N, COMPARTE C WHERE N.Numero=C.Numero AND C.login='$log' AND C.BORRADO='NO' ORDER BY C.login";
             if (!($resultado = $this->mysqli->query($sql))){
                 return 'Error en la consulta sobre la base de datos';
@@ -150,9 +150,9 @@ public function ADD(){
             }
         }
 
-        public function SHARE(){
+        public function SHARE($log){
 
-                 $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero'";
+                 $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero' AND AUTOR='$log'";
                 $resultado = $this->mysqli->query($sql);
                 if($resultado->num_rows > 0){
 

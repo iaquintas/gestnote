@@ -63,6 +63,7 @@
                 $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
                 new NOTAS_DELETE($valores);
             }else{
+              $log=$_SESSION['login'];
               $Numero = $_REQUEST['Numero'];
               $AUTOR = $_REQUEST['AUTOR'];
               $TITULO = $_REQUEST['TITULO'];
@@ -71,12 +72,13 @@
 
 
               $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$COMPARTIDO);
-                $respuesta = $NOTAS->DELETE();
+                $respuesta = $NOTAS->DELETE($log);
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
             break;
         //Edita los datos que quiera el usuario
         case 'EDIT':
+          $log=$_SESSION['login'];
             if (!$_POST){
                 $NOTAS = new NOTAS_Model($_REQUEST['Numero'],'','','','');
                 $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
@@ -88,7 +90,7 @@
               $CONTENIDO = $_REQUEST['CONTENIDO'];
               $COMPARTIDO = "";
                 $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$COMPARTIDO);
-                $respuesta = $NOTAS->EDIT();
+                $respuesta = $NOTAS->EDIT($log);
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
             }
             break;
@@ -97,9 +99,10 @@
             if (!$_POST){
                 new NOTAS_SEARCH();
             }else{
+                $log=$_SESSION['login'];
                 $NOTAS = get_data_form();
-                $datos = $NOTAS->SEARCH();
-                $datos2= $NOTAS->getSHARE();
+                $datos = $NOTAS->SEARCH($log);
+                $datos2= $NOTAS->getSHARE($log);
 
                 $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
                 new NOTAS_SHOWALL($lista, $datos,$datos2,'../index.php');
@@ -107,6 +110,7 @@
             break;
         //Muestra el/la NOTAS seleccionado
         case 'SHARE':
+              $log=$_SESSION['login'];
             if (!$_POST){
                 $NOTAS = new NOTAS_Model($_REQUEST['Numero'],'','','','');
                 $valores= $NOTAS->RellenaDatos($_REQUEST['Numero']);
@@ -132,7 +136,7 @@
               foreach ($COMPARTIDO as $com) {
 
                 $NOTAS = new NOTAS_Model($Numero,$AUTOR,$TITULO,$CONTENIDO,$com);
-                  $respuesta = $NOTAS->SHARE();
+                  $respuesta = $NOTAS->SHARE($log);
               }
 
                 new MESSAGE($respuesta, '../Controller/NOTAS_Controller.php');
@@ -146,8 +150,9 @@
         }else{
             $NOTAS = get_data_form();
           }
-            $datos = $NOTAS->ORDERCREATE();
-            $datos2= $NOTAS->ORDERCREATESHARE();
+            $log=$_SESSION['login'];
+            $datos = $NOTAS->ORDERCREATE($log);
+            $datos2= $NOTAS->ORDERCREATESHARE($log);
 
             $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
             new NOTAS_SHOWALL($lista, $datos,$datos2,'../index.php');
@@ -160,8 +165,8 @@
           }else{
               $NOTAS = get_data_form();
             }
-              $datos2= $NOTAS->ORDERCREATESHARE();
-              $datos = $NOTAS->ORDERCREATE();
+              $datos2= $NOTAS->ORDERCREATESHARE($log);
+              $datos = $NOTAS->ORDERCREATE($log);
 
 
               $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
@@ -173,13 +178,14 @@
 
         //Opcion por defecto, que muestra todas las instancias de la entidad
         default:
+            $log=$_SESSION['login'];
             if (!$_POST){
                 $NOTAS = new NOTAS_Model( '', '', '', '', '');
             }else{
                 $NOTAS = get_data_form();
             }
-            $datos = $NOTAS->SEARCH();
-            $datos2= $NOTAS->getSHARE();
+            $datos = $NOTAS->SEARCH($log);
+            $datos2= $NOTAS->getSHARE($log);
 
             $lista = array( 'Numero', 'AUTOR', 'TITULO', 'CONTENIDO', 'COMPARTIDO');
             new NOTAS_SHOWALL($lista, $datos,$datos2);
