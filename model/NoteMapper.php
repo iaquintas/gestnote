@@ -36,14 +36,14 @@ class NoteMapper {
 	public function findAll($currentUser) {
 
 		//$stmt = $this->db->query("SELECT * FROM notas, usuarios,comparte WHERE usuarios.login = notas.AUTOR OR (usuarios.login=comparte.login and comparte.numero=notas.numero)");
-		$stmt = $this->db->query("SELECT notas.Numero,notas.AUTOR,notas.TITULO,notas.CONTENIDO,notas.COMPARTIDO FROM notas,comparte WHERE(notas.Numero=comparte.Numero AND comparte.login='$currentUser' AND comparte.BORRADO='NO')");
+		$stmt = $this->db->query("SELECT notas.Numero,notas.AUTOR,notas.TITULO,notas.CONTENIDO FROM notas,comparte WHERE(notas.Numero=comparte.Numero AND comparte.login='$currentUser' AND comparte.BORRADO='NO')");
 		$notes_db = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 		$notes = array();
 
 		foreach ($notes_db as $note) {
 			$author = new User($note["AUTOR"]);
-			array_push($notes, new Note($note["Numero"], $note["TITULO"],  $note["CONTENIDO"], $author, $note["COMPARTIDO"]));
+			array_push($notes, new Note($note["Numero"], $note["TITULO"],  $note["CONTENIDO"], $author));
 		}
 
 		$stmt = $this->db->query("SELECT * FROM notas WHERE AUTOR='$currentUser'");
@@ -53,7 +53,7 @@ class NoteMapper {
 
 		foreach ($notesC_db as $note) {
 			$author = new User($note["AUTOR"]);
-			array_push($notes, new Note($note["Numero"], $note["TITULO"],  $note["CONTENIDO"], $author, $note["COMPARTIDO"]));
+			array_push($notes, new Note($note["Numero"], $note["TITULO"],  $note["CONTENIDO"], $author));
 		}
 
 
@@ -82,15 +82,14 @@ class NoteMapper {
 			$note["Numero"],
 			$note["TITULO"],
 			$note["CONTENIDO"],
-			new User($note["AUTOR"]),
-			$note["COMPARTIDO"]
+			new User($note["AUTOR"])
 			);
 		} else {
 			return NULL;
 		}
 	}
 
-	
+
 		/**
 		* Saves a Note into the database
 		*
@@ -99,15 +98,24 @@ class NoteMapper {
 		* @return int The mew note Numero
 		*/
 		public function save(Note $note) {
-			$stmt = $this->db->prepare("INSERT INTO notas(AUTOR,TITULO,CONTENIDO,COMPARTIDO) values (?,?,?,?)");
-			$stmt->execute(array($note->getautor()->getUsername(),$note->gettitulo(), $note->getcontenido(), $note->getcompartido()));
+			$stmt = $this->db->prepare("INSERT INTO notas(AUTOR,TITULO,CONTENIDO) values (?,?,?)");
+			$stmt->execute(array($note->getautor()->getUsername(),$note->gettitulo(), $note->getcontenido()));
 			return $this->db->lastInsertId();
 		}
 
 		public function share(Note $note, $username) {
+			$stmt = $this->db->prepare("SELECT count(*) FROM comparte WHERE (Numero=? AND login=?)");
+			$stmt->execute(array($note->getnumero(),$username));
+
+			if ($stmt->fetchColumn() > 0) {
+					$stmt = $this->db->prepare("UPDATE comparte SET Numero=?,login=?,borrado=?  WHERE (Numero=? AND login=?)");
+					$stmt->execute(array($note->getnumero(),$username, "NO",$note->getnumero(),$username));
+
+			}else{
 
 			$stmt = $this->db->prepare("INSERT INTO comparte(Numero,login,borrado) values (?,?,?)");
 			$stmt->execute(array($note->getnumero(),$username, "NO"));
+		}
 			return $this->db->lastInsertId();
 		}
 
@@ -119,8 +127,8 @@ class NoteMapper {
 		* @return voNumero
 		*/
 		public function update(Note $note) {
-			$stmt = $this->db->prepare("UPDATE notas set titulo=?, contenido=?,compartido=? where Numero=?");
-			$stmt->execute(array($note->gettitulo(), $note->getcontenido(),$note->getcompartido(), $note->getnumero()));
+			$stmt = $this->db->prepare("UPDATE notas set titulo=?, contenido=? where Numero=?");
+			$stmt->execute(array($note->gettitulo(), $note->getcontenido(), $note->getnumero()));
 		}
 
 		/**
