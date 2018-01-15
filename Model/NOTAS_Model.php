@@ -155,8 +155,14 @@ public function ADD(){
                  $sql = "SELECT * FROM NOTAS WHERE Numero = '$this->Numero' AND AUTOR='$log'";
                 $resultado = $this->mysqli->query($sql);
                 if($resultado->num_rows > 0){
+                 $sql = "SELECT * FROM COMPARTE WHERE Numero = '$this->Numero' AND login='$this->COMPARTIDO'";
+                 $resultado = $this->mysqli->query($sql);
+                   if($resultado->num_rows > 0){
+                         $sql="UPDATE COMPARTE SET BORRADO='NO' WHERE Numero = '$this->Numero' AND login='$this->COMPARTIDO'";
+                   }else{
 
                     $sql= "INSERT INTO COMPARTE(Numero,login) VALUES ('$this->Numero','$this->COMPARTIDO')";
+                  }
                     if(!$this->mysqli->query($sql)){
         		             return 'Error en la inserción';
                     }else{
